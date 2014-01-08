@@ -18,3 +18,6 @@ end
 group :development, :test do
 	gem 'rspec-rails', '~> 2.13.1'
 end
+
+
+gem 'rails_12factor', group: :production
