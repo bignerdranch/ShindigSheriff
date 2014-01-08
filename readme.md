@@ -10,4 +10,17 @@ The organizer home dashboard lists organizations. The organization dashboard lis
 ###Getting Started
 To run this application, creating a project gemset with .rvmrc is recommended.  
 
-    $ echo 'rvm --create use 2.1.0@shindigsheriff' > .rvmrc'
+    $ echo 'rvm --create use 2.1.0@shindigsheriff' > .rvmrc
+
+Download gems  
+
+    $ bundle install
+
+Load database
+
+    $ rake db:setup
+
+Start the rails server
+
+    $ rails s
+
