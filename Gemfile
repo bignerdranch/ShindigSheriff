@@ -16,7 +16,8 @@ group :doc do
 end
 
 group :development, :test do
-	gem 'rspec-rails', '~> 2.13.1'
+  gem 'rspec-rails', '~> 2.13.1'
+  gem 'turnip'
 end
 
 
