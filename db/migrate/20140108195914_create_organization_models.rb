@@ -10,3 +10,4 @@ class CreateOrganizationModels < ActiveRecord::Migration
     end
   end
 end
+

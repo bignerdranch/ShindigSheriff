@@ -3,3 +3,4 @@ class ChangeOrganizationModelNameToOrganizations < ActiveRecord::Migration
   	rename_table :organization_models, :organizations
   end
 end
+

@@ -10,3 +10,4 @@ class AddLoginFieldsToUser < ActiveRecord::Migration
     end
   end
 end
+
