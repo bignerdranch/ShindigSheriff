@@ -4,10 +4,12 @@ Feature: Registering as a new user
     Given I am a non-registered user
     When I complete the form with the following:
       
-      | First Name  | Kara                     |
-      | Last Name   | Thrace                   |
-      | Email       | kara.thrace@caprica.com  |
-      | Password    | password                 |  
+      | First Name           | Kara                     |
+      | Last Name            | Thrace                   |
+      | Email                | kara.thrace@caprica.com  |
+      | Password             | password                 |  
+      | Website              | www.pegasusmeetup.com    |
+      | Organization Name    | Pegasus Meetup           |
 
       And I click "Register Me"
     Then I should see "Welcome Kara!"
