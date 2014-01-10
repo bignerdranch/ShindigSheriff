@@ -1,0 +1,24 @@
+<div class="user-form">  
+
+  <%= form_for(@user) do |f| %>
+    <%= f.text_field :first_name, placeholder: "First Name" %><br/>
+
+    <%= f.text_field :last_name, placeholder: "Last Name" %><br/>
+    
+    <%= f.text_field :email, placeholder: "Email@youremail.com" %><br/>
+
+    <%= f.text_field :phone_number, placeholder: "###-###-####" %><br/>
+  
+    <%= f.text_field :password, placeholder: "password" %><br/>
+
+    <h2 class="organization-user-form">Register Your Organization</h2>
+
+    <%= f.fields_for @user.organizations.build do |org| %>
+      <%= org.text_field :name, placeholder: "Organization Name" %><br/>
+    <% end %>
+
+    <%= f.submit "Create Account" %>
+
+  <% end %>
+
+</div>
