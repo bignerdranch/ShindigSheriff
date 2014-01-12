@@ -4,39 +4,16 @@ Feature: Registering as a new user
     Given I am a non-registered user
     When I complete the form with the following:
       
-      | First Name           | Kara                     |
-      | Last Name            | Thrace                   |
-      | Email                | kara.thrace@caprica.com  |
-      | Password             | password                 |  
-      | Website              | www.pegasusmeetup.com    |
-      | Organization Name    | Pegasus Meetup           |
+      | ID                        | Input                     |
+      | user_first_name           | Kara                      |
+      | user_last_name            | Thrace                    |
+      | user_email                | kara.thrace@caprica.com   |
+      | user_phone_number         | 555-555-5555              |
+      | user_password             | password                  |  
+      | user_organization_name    | Galactica Meetup          |      
 
-      And I click "Register Me"
-    Then I should see "Welcome Kara!"
+      And I click "Create Account"
+    Then I should see "kara.thrace@caprica.com"
 
-
-  Scenario: Submitting an incomplete registration form
-    Given I am a non-registered user
-    When I complete the form with the following:
-
-      | First Name  | Kara                     |
-      | Last Name   | Thrace                   |
-      | Email       | kara.thrace@caprica.com  |
-
-      And I click "Register Me"
-    Then I should see "Form Incomplete"
-
-
-  Scenario: Attempting to register pre-existing user
-    Given there is a user email "kara.thrice@caprica.com"
-    When I complete the form with the following:
-
-      | First Name  | Kara                     |
-      | Last Name   | Thrace                   |
-      | Email       | kara.thrace@caprica.com  |
-      | Password    | password                 |
-
-      And I click "Register Me"
-    Then I should see "kara.thrice@caprica.com is already registered"
-
+    
     
