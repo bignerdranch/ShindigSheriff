@@ -5,7 +5,6 @@ end
 step "I complete the form with the following:" do |table|
   visit root_path
   table.hashes.each do |table|
-    #unless (table["ID"] == nil || table["Input"] == nil)
     fill_in table["ID"], :with => table["Input"]
   end
 end
