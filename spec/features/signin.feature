@@ -6,14 +6,15 @@ Feature: Signing In
       | last_name            | Thrace                    |
       | email                | kara.thrace@caprica.com   |
       | phone_number         | 555-555-5555              |
+      | password             | password                  |
 
       And I am at the homepage
     When I complete the form with the following:
 
-      | ID        | Input                       |
-      | email     | laura.roslin@galactica.com  |
-      | password  | password                    |
+      | ID               | Input                       |
+      | signin-email     | kara.thrace@caprica.com     |
+      | signin-password  | password                    |
 
-      And I click signin
+      And I click Sign In
   Then I see a welcome message
 
