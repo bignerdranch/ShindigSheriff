@@ -2,6 +2,7 @@ Feature: Registering as a new user
 
   Scenario: Succesfully creating a new user
     Given I am a non-registered user
+      And I am at the homepage
     When I complete the form with the following:
       
       | ID                        | Input                     |
