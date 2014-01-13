@@ -7,8 +7,8 @@ Feature: Signing In
       | email                | kara.thrace@caprica.com   |
       | phone_number         | 555-555-5555              |
 
-    When I am at the homepage
-      And I complete the form with the following:
+      And I am at the homepage
+    When I complete the form with the following:
 
       | ID        | Input                       |
       | email     | laura.roslin@galactica.com  |
