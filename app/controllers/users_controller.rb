@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
   end
 
   # GET /users/new
@@ -28,8 +29,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save && @organization.save
+      @user.organizations << @organization
       flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
-      redirect_to users_path
+      redirect_to user_organizations(@user)
     else
       flash[:errors] = "Error(s) while creating user/organization 
           #{@user.errors.full_messages.to_sentence} 
