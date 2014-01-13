@@ -2,8 +2,11 @@ step "I am a non-registered user" do
   #visit users/signout
 end
 
-step "I complete the form with the following:" do |table|
+step "I am at the homepage" do
   visit root_path
+end
+
+step "I complete the form with the following:" do |table|
   table.hashes.each do |table|
     fill_in table["ID"], :with => table["Input"]
   end
@@ -16,3 +19,4 @@ end
 step "I should see :text" do |text|
   expect(page).to have_content text
 end
+

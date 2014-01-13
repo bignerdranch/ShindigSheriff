@@ -1,0 +1,11 @@
+<div id="navbar">
+  <h1>Shindig Sheriff</h1>
+
+  <% if user_signed_in? %>
+    Logged in as <strong><%= current_user.email %></strong>.
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  <% else %>
+    <%= render partial: "layouts/signin" %>
+  <% end %>
+</div>
+
