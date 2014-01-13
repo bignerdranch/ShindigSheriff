@@ -15,5 +15,6 @@ step "I click Sign In" do
 end
 
 step "I see a welcome message" do
-  expect(page).to have_content "Logged in as kara.thrace@caprica.com"
+  expect(page).to have_content "Logged in as #{@user.email}"
 end
+
