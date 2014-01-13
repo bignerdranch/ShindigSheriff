@@ -1,3 +1,7 @@
 <div id="signin">
-  Log In 
+  <%= form_for("user", :url => user_session_path) do |f| %>
+    <%= f.text_field :email, placeholder: "email@youremail.com", id: 'signin-email' %>
+    <%= f.password_field :password, placeholder: "password",  id: 'signin-password' %>
+    <%= f.submit "Sign In" %>
+  <% end %>
 </div>
