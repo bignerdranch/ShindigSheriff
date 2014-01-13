@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save && @organization.save
+      sign_in @user
       flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
       redirect_to users_path
     else
