@@ -24,16 +24,16 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    @organization = Organization.new(params[:user].delete(:organization))
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save && @organization.save
+      redirect_to users_path
+    else
+      flash[:errors] = "Error(s) while creating user/organization 
+          #{@user.errors.full_messages.to_sentence} 
+          #{@organization.errors.full_messages.to_sentence}"
+      redirect_to root_path
     end
   end
 
@@ -69,6 +69,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params[:user]
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :phone_number, :organization)
     end
 end

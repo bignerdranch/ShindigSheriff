@@ -1,3 +1,9 @@
 ShindigSheriff::Application.routes.draw do
-  resources :users
+
+  resources :users do  
+    resources :organizations
+  end
+
+  root to: 'users#new'
+
 end
