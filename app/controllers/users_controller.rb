@@ -16,6 +16,10 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    if user_signed_in?
+      redirect_to user_organizations_path(current_user)
+    end
+    
     @user = User.new
   end
 
