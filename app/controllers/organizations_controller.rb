@@ -30,6 +30,10 @@ class OrganizationsController < ApplicationController
       current_user.organizations << @organization
       flash[:notice] = "#{@organization.name.titleize} has successfully been added to user #{current_user}!"
       redirect_to user_organizations_path(current_user)
+    else
+      flash[:notice] = "Error(s) while creating organization:
+      #{@organization.errors.full_messages.to_sentence}"
+      redirect_to new_organization_path(@user)
     end
   end
 
