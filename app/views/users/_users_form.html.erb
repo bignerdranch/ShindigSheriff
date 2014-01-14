@@ -1,23 +1,23 @@
 <div class="user-form">  
 
   <%= form_for(@user) do |f| %>
-    <%= f.text_field :first_name, placeholder: "First Name" %><br/>
+    <%= f.text_field :first_name, placeholder: "First Name" %>
 
-    <%= f.text_field :last_name, placeholder: "Last Name" %><br/>
+    <%= f.text_field :last_name, placeholder: "Last Name" %>
     
-    <%= f.text_field :email, placeholder: "Email@youremail.com" %><br/>
+    <%= f.text_field :email, placeholder: "Email@youremail.com" %>
 
-    <%= f.text_field :phone_number, placeholder: "###-###-####" %><br/>
+    <%= f.text_field :phone_number, placeholder: "###-###-####" %>
   
-    <%= f.password_field :password, placeholder: "password" %><br/>
+    <%= f.password_field :password, placeholder: "password" %>
 
-    <h2 class="organization-user-form">Register Your Organization</h2>
+    <h4 class="organization-user-form">Register Your Organization</h4>
 
     <%= f.fields_for @user.organizations.build do |org| %>
-      <%= org.text_field :name, placeholder: "Organization Name" %><br/>
+      <%= org.text_field :name, placeholder: "Organization Name" %>
     <% end %>
 
-    <%= f.submit "Create Account" %>
+    <%= f.submit "Create Account", class: "button radius tiny" %>
 
   <% end %>
 

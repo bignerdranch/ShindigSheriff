@@ -1,6 +1,13 @@
-<h1>Sign Up</h1>
+<div class="row">
+  <div class="small-3 columns">
+    <h4>Sign Up</h4>
 
-<%= flash[:errors] %>
-<%= render 'users_form' %>
+    <% if flash[:errors] %>
+      <div class="alert-box">
+        <%= flash[:errors] %>
+      </div>
+    <% end %>
 
-<%= link_to 'Back', users_path %>
+    <%= render 'users_form' %>
+  </div>
+</div>

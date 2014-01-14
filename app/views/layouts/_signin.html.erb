@@ -1,8 +1,16 @@
 <div id="signin">
   <%= form_for("user", :url => user_session_path) do |f| %>
-    <%= f.text_field :email, placeholder: "email@youremail.com", id: 'signin-email' %>
+    <li>
+      <%= f.submit "Sign In", class: "button radius", id: "sign-in-button" %>
+    </li>
+
+    <li>
+      <%= f.text_field :email, placeholder: "email@youremail.com", id: 'signin-email' %>
+    </li>
+
+    <li>
     <%= f.password_field :password, placeholder: "password",  id: 'signin-password' %>
-    <%= f.submit "Sign In" %>
+    </li>
   <% end %>
 </div>
 
