@@ -4,7 +4,6 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-
     @user_organizations = current_user.organizations
   end
 

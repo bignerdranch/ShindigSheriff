@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :authenticate_user!, only: [:new, :create]
 
   # GET /users
   # GET /users.json
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
 
     if @user.save && @organization.save
       @user.organizations << @organization
+      sign_in @user
       flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
       redirect_to user_organizations_path(@user)
     else
