@@ -33,7 +33,7 @@ class OrganizationsController < ApplicationController
     else
       flash[:notice] = "Error(s) while creating organization:
       #{@organization.errors.full_messages.to_sentence}"
-      redirect_to new_organization_path(@user)
+      redirect_to new_user_organization_path(@user)
     end
   end
 
@@ -46,7 +46,7 @@ class OrganizationsController < ApplicationController
     else
       flash[:notice] = "Error(s) while editing organization:
       #{@organization.errors.full_messages.to_sentence}"
-      redirect_to edit_organization_path(@user)
+      redirect_to edit_user_organization_path(@user)
     end
   end
 

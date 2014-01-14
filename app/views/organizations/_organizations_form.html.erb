@@ -1,5 +1,5 @@
 
-<%= form_for([@user, @organization]) do |f| %>
+<%= form_for([@user, @organization], :url => user_organizations_path) do |f| %>
 <%= f.label :Name %>
 <%= f.text_field :name, placeholder: @organization.name %><br/>
 <%= f.label :Website %>

@@ -1,11 +1,13 @@
 ShindigSheriff::Application.routes.draw do
 
-  resources :organizations
-
   devise_for :users
 
   resources :users do  
     resources :organizations
+  end
+
+  resources :organizations, only: [] do
+    resources :events
   end
 
   root to: 'users#new'
