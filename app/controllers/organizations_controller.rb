@@ -28,7 +28,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(organization_params)
     if @organization.save
       current_user.organizations << @organization
-      flash[:notice] = "#{@organization.name.titleize} has successfully been added to user #{current_user}!"
+      flash[:notice] = "#{@organization.name.titleize} has successfully been added to user #{current_user.email}!"
       redirect_to user_organizations_path(current_user)
     else
       flash[:notice] = "Error(s) while creating organization:
@@ -40,14 +40,13 @@ class OrganizationsController < ApplicationController
   # PATCH/PUT /organizations/1
   # PATCH/PUT /organizations/1.json
   def update
-    respond_to do |format|
-      if @organization.update(organization_params)
-        format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
-      end
+    if @organization.update(organization_params)
+      flash[:notice] = "#{@organization.name.titleize} has successfully been updated!"
+      redirect_to user_organizations_path(current_user)
+    else
+      flash[:notice] = "Error(s) while editing organization:
+      #{@organization.errors.full_messages.to_sentence}"
+      redirect_to edit_organization_path(@user)
     end
   end
 
