@@ -1,10 +1,4 @@
- <p id="notice"><%= notice %></p>
-
-<h1><%= @user.email %></h1>
-
-
-<h3>Organizations</h3>
-
+<h1>Listing organizations</h1>
 
 <table>
   <thead>
@@ -12,13 +6,15 @@
       <th></th>
       <th></th>
       <th></th>
-    </tr>  
+    </tr>
   </thead>
+
   <tbody>
-    <% @user.organizations.each do |organization| %>
+    <% @user_organizations.each do |organization| %>
       <tr>
         <td><%= organization.name %></td>
         <td><%= organization.website %></td>
+        <td><%= organization.user_id %></td>
         <td><%= link_to 'Show', organization %></td>
         <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
         <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,8 +23,7 @@
   </tbody>
 </table>
 
+<br>
+
 <%= link_to 'New Organization', new_organization_path %>
-
-
-
 

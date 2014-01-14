@@ -1,5 +1,7 @@
 ShindigSheriff::Application.routes.draw do
 
+  resources :organizations
+
   devise_for :users
 
   resources :users do  
@@ -9,3 +11,4 @@ ShindigSheriff::Application.routes.draw do
   root to: 'users#new'
 
 end
+
