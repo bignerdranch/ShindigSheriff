@@ -10,7 +10,7 @@
   </thead>
 
   <tbody>
-    <% @organizations.each do |organization| %>
+    <% @user_organizations.each do |organization| %>
       <tr>
         <td><%= organization.name %></td>
         <td><%= organization.website %></td>
@@ -26,3 +26,4 @@
 <br>
 
 <%= link_to 'New Organization', new_organization_path %>
+

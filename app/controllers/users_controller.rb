@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     if @user.save && @organization.save
       @user.organizations << @organization
       flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
-      redirect_to user_organizations(@user)
+      redirect_to user_organizations_path(@user)
     else
       flash[:errors] = "Error(s) while creating user/organization 
           #{@user.errors.full_messages.to_sentence} 
@@ -75,3 +75,4 @@ class UsersController < ApplicationController
       params.require(:user).permit(:first_name, :last_name, :email, :password, :phone_number, :organization)
     end
 end
+

@@ -4,7 +4,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.all
+    @user_organizations = current_user.organizations
   end
 
   # GET /organizations/1
@@ -29,7 +29,7 @@ class OrganizationsController < ApplicationController
     if @organization.save
       current_user.organizations << @organization
       flash[:notice] = "#{@organization.name.titleize} has successfully been added to user #{current_user}!"
-      redirect_to organizations_path(current_user)
+      redirect_to user_organizations_path(current_user)
     end
   end
 
@@ -68,3 +68,7 @@ class OrganizationsController < ApplicationController
       params.require(:organization).permit(:name, :website)
     end
 end
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9e24d8c430dd89a27ee141d528ab314c2ee0649d
