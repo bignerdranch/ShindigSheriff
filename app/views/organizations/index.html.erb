@@ -16,9 +16,10 @@
           <td><%= organization.name %></td>
           <td><%= organization.website %></td>
           <td><%= organization.user_id %></td>
-          <td><%= link_to 'Show', organization %></td>
-          <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-          <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+          <td><%= link_to 'Show', user_organization_path(current_user, organization) %></td>
+          <td><%= link_to 'Edit', edit_user_organization_path(current_user, organization) %></td>
+          <td><%= link_to 'Destroy', user_organization_path(current_user, organization), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     <% else %>
@@ -29,5 +30,5 @@
 
 <br>
 
-<%= link_to 'New Organization', new_organization_path %>
+<%= link_to 'New Organization', new_user_organization_path %>
 
