@@ -68,7 +68,4 @@ class OrganizationsController < ApplicationController
       params.require(:organization).permit(:name, :website)
     end
 end
-<<<<<<< HEAD
-=======
 
->>>>>>> 9e24d8c430dd89a27ee141d528ab314c2ee0649d
