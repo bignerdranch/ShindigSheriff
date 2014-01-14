@@ -15,6 +15,6 @@ Feature: Signing In
       | signin-email     | kara.thrace@caprica.com     |
       | signin-password  | password                    |
 
-      And I click Sign In
+      And I click "Sign In"
   Then I see a welcome message
 
