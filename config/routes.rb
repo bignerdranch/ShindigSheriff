@@ -7,7 +7,7 @@ ShindigSheriff::Application.routes.draw do
   end
 
   resources :organizations, only: [] do
-    resources :events
+    resources :events, only: [:index, :new, :create]
   end
 
   root to: 'users#new'
