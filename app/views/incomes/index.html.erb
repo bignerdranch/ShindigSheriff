@@ -1,0 +1,12 @@
+<%=  @event.name %>'s Incomes:
+
+</br></br>
+
+<% if @incomes.empty? %>
+  No Incomes!
+<% else %>
+  <% @incomes.each do |income| %>
+    <%= number_to_currency income.estimated_amount %>
+    </br>
+  <% end %>
+<% end %>
