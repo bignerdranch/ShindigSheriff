@@ -1,0 +1,27 @@
+<p>Create a new Event</p>
+
+<%= form_for([@organization, @event], :url => organization_events_path) do |f| %>
+
+<%= f.label :Name %>
+<%= f.text_field :name, placeholder: @event.name %><br/>
+<%= f.label :date %>
+<%= f.date_field :date, placeholder: @event.date %><br/>
+
+
+<% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

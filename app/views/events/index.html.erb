@@ -1,0 +1,14 @@
+<table> 
+  <tbody>
+    <% if @organization_events %>
+      <% @organization_events.each do |event| %>
+        <tr>
+          <td><%= event.name %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      No events!
+    <% end %>
+  </tbody>
+</table>
+
