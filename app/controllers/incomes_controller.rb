@@ -28,7 +28,8 @@ class IncomesController < ApplicationController
   private
 
   def income_params
-    params.require(:income).permit(:estimated_amount)
+    params.require(:income).permit(:estimated_amount, :actual_amount, 
+                                   :date_received, :category_details)
   end
 
 end
