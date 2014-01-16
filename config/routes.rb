@@ -12,6 +12,7 @@ ShindigSheriff::Application.routes.draw do
 
   resources :events, only: [] do
     resources :incomes, only: [:index, :new, :create]
+    resources :finance_approvers, only: [:new, :create]
   end
 
   root to: 'users#new'
