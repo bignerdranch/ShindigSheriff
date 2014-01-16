@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     if user_signed_in?
-      redirect_to user_organizations_path(current_user)
+      redirect_to user_path(current_user)
     end
     
     @user = User.new
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
       @user.organizations << @organization
       sign_in @user
       flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
-      redirect_to user_organizations_path(@user)
+      redirect_to user_path(@user)
     else
       flash[:errors] = "Error(s) while creating user/organization 
           #{@user.errors.full_messages.to_sentence} 

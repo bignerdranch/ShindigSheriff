@@ -3,32 +3,63 @@
 <h1><%= @user.email %></h1>
 
 
-<h3>Organizations</h3>
-
+<h3>Listing organizations</h3>
 
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>  
+      <th>Name</th>
+      <th>Site</th>
+      <th>Contact Email</th>
+    </tr>
   </thead>
+
   <tbody>
-    <% @user.organizations.each do |organization| %>
-      <tr>
-        <td><%= organization.name %></td>
-        <td><%= organization.website %></td>
-        <td><%= link_to 'Show', organization %></td>
-        <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-        <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% if @user.organizations %>
+      <% @user.organizations.each do |organization| %>
+        <tr>
+          <td><%= organization.name %></td>
+          <td><%= organization.website %></td>
+          <td><%= organization.user.email %></td>
+          <td><%= link_to 'New Event', new_organization_event_path(organization) %></td>
+
+          <td><%= link_to 'Show', user_organization_path(current_user, organization) %></td>
+          <td><%= link_to 'Edit', edit_user_organization_path(current_user, organization) %></td>
+          <td><%= link_to 'Destroy', user_organization_path(current_user, organization), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <div> No Organizations </div>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Organization', new_organization_path %>
+<br>
+
+<%= link_to 'New Organization', new_user_organization_path(current_user) %>
 
 
+<h3>Listing Events</h3>
 
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @user.events %>
+      <% @user.events.each do |event| %>
+        <tr>
+          <td><%= event.name %></td>
+          <td><%= event.date %></td>
+
+        </tr>
+      <% end %>
+    <% else %>
+      <div> No events </div>
+    <% end %>
+  </tbody>
+</table>
 

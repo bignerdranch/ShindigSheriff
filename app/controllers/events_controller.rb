@@ -1,4 +1,3 @@
-
 class EventsController < ApplicationController
 
   def new
@@ -6,6 +5,7 @@ class EventsController < ApplicationController
   end
 
   def index
+    @user_events = User.find(params["user_id"]).events
     @organization_events = Organization.find(params["organization_id"]).events 
   end
 
@@ -15,7 +15,7 @@ class EventsController < ApplicationController
 
     if @organization.events.build(event_params).save!
       @organization.events << @event
-      flash[:notice] = "#{@event.name.titleize} has successfully been added to organization #{@organization}!"
+      flash[:notice] = "#{@event.name.titleize} has successfully been added to organization #{@organization.name}!"
       redirect_to organization_events_path(@organization)
     else
       flash[:notice] = "Error(s) while creating event:
