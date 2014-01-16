@@ -1,11 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-        <strong><%= @organization.name %></strong>
-        <p><%= @organization.website %></p>
-
-
-<%= link_to 'Edit', edit_user_organization_path(current_user, @organization) %> 
-<%= link_to 'Back to Organizations', user_organizations_path(current_user) %>
+<strong><%= @organization.name %></strong>
+<p><%= @organization.website %></p>
 
 <h3>Listing Events</h3>
 
@@ -31,6 +27,7 @@
   </tbody>
 </table>
 
-<%= link_to 'New Event', new_organization_event_path(@organization) %> 
-
+<%= link_to 'New Event', new_organization_event_path(@organization) %></br>
+<%= link_to 'Edit', edit_user_organization_path(current_user, @organization) %></br> 
+<%= link_to 'Back to Organizations', user_organizations_path(current_user) %></br>
 

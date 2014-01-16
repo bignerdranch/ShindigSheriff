@@ -1,0 +1,10 @@
+<div>
+  <% if @organization.finance_approver %>
+    <h5>Finance Approver: <%= @organization.finance_app_user.first_name.capitalize! %> 
+      <%= @organization.finance_app_user.last_name.capitalize! %> 
+      <%= link_to "#{@organization.finance_app_user.email}", "#" %>
+    </h5>
+  <% else %>
+    <%= link_to "Add Finance Approver", "#" %>
+  <% end %>
+</div>
