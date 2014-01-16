@@ -11,5 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :events, through: :organizations
 
+  has_one :finance_approver
+
 end
 

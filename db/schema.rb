@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115203439) do
+ActiveRecord::Schema.define(version: 20140116192324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20140115203439) do
     t.integer "event_id"
     t.integer "organization_id"
   end
+
+  create_table "finance_approvers", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "organization_id"
+    t.boolean  "confirmed?",      default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "finance_approvers", ["user_id", "organization_id"], name: "index_finance_approvers_on_user_id_and_organization_id", unique: true, using: :btree
 
   create_table "incomes", force: true do |t|
     t.integer  "event_id"
