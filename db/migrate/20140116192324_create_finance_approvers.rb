@@ -3,7 +3,6 @@ class CreateFinanceApprovers < ActiveRecord::Migration
     create_table :finance_approvers do |t|
       t.references :user
       t.references :organization, unique: true
-      t.boolean :confirmed?, default: false
 
       t.timestamps
     end
