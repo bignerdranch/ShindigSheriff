@@ -3,7 +3,24 @@
         <strong><%= @organization.name %></strong>
         <p><%= @organization.website %></p>
 
-<%= link_to 'New Event', new_organization_event_path(@organization) %>
+
 <%= link_to 'Edit', edit_user_organization_path(current_user, @organization) %> 
 <%= link_to 'Back to Organizations', user_organizations_path(current_user) %>
 
+<h2> Listing Events </h2>
+<table> 
+  <tbody>
+    <% if @organization.events %>
+      <% @organization.events.each do |event| %>
+        <tr>
+          <td><%= event.name %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      No events!
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Event', new_organization_event_path(@organization) %> 
+
+ 

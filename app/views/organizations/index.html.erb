@@ -1,10 +1,12 @@
 <h1>Listing organizations</h1>
 
+<%= link_to 'New Organization', new_user_organization_path %>
+
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
+      <th>Name</th>
+      <th>Site</th>
       <th></th>
     </tr>
   </thead>
@@ -16,7 +18,7 @@
           <td><%= organization.name %></td>
           <td><%= organization.website %></td>
           <td><%= organization.user_id %></td>
-
+          <td><%= organization.id %></td>  
           <td><%= link_to 'Show', user_organization_path(current_user, organization) %></td>
           <td><%= link_to 'Edit', edit_user_organization_path(current_user, organization) %></td>
           <td><%= link_to 'Destroy', user_organization_path(current_user, organization), method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,6 +31,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Organization', new_user_organization_path %>
-
