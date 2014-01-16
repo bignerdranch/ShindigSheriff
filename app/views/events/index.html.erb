@@ -1,5 +1,12 @@
 <h2> Listing Events </h2>
-<table> 
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Date</th>
+    </tr>
+  </thead>
   <tbody>
     <% if @organization_events %>
       <% @organization_events.each do |event| %>
@@ -9,7 +16,7 @@
         </tr>
       <% end %>
     <% else %>
-      No events!
+      <div> No events </div>
     <% end %>
   </tbody>
 </table>
