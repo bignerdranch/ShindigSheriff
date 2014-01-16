@@ -14,3 +14,4 @@ step "I am the user:" do |table|
   end
   @user = User.create(user_info)
 end
+

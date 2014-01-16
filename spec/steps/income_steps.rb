@@ -15,3 +15,4 @@ end
 step "I am at the event new income page" do
   visit "/events/#{@event.id}/incomes/new"
 end
+

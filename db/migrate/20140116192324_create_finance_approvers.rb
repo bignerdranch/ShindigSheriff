@@ -10,3 +10,4 @@ class CreateFinanceApprovers < ActiveRecord::Migration
     add_index :finance_approvers, [:user_id, :organization_id], unique: true
   end
 end
+

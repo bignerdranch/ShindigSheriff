@@ -11,3 +11,4 @@ Scenario: Succesfully creating a new income
 
       And I click "Add Income"
     Then I should see "$20.00"
+    
