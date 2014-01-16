@@ -7,6 +7,10 @@ step "I see a welcome message" do
 end
 
 
-step "I am a new user" do
-  @user = FactoryGirl.create(:user)
+step "I am the user:" do |table|
+  user_info = {}
+  table.hashes.each do |user|
+    user_info[user["ID"]] = user["Input"]
+  end
+  @user = User.create(user_info)
 end

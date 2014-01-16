@@ -23,7 +23,6 @@ step "I am a logged in user" do
   fill_in "signin-email", :with => @user.email
   fill_in "signin-password", :with => @user.password
   click_button "Sign In"
-
 end
 
 step "I should see :text" do |text|
