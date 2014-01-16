@@ -1,0 +1,20 @@
+<div>
+  Add an income to <%= @event.name %>
+</div>
+
+</br>
+
+<div>
+  <%= form_for([@event, @income]) do |f| %>
+      <%= f.text_field :estimated_amount, placeholder: "estimated amount, i.e. 10.00" %>
+
+      <%= f.text_field :category_details, placeholder: "optional category details, e.g. stickers" %> 
+
+      <%= f.label "date received" %>
+      <%= f.date_field :date_received %>
+
+      <%= f.text_field :actual_amount, placeholder: "amount recieved, i.e. 20.00" %>
+
+      <%= f.submit "Add Income" %>
+  <% end %>
+</div>
