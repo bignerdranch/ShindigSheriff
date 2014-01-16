@@ -6,7 +6,12 @@
   No Incomes!
 <% else %>
   <% @incomes.each do |income| %>
-    <%= number_to_currency income.estimated_amount %>
+    <%= number_to_currency(income.estimated_amount, precision: 2) %>
+    </br>
+    <%= income.category_details %>
     </br>
   <% end %>
 <% end %>
+
+</br>
+<%= link_to "Add Income", new_event_income_path(@event) %>
