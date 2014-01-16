@@ -14,11 +14,11 @@ class IncomesController < ApplicationController
     @event = Event.find(params[:event_id])
     @income = Income.new(income_params)
     
-    if @event.incomes.build(income_params).save!
+    if @income.valid? 
+      @event.incomes.build(income_params).save!
       flash[:notice] = "#{@income.estimated_amount} has successfully been added to organization #{@event.name}!"
       redirect_to event_incomes_path(@event, @income)
     else
-      binding.pry
       flash[:notice] = "Error(s) while creating income:
       #{@income.errors.full_messages.to_sentence}"
       redirect_to new_event_income_path(@event)
@@ -33,3 +33,4 @@ class IncomesController < ApplicationController
   end
 
 end
+

@@ -13,8 +13,8 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @organization = Organization.find(params["organization_id"]) 
 
-    if @organization.events.build(event_params).save!
-      @organization.events << @event
+    if @event.valid?
+      @organization.events.build(event_params).save!
       flash[:notice] = "#{@event.name.titleize} has successfully been added to organization #{@organization.name}!"
       redirect_to organization_events_path(@organization)
     else
