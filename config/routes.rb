@@ -5,14 +5,11 @@ ShindigSheriff::Application.routes.draw do
   resources :users do  
     resources :organizations
   end
-
-  #resources :organizations, only: [] do
-  #  resources :events, only: [:index, :new, :create, :show]
-  #end
-
+  
   scope shallow_prefix: "sekret" do
     resources :organizations do
       resources :events, shallow: true
+      resources :finance_approvers, only: [:new, :create], shallow: true
   end
 
   resources :events, only: [] do

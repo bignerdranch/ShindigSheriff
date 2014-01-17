@@ -3,6 +3,7 @@ class IncomesController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
     @incomes = @event.incomes
+    @organization = @event.organizations.first
   end
 
   def new

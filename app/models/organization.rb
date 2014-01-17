@@ -6,5 +6,10 @@ class Organization < ActiveRecord::Base
   has_one :finance_approver
 
   accepts_nested_attributes_for :events
+
+  def finance_app_user
+    finance_approver.user
+  end
+
 end
 
