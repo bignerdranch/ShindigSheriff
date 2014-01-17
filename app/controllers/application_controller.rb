@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
 
   def after_sign_in_path_for(resource)
-    user_organizations_path(resource)
+    if user_signed_in?
+      user_path(resource)
+    else
+      new_user_path
+    end
   end
 
 end
