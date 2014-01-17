@@ -1,14 +1,9 @@
 step "I am a logged in user with an event" do
-  user = FactoryGirl.create(:user)
-  organization = FactoryGirl.create(:organization)
-  @event = FactoryGirl.create(:event)
-
-  organization.events << @event
-  user.organizations << organization
+  send "a user with an event"
 
   visit '/'
-  fill_in "signin-email", :with => user.email
-  fill_in "signin-password", :with => user.password
+  fill_in "signin-email", :with => @user.email
+  fill_in "signin-password", :with => @user.password
   click_button "Sign In"
 end
 

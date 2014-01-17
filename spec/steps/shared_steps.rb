@@ -12,6 +12,22 @@ step "I click :button_msg" do |button_msg|
   click_button button_msg
 end
 
+step "the user:" do |table|
+  user_info = {}
+  table.hashes.each { |t| user_info[t["ID"]] = t["Input"] }
+  @user = User.create!(user_info)
+end
+
+step "a user with an event" do
+  @user = FactoryGirl.create(:user)
+  organization = FactoryGirl.create(:organization)
+  @event = FactoryGirl.create(:event)
+  @event.save!
+
+  organization.events << @event
+  @user.organizations << organization
+end
+
 step "I am a new user" do
   @user = FactoryGirl.create(:user)
 end
@@ -29,9 +45,4 @@ step "I should see :text" do |text|
   expect(page).to have_content text
 end
 
-step "the user:" do |table|
-  user_info = {}
-  table.hashes.each { |t| user_info[t["ID"]] = t["Input"] }
-  @user = User.create!(user_info)
-end
 
