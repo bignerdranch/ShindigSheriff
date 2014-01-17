@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :organizations
 
   has_many :events, through: :organizations
+  has_many :incomes, through: :events
 
   has_one :finance_approver
 
