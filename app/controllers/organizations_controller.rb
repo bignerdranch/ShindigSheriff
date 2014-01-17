@@ -10,7 +10,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
-
+    @organization = Organization.find(params[:id])
   end
 
   # GET /organizations/new
