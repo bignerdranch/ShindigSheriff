@@ -3,6 +3,8 @@ class Event < ActiveRecord::Base
   has_many :incomes
   validates_presence_of :name, :date, :time, :location, :purpose 
 
+  has_many :users, through: :organizations
+
    accepts_nested_attributes_for :organizations
 end
 

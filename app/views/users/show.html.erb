@@ -54,7 +54,8 @@
         <tr>
           <td><%= event.name %></td>
           <td><%= event.date %></td>
-
+          <td><%= link_to 'Show Event', sekret_event_path(event) %>
+</td>
         </tr>
       <% end %>
     <% else %>
@@ -62,4 +63,5 @@
     <% end %>
   </tbody>
 </table>
+
 

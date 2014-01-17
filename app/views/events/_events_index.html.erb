@@ -1,0 +1,26 @@
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @organization_events %>
+      <% @organization_events.each do |event| %>
+        <tr>
+          <td><%= event.name %></td>
+          <td><%= event.date %></td>
+
+          <td><%= link_to 'Show Event', organization_event_path(@organization_events, event) %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <div> No events </div>
+    <% end %>
+  </tbody>
+</table>
+
+  
