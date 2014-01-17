@@ -2,48 +2,11 @@
 
 <h1> Event: <%= @event.name %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Organization(s)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @event.organizations %>
-      <% @event.organizations.each do |organization| %>
-        <tr>
-          <td><%= organization.name %></td>
-          <td><%= link_to 'Show', user_organization_path(current_user, organization) %></td>
-        </tr>
-      <% end %>
-    <% else %>
-      <div> No organization </div>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'events_organizations' %>
+
+<%= render 'events_incomes' %>
 
 
-<table>
-  <thead>
-    <tr>
-      <th>Income(s)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @event.incomes %>
-      <% @event.incomes.each do |income| %>
-        <tr>
-          <td><%= income.estimated_amount %></td>
-          <td><%= income.actual_amount %></td>
-          <td><%= income.date_received %></td>
-          <td><%= income.category_details %></td>
-      <% end %>
-    <% else %>
-      <div> No Income </div>
-    <% end %>
-  </tbody>
-</table>
 
-<%= link_to "Add Income", new_event_income_path(@event) %>
 
 
