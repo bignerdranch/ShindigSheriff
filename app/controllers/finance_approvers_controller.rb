@@ -7,11 +7,12 @@ class FinanceApproversController < ApplicationController
   end
 
   def create
-    @organization = params[:organization_id]
+    @organization = Organization.find(params[:organization_id])
     @finance_approver = FinanceApprover.new(finance_approver_params)
+    @finance_approver.organization = @organization
 
-    if @finance_approver.valid? 
-      @finance_approver.save!
+    if @finance_approver.save
+      binding
       flash[:notice] = "#{@finance_approver.user.first_name.capitalize!} is a Finance Approver!"
       redirect_to user_organization_path(current_user, @organization)
     else
