@@ -13,7 +13,6 @@ class UsersController < ApplicationController
   def show
     if current_user.finance_approver
       render "finance_show"
-      @user = current_user
     else
       @user = current_user
     end
