@@ -1,4 +1,4 @@
-<h2> Listing Events </h2>
+
 
 <table>
   <thead>
@@ -13,6 +13,8 @@
         <tr>
           <td><%= event.name %></td>
           <td><%= event.date %></td>
+
+          <td><%= link_to 'Show Event', organization_event_path(@organization_events, event) %></td>
         </tr>
       <% end %>
     <% else %>
@@ -21,3 +23,4 @@
   </tbody>
 </table>
 
+  

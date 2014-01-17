@@ -1,5 +1,3 @@
-<!-- <p id="notice"><%= notice %></p> -->
-
 <h2><%= @organization.name %></h2>
 <p><%= @organization.website %></p>
 <%= render template: "/finance_approvers/finance_approver" %>
@@ -20,7 +18,8 @@
         <tr>
           <td><%= event.name %></td>
           <td><%= event.date %></td>
-
+          <td><%= @organization.name %></td>
+          <td><%= link_to 'Show Event', sekret_event_path(event) %></td>
         </tr>
       <% end %>
     <% else %>
@@ -32,4 +31,5 @@
 <%= link_to 'New Event', new_organization_event_path(@organization) %></br>
 <%= link_to 'Edit', edit_user_organization_path(current_user, @organization) %></br> 
 <%= link_to 'Back to Organizations', user_organizations_path(current_user) %></br>
+
 
