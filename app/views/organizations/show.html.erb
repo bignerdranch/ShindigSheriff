@@ -4,7 +4,7 @@
         <p><%= @organization.website %></p>
 
 
-<%= link_to 'Edit', edit_user_organization_path(current_user, @organization) %> 
+<%= link_to 'Edit Organization', edit_user_organization_path(current_user, @organization) %> 
 <%= link_to 'Back to Organizations', user_organizations_path(current_user) %>
 
 <h3>Listing Events</h3>
@@ -22,7 +22,8 @@
         <tr>
           <td><%= event.name %></td>
           <td><%= event.date %></td>
-
+          <td><%= @organization.name %></td>
+          <td><%= link_to 'Show Event', sekret_event_path(event) %></td>
         </tr>
       <% end %>
     <% else %>
@@ -32,5 +33,6 @@
 </table>
 
 <%= link_to 'New Event', new_organization_event_path(@organization) %> 
+
 
 
