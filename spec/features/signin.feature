@@ -17,5 +17,16 @@ Feature: Signing In
       | signin-password  | password                  |
 
       And I click "Sign In"
-  Then I see a welcome message
+    Then I see a welcome message
 
+
+  Scenario: Unsuccessfully signing in
+    Given I am at the homepage
+    When I complete the form with the following:
+
+      | ID               | Input                     |
+      | signin-email     | kara.thrace@caprica.com   |
+      | signin-password  | password                  |
+
+      And I click "Sign In"
+    Then I should see "Invalid email or password"
