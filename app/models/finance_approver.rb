@@ -4,3 +4,4 @@ class FinanceApprover < ActiveRecord::Base
   
   validates_presence_of :user_id, :organization_id
 end
+

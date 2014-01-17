@@ -12,7 +12,6 @@ class FinanceApproversController < ApplicationController
     @finance_approver.organization = @organization
 
     if @finance_approver.save
-      binding
       flash[:notice] = "#{@finance_approver.user.first_name.capitalize!} is a Finance Approver!"
       redirect_to user_organization_path(current_user, @organization)
     else
@@ -28,3 +27,4 @@ class FinanceApproversController < ApplicationController
     params.require(:finance_approver).permit(:user_id, :organization_id)
   end
 end
+
