@@ -1,6 +1,7 @@
 Feature: Signing In
   Scenario: Successfully signing in
-    Given I am the current user
+    Given I am the user:
+
       | ID                   | Input                     |
       | first_name           | Kara                      |
       | last_name            | Thrace                    |
@@ -11,9 +12,9 @@ Feature: Signing In
       And I am at the homepage
     When I complete the form with the following:
 
-      | ID               | Input                       |
-      | signin-email     | kara.thrace@caprica.com     |
-      | signin-password  | password                    |
+      | ID               | Input                     |
+      | signin-email     | kara.thrace@caprica.com   |
+      | signin-password  | password                  |
 
       And I click "Sign In"
   Then I see a welcome message
