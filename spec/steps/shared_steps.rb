@@ -29,5 +29,9 @@ step "I should see :text" do |text|
   expect(page).to have_content text
 end
 
-
+step "the user:" do |table|
+  user_info = {}
+  table.hashes.each { |t| user_info[t["ID"]] = t["Input"] }
+  @user = User.create!(user_info)
+end
 
