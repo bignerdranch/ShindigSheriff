@@ -13,5 +13,9 @@ class User < ActiveRecord::Base
 
   has_one :finance_approver
 
+  def info
+    "#{first_name.capitalize!} #{last_name.capitalize!} : #{email}"
+  end
+  
 end
 

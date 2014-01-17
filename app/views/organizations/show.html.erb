@@ -1,7 +1,9 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<strong><%= @organization.name %></strong>
+<h2><%= @organization.name %></h2>
 <p><%= @organization.website %></p>
+<%= render template: "/finance_approvers/finance_approver" %>
+</br>
 
 <h3>Listing Events</h3>
 

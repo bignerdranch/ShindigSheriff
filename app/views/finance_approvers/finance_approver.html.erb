@@ -5,6 +5,6 @@
       <%= link_to "#{@organization.finance_app_user.email}", "#" %>
     </h5>
   <% else %>
-    <%= link_to "Add Finance Approver", "#" %>
+    <%= link_to "Add Finance Approver", new_organization_finance_approver_path(@organization) %>
   <% end %>
 </div>
