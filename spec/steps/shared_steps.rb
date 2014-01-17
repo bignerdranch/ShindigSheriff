@@ -1,5 +1,5 @@
 step "I am at the homepage" do
-  visit root_path
+  visit '/'
 end
 
 step "I complete the form with the following:" do |table|

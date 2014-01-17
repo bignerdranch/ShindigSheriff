@@ -4,10 +4,10 @@ ShindigSheriff::Application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root :to => 'users#show', as: '/'
+      root :to => 'users#show', as: :dashboard
     end
     unauthenticated :user do
-      root :to => 'users#new', as: '/'
+      root :to => 'users#new', as: :sign_in
     end
   end
 
