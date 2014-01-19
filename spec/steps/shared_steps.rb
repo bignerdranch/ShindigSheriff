@@ -22,6 +22,16 @@ step "the user:" do |table|
   @user = User.create!(user_info)
 end
 
+step "a user with an event" do
+  @user = FactoryGirl.create(:user)
+  organization = FactoryGirl.create(:organization)
+  @event = FactoryGirl.create(:event)
+  @event.save!
+
+  organization.events << @event
+  @user.organizations << organization
+end
+
 step "I am a new user" do
   @user = FactoryGirl.create(:user)
 
