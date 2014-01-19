@@ -1,10 +1,6 @@
 step "I am a logged in user with an event" do
-  send "I am a new user"
-
-  visit '/'
-  fill_in "signin-email", :with => @user.email
-  fill_in "signin-password", :with => @user.password
-  click_button "Sign In"
+  send "a user with an event"
+  send "sign in"
 end
 
 step "I am at the event new income page" do

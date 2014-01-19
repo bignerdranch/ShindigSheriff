@@ -1,3 +1,4 @@
-step "I am at an organizations show page" do 
-  visit "/organizations/#{@organization.id}"
+step "I am a logged in finance approver" do 
+  @user = FactoryGirl.create(:user, :as_finance_approver)
+  send "sign in"
 end

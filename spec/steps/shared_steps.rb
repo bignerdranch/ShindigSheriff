@@ -8,8 +8,8 @@ step "I complete the form with the following:" do |table|
   end
 end
 
-step "I click :button_msg" do |button_msg|
-  click_button button_msg
+step "I click :text" do |text|
+  click_link_or_button text
 end
 
 step "I click link :link_msg" do |link_msg|
@@ -35,13 +35,16 @@ step "I am a new user" do
   @user.organizations << @organization
 end
 
-step "I am a logged in user" do 
-  send "I am a new user"
-
+step "sign in" do 
   visit '/'
   fill_in "signin-email", :with => @user.email
   fill_in "signin-password", :with => @user.password
   click_button "Sign In"
+end
+
+step "I am a logged in user" do 
+  send "I am a new user"
+  send "sign in"
 end
 
 step "I should see :text" do |text|

@@ -6,6 +6,12 @@ FactoryGirl.define do
     sequence(:email)  { |num|"test@testuser#{num}.com" }
     password      'password123'
     phone_number  '111-111-1111'
+
+    trait :as_finance_approver do 
+      after :create do |user|
+      FactoryGirl.create_list :finance_approver, 1, :user => user
+      end
+    end
   end
 
   factory :organization do
@@ -19,6 +25,11 @@ FactoryGirl.define do
     time           Time.new
     location      'Burj Khalifa'
     purpose       'Rails Girls tutorial walk-through'
+  end
+
+  factory :finance_approver do 
+    user
+    organization
   end
 
 end

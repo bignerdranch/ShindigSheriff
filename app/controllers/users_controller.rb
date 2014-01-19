@@ -11,7 +11,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = current_user
+    if current_user.finance_approver
+      render "finance_show"
+    else
+      @user = current_user
+    end
   end
 
   # GET /users/new

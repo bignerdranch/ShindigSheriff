@@ -1,7 +1,17 @@
-Feature: Assigning a Finance Approver
+Feature: Finance Approver
 
-Scenario: Succesfully assigning a finance approver to an organization
-    Given I am a logged in user
-      And I am at an organizations show page
-    When I click link "Add Finance Approver"
-    Then I should see "Select user as Finance Approver"
+Scenario: Accessing Dashboard
+  Given I am a logged in finance approver
+  Then I should see "Income Awaiting Verification"
+
+Scenario: Accepting Income
+  Given I am a logged in finance approver
+    And there is an income pending approval
+  When I click "Accept"
+  Then the income should be "Accepted"
+
+Scenario: Rejecting Income
+  Given I am a logged in finance approver
+    And there is an income pending approval
+  When I click "Reject"
+  Then the income should be "Rejected"
