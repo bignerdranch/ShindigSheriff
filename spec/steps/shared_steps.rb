@@ -12,24 +12,27 @@ step "I click :button_msg" do |button_msg|
   click_button button_msg
 end
 
+step "I click link :link_msg" do |link_msg|
+  click_link link_msg
+end
+
 step "the user:" do |table|
   user_info = {}
   table.hashes.each { |t| user_info[t["ID"]] = t["Input"] }
   @user = User.create!(user_info)
 end
 
-step "a user with an event" do
+step "I am a new user" do
   @user = FactoryGirl.create(:user)
-  organization = FactoryGirl.create(:organization)
+
+  @organization = FactoryGirl.create(:organization)
+  @organization.save!
+
   @event = FactoryGirl.create(:event)
   @event.save!
 
-  organization.events << @event
-  @user.organizations << organization
-end
-
-step "I am a new user" do
-  @user = FactoryGirl.create(:user)
+  @organization.events << @event
+  @user.organizations << @organization
 end
 
 step "I am a logged in user" do 

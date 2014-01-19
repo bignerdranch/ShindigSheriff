@@ -1,7 +1,8 @@
 <div class="finance-approver-form">
   <%= form_for([@organization, @finance_approver]) do |f| %>
     <%= f.select "user_id", 
-      options_from_collection_for_select(@users, "id", "info"), prompt: "Select a user" %>
+      options_from_collection_for_select(@users, "id", "info"), 
+      prompt: "Select a user" %>
 
     <%= f.submit "Add Finance Approver", class: "button radius tiny" %>
   <% end %>

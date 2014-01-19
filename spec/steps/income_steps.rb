@@ -1,5 +1,5 @@
 step "I am a logged in user with an event" do
-  send "a user with an event"
+  send "I am a new user"
 
   visit '/'
   fill_in "signin-email", :with => @user.email
