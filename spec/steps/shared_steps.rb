@@ -32,13 +32,16 @@ step "I am a new user" do
   @user = FactoryGirl.create(:user)
 end
 
-step "I am a logged in user" do 
-  send "I am a new user"
-
+step "sign in" do 
   visit '/'
   fill_in "signin-email", :with => @user.email
   fill_in "signin-password", :with => @user.password
   click_button "Sign In"
+end
+
+step "I am a logged in user" do 
+  send "I am a new user"
+  send "sign in"
 end
 
 step "I should see :text" do |text|
