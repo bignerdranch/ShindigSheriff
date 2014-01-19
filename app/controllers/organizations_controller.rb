@@ -33,7 +33,7 @@ class OrganizationsController < ApplicationController
     else
       flash[:notice] = "Error(s) while creating organization:
       #{@organization.errors.full_messages.to_sentence}"
-      redirect_to new_user_organization_path(@user)
+      redirect_to new_user_organization_path(current_user)
     end
   end
 
@@ -46,12 +46,12 @@ class OrganizationsController < ApplicationController
     else
       flash[:notice] = "Error(s) while editing organization:
       #{@organization.errors.full_messages.to_sentence}"
-      redirect_to edit_user_organization_path(@user)
+      redirect_to edit_user_organization_path(current_user)
     end
   end
 
   # DELETE /organizations/1
-  # DELETE /organizations/1.json
+  # DELETE /organizations/1.json    
   def destroy
     @organization.destroy
     respond_to do |format|
