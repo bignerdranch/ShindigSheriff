@@ -8,10 +8,10 @@ Scenario: Accepting Income
   Given I am a logged in finance approver
     And there is an income pending approval
   When I click "Accept"
-  The Income should be "Accpted"
+  Then the income should be "Accepted"
 
 Scenario: Rejecting Income
   Given I am a logged in finance approver
     And there is an income pending approval
   When I click "Reject"
-  The Income should be "Rejected"
+  Then the income should be "Rejected"
