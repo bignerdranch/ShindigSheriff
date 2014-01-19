@@ -8,8 +8,8 @@ step "I complete the form with the following:" do |table|
   end
 end
 
-step "I click :button_msg" do |button_msg|
-  click_button button_msg
+step "I click :text" do |text|
+  click_link_or_button text
 end
 
 step "the user:" do |table|
