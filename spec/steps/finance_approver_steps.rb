@@ -16,11 +16,11 @@ step "I am at the Select A Finance Approver page" do
   click_link_or_button "Add Finance Approver"
 end
 
-step "I add an finance approver" do
+step "I select an finance approver" do
   page.select "Finance Approver : fa@org.com", :from => "finance_approver_user_id"
   click_link_or_button "Add Finance Approver"
 end
 
-step "I should see the finance approver on the organization dashboard" do 
-  expect(page).to have_content "Finance Approver: Finance Approver fa@org.com"
+step "I do not select a finance approve" do 
+  click_link_or_button "Add Finance Approver"
 end
