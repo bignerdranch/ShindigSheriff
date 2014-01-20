@@ -23,7 +23,7 @@ ShindigSheriff::Application.routes.draw do
   end
 
   resources :events, only: [] do
-    resources :incomes, only: [:index, :new, :create]
+    resources :incomes, only: [:new, :create]
   end
 
 end

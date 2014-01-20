@@ -1,11 +1,5 @@
 class IncomesController < ApplicationController
 
-  def index
-    @event = Event.find(params[:event_id])
-    @incomes = @event.incomes
-    @organization = @event.organizations.first
-  end
-
   def new
     @event = Event.find(params[:event_id])
     @income = @event.incomes.new
