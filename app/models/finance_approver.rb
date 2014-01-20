@@ -6,7 +6,6 @@ class FinanceApprover < ActiveRecord::Base
 
   def self.fa_users
     ids = FinanceApprover.pluck(:user_id).uniq.sort
-    binding.pry
     ids.map {|id| User.find(id)}
   end
 end
