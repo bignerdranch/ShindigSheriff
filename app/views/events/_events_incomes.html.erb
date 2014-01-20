@@ -1,7 +1,9 @@
 <table>
+  Income(s)
   <thead>
     <tr>
-      <th>Income(s)</th>
+      <th>Amount</th>
+      <th>Category Details</th>
     </tr>
   </thead>
   <tbody>
@@ -9,8 +11,6 @@
       <% @event.incomes.each do |income| %>
         <tr>
           <td><%= number_to_currency(income.estimated_amount, precision: 2) %></td>
-          <td><%= income.actual_amount %></td>
-          <td><%= income.date_received %></td>
           <td><%= income.category_details %></td>
       <% end %>
     <% else %>
