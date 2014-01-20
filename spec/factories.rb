@@ -27,7 +27,7 @@ FactoryGirl.define do
     purpose       'Rails Girls tutorial walk-through'
   end
 
-  factory :finance_approver do 
+  factory :finance_approver_role do 
     user
     organization
   end

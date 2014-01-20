@@ -4,7 +4,7 @@ step "I am at the Select A Finance Approver page" do
                         last_name: "approver", 
                         email: "fa@org.com", 
                         password: "password")
-  @fa = FinanceApprover.create(user: fa_user)
+  @fa = FinanceApproverRole.create(user: fa_user)
 
   organization = Organization.create(name: "cats anon", website: "www.catwhoareyou?.com")
 

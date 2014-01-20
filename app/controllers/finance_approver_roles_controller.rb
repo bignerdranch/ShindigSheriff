@@ -1,14 +1,14 @@
-class FinanceApproversController < ApplicationController
+class FinanceApproverRolesController < ApplicationController
 
   def new
-    @finance_approver = FinanceApprover.new
+    @finance_approver = FinanceApproverRole.new
     @organization = Organization.find(params[:organization_id])
-    @users = FinanceApprover.fa_users
+    @users = FinanceApproverRole.fa_users
   end
 
   def create
     @organization = Organization.find(params[:organization_id])
-    @finance_approver = FinanceApprover.new(finance_approver_params)
+    @finance_approver = FinanceApproverRole.new(finance_approver_params)
     @finance_approver.organization = @organization
 
     if @finance_approver.save
