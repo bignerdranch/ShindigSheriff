@@ -2,10 +2,6 @@ class UsersController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:new, :create]
   include UsersHelper
 
-  def index
-    @users = User.all
-  end
-
   def show
     if current_user.finance_approver
       render "finance_show"
@@ -26,12 +22,12 @@ class UsersController < ApplicationController
       @user.organizations << @organization
       sign_in @user
       flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
-      redirect_to user_path(@user)
+      redirect_to dashboard_path(@user)
     else
       flash[:errors] = "Error(s) while creating user/organization 
           #{@user.errors.full_messages.to_sentence} 
           #{@organization.errors.full_messages.to_sentence}"
-      redirect_to root_path
+      redirect_to sign_in_path
     end
   end
 
