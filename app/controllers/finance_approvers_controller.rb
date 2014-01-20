@@ -3,7 +3,7 @@ class FinanceApproversController < ApplicationController
   def new
     @finance_approver = FinanceApprover.new
     @organization = Organization.find(params[:organization_id])
-    @users = User.all
+    @users = FinanceApprover.fa_users
   end
 
   def create
