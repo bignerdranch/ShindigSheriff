@@ -12,18 +12,18 @@ Scenario: Unsuccesfully assigned to an organization
   When I do not select a finance approve
   Then I should see "Error(s)"
 
+
 Scenario: Accessing Dashboard
   Given I am a logged in finance approver
   Then I should see "Income Awaiting Verification"
 
-Scenario: Accepting Income
-  Given I am a logged in finance approver
-    And there is an income pending approval
-  When I click "Accept"
-  Then the income should be "Accepted"
+Scenario: Pending income
+  Given there is an income pending approval
+    And I am a logged in finance approver
+  Then I should see "Pending"
 
 Scenario: Rejecting Income
-  Given I am a logged in finance approver
-    And there is an income pending approval
-  When I click "Reject"
-  Then the income should be "Rejected"
+  Given there is an income pending approval
+    And I am a logged in finance approver
+  When I click "Verify"
+  Then I should see "Verified"

@@ -1,8 +1,4 @@
-step "I am a logged in finance approver" do 
-  @user = FactoryGirl.create(:user, :as_finance_approver)
-  send "sign in"
-end
-
+# Assigning a Finance Approver
 step "I am at the Select A Finance Approver page" do 
   fa_user = User.create(first_name: "finance", 
                         last_name: "approver", 
@@ -23,4 +19,14 @@ end
 
 step "I do not select a finance approve" do 
   click_link_or_button "Add Finance Approver"
+end
+
+
+# Dashboard features - accepting and rejecting incomes
+step "I am a logged in finance approver" do 
+  @user = FactoryGirl.create(:user, :as_finance_approver)
+  send "sign in"
+end
+
+step "there is an income pending approval" do 
 end
