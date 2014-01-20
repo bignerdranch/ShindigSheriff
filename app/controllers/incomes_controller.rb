@@ -18,7 +18,7 @@ class IncomesController < ApplicationController
     if @income.valid? 
       @event.incomes.build(income_params).save!
       flash[:notice] = "#{@income.estimated_amount} has successfully been added to organization #{@event.name}!"
-      redirect_to event_incomes_path(@event, @income)
+      redirect_to sekret_event_path(@event)
     else
       flash[:notice] = "Error(s) while creating income:
       #{@income.errors.full_messages.to_sentence}"
