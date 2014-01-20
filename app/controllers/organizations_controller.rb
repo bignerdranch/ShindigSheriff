@@ -46,7 +46,7 @@ class OrganizationsController < ApplicationController
     else
       flash[:notice] = "Error(s) while editing organization:
       #{@organization.errors.full_messages.to_sentence}"
-      redirect_to edit_user_organization_path(current_user)
+      redirect_to edit_organization_path(@organization)
     end
   end
 
