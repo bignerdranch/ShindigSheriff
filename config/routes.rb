@@ -11,7 +11,7 @@ ShindigSheriff::Application.routes.draw do
     end
   end
 
-  resources :users do  
+  resources :users, only: [:show, :new, :create] do  
     resources :organizations
   end
   
