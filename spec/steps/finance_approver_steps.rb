@@ -13,7 +13,7 @@ step "I am at the Select A Finance Approver page" do
 end
 
 step "I select an finance approver" do
-  page.select "Finance Approver : fa@org.com", :from => "organization_finance_approver"
+  page.select "Finance Approver : fa@org.com", :from => "finance_approver_user_id"
   click_link_or_button "Add Finance Approver"
 end
 
