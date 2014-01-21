@@ -11,7 +11,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1.json
   def show
     @organization = Organization.find(params[:id])
-    @finance_approver = User.find(@organization.user_id)
+    @finance_approver = @organization.finance_approver
   end
 
   # GET /organizations/new

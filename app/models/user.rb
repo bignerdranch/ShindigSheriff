@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
   def info
     "#{first_name.capitalize!} #{last_name.capitalize!} : #{email}"
   end
+
+  def finance_approver?
+    FinanceApproverRole.find_by_user_id(id)
+  end
   
 end
 

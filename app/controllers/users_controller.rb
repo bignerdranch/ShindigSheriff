@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   include UsersHelper
 
   def show
-    if current_user.finance_approver_role
+    if current_user.finance_approver?
       render "finance_show"
     else
       @user = current_user
