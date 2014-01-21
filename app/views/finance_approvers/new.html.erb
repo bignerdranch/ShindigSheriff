@@ -1,0 +1,8 @@
+<h3>Select a Finance Approver</h3>
+
+<%= form_for :finance_approver, url: finance_approvers_path, method: 'post' do |f| %>
+
+   <%= f.collection_select :id, @finance_approvers, :id, "info", prompt: "Select a Finance Approver" %>
+  <%= f.submit "Add Finance Approver", class: "button radius tiny" %>
+  
+<% end %>

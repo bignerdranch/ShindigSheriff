@@ -5,6 +5,6 @@
       <%= mail_to "#{@finance_approver.email}" %>
     </h5>
   <% else %>
-    <%= link_to "Add Finance Approver", finance_approvers_path %>
+    <%= link_to "Add Finance Approver", new_finance_approver_path %>
   <% end %>
 </div>

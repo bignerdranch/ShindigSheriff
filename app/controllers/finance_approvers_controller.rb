@@ -1,11 +1,10 @@
 class FinanceApproversController < ApplicationController
-  def index
-    @organization = Organization.find(session[:organization_id])
+  def new
     @finance_approvers = FinanceApproverRole.users
   end 
 
-  def update
-    user = User.find_by_id(params["finance_approver"]["user_id"])
+  def create
+    user = User.find_by_id(params["finance_approver"]["id"])
     @organization = Organization.find(session[:organization_id])
 
     if user
@@ -17,7 +16,7 @@ class FinanceApproversController < ApplicationController
       redirect_to organization_path(@organization)
     else
       flash[:notice] = "Error(s) while selecting Finance Approver: Please select a user"
-      redirect_to finance_approvers_path
+      redirect_to new_finance_approver_path
     end
   end
 end
