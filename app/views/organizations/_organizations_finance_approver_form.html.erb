@@ -1,0 +1,6 @@
+<%= form_for @organization do |f| %>
+
+   <%= f.collection_select :finance_approver, @finance_approvers, :email, "info", prompt: "Select a Finance Approver" %>
+  <%= f.submit "Add Finance Approver", class: "button radius tiny" %>
+  
+<% end %>

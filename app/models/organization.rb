@@ -7,11 +7,6 @@ class Organization < ActiveRecord::Base
   belongs_to :user
   belongs_to :finance_approver, class_name: 'User'
 
-
-  def finance_app_user
-    finance_approver.user
-  end
-
   def user
     User.find(user_id)
   end

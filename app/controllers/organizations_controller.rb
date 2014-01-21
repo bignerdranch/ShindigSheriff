@@ -1,30 +1,23 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
 
-  # GET /organizations
-  # GET /organizations.json
+
   def index
     @user_organizations = current_user.organizations
   end
 
-  # GET /organizations/1
-  # GET /organizations/1.json
   def show
     @organization = Organization.find(params[:id])
     @finance_approver = @organization.finance_approver
   end
 
-  # GET /organizations/new
   def new
     @organization = Organization.new
   end
 
-  # GET /organizations/1/edit
   def edit
   end
 
-  # POST /organizations
-  # POST /organizations.json
   def create
     @organization = Organization.new(organization_params)
     if @organization.save
@@ -38,8 +31,6 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /organizations/1
-  # PATCH/PUT /organizations/1.json
   def update
     if @organization.update(organization_params)
       flash[:notice] = "#{@organization.name.titleize} has successfully been updated!"
@@ -50,15 +41,18 @@ class OrganizationsController < ApplicationController
       redirect_to edit_organization_path(@organization)
     end
   end
-
-  # DELETE /organizations/1
-  # DELETE /organizations/1.json    
+  
   def destroy
     @organization.destroy
     respond_to do |format|
       format.html { redirect_to organizations_url }
       format.json { head :no_content }
     end
+  end
+
+  def financeapprover
+    @organization = Organization.find(params[:organization_id])
+    @finance_approvers = FinanceApproverRole.users
   end
 
   private

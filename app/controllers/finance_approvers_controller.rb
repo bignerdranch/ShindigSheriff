@@ -1,16 +1,11 @@
-class FinanceApproverRolesController < ApplicationController
+class FinanceApproversController < ApplicationController
 
   def new
-    @finance_approver = FinanceApproverRole.new
     @organization = Organization.find(params[:organization_id])
-    @users = FinanceApproverRole.fa_users
+    @finance_approvers = FinanceApprover.all
   end
 
   def create
-    @organization = Organization.find(params[:organization_id])
-    @finance_approver = FinanceApproverRole.new(finance_approver_params)
-    @finance_approver.organization = @organization
-
     if @finance_approver.save
       flash[:notice] = "#{@finance_approver.user.first_name.capitalize!} is a Finance Approver!"
       redirect_to user_organization_path(current_user, @organization)
@@ -21,10 +16,13 @@ class FinanceApproverRolesController < ApplicationController
     end
   end
 
+  def financeapprover
+  end
+
   private
 
   def finance_approver_params
-    params.require(:finance_approver).permit(:user_id, :organization_id)
+    params.require(:finance_approver).permit(:user_id)
   end
 end
 
