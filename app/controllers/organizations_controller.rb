@@ -51,6 +51,22 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def add_financeapprover
+    user = User.find_by_id(params[:organization][:finance_approver])
+    @organization = Organization.find(params[:organization_id])
+
+    if @organization.update_attributes(finance_approver: user)
+      flash[:notice] = 
+      "#{@organization.finance_approver.first_name.capitalize!} 
+                                              is a Finance Approver!"
+      redirect_to user_organizations_path(current_user)
+    else
+      flash[:notice] = "Error(s) while creating income:
+      #{@organization.errors.full_messages.to_sentence}"
+      redirect_to new_organization_finance_approver_path(@organization)
+    end
+  end
+
   def financeapprover
     @organization = Organization.find(params[:organization_id])
     @finance_approvers = FinanceApproverRole.users

@@ -19,6 +19,7 @@ ShindigSheriff::Application.routes.draw do
     resources :organizations do
       resources :events, shallow: true
       get '/finance_approver', to: 'organizations#financeapprover'
+      put '/finance_approver', to: 'organizations#add_financeapprover'
     end
   end
 
