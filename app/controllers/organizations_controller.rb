@@ -32,7 +32,6 @@ class OrganizationsController < ApplicationController
   end
 
   def update
-    binding.pry
     if @organization.update(organization_params)
       flash[:notice] = "#{@organization.name.titleize} has successfully been updated!"
       redirect_to user_organizations_path(current_user)
