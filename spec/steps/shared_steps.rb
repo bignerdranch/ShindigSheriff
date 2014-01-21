@@ -12,10 +12,6 @@ step "I click :text" do |text|
   click_link_or_button text
 end
 
-step "I click link :link_msg" do |link_msg|
-  click_link link_msg
-end
-
 step "the user:" do |table|
   user_info = {}
   table.hashes.each { |t| user_info[t["ID"]] = t["Input"] }
