@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140120195452) do
+ActiveRecord::Schema.define(version: 20140121055837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,14 +34,11 @@ ActiveRecord::Schema.define(version: 20140120195452) do
     t.integer "organization_id"
   end
 
-  create_table "finance_approvers", force: true do |t|
+  create_table "finance_approver_roles", force: true do |t|
     t.integer  "user_id"
-    t.integer  "organization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "finance_approvers", ["user_id", "organization_id"], name: "index_finance_approvers_on_user_id_and_organization_id", unique: true, using: :btree
 
   create_table "incomes", force: true do |t|
     t.integer  "event_id"
@@ -60,9 +57,11 @@ ActiveRecord::Schema.define(version: 20140120195452) do
     t.datetime "updated_at"
     t.string   "website"
     t.integer  "event_id"
+    t.integer  "finance_approver_id"
   end
 
   add_index "organizations", ["event_id"], name: "index_organizations_on_event_id", using: :btree
+  add_index "organizations", ["finance_approver_id"], name: "index_organizations_on_finance_approver_id", using: :btree
 
   create_table "users", force: true do |t|
     t.datetime "created_at"

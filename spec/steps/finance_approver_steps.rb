@@ -4,7 +4,7 @@ step "I am at the Select A Finance Approver page" do
                         last_name: "approver", 
                         email: "fa@org.com", 
                         password: "password")
-  @fa = FinanceApprover.create(user: fa_user)
+  @fa = FinanceApproverRole.create(user: fa_user)
 
   organization = Organization.create(name: "cats anon", website: "www.catwhoareyou?.com")
 
@@ -13,7 +13,7 @@ step "I am at the Select A Finance Approver page" do
 end
 
 step "I select an finance approver" do
-  page.select "Finance Approver : fa@org.com", :from => "finance_approver_user_id"
+  page.select "Finance Approver : fa@org.com", :from => "organization_finance_approver"
   click_link_or_button "Add Finance Approver"
 end
 

@@ -9,7 +9,7 @@ FactoryGirl.define do
 
     trait :as_finance_approver do 
       after :create do |user|
-      FactoryGirl.create_list :finance_approver, 1, :user => user
+      FactoryGirl.create_list :finance_approver_role, 1, :user => user
       end
     end
   end
@@ -27,9 +27,8 @@ FactoryGirl.define do
     purpose       'Rails Girls tutorial walk-through'
   end
 
-  factory :finance_approver do 
+  factory :finance_approver_role do 
     user
-    organization
   end
 
 end

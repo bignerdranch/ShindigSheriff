@@ -18,7 +18,8 @@ ShindigSheriff::Application.routes.draw do
   scope shallow_prefix: "sekret" do
     resources :organizations do
       resources :events, shallow: true
-      resources :finance_approvers, only: [:new, :create], shallow: true
+      get '/finance_approver', to: 'organizations#financeapprover'
+      put '/finance_approver', to: 'organizations#add_financeapprover'
     end
   end
 
