@@ -5,8 +5,7 @@ class FinanceApproverRole < ActiveRecord::Base
   validates_presence_of :user_id
 
   def self.users
-    ids = FinanceApproverRole.pluck(:user_id).uniq.sort
-    ids.map {|id| User.find(id)}
+    FinanceApproverRole.all.map(&:user)
   end
 end
 
