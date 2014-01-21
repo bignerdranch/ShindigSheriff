@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :organizations
   accepts_nested_attributes_for :organizations
 
-  has_many :organizations_as_finance_approver_role, class_name: 'FinanceApprover',
+  has_one :organizations_as_finance_approver_role, class_name: 'FinanceApprover',
           foreign_key: 'finance_approver_id'
 
   def info
