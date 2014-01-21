@@ -9,6 +9,7 @@ class OrganizationsController < ApplicationController
   def show
     @organization = Organization.find(params[:id])
     @finance_approver = @organization.finance_approver
+    session[:organization_id] = params[:id]
   end
 
   def new
@@ -48,27 +49,6 @@ class OrganizationsController < ApplicationController
       format.html { redirect_to organizations_url }
       format.json { head :no_content }
     end
-  end
-
-  def add_financeapprover
-    user = User.find_by_id(params[:organization][:finance_approver])
-    @organization = Organization.find(params[:organization_id])
-
-    if user
-      @organization.update_attributes(finance_approver: user)
-      flash[:notice] = 
-      "#{@organization.finance_approver.first_name.capitalize!} 
-                                              is a Finance Approver!"
-      redirect_to organization_path(@organization)
-    else
-      flash[:notice] = "Error(s) while selecting Finance Approver: Please select a user"
-      redirect_to organization_finance_approver_path(@organization)
-    end
-  end
-
-  def financeapprover
-    @organization = Organization.find(params[:organization_id])
-    @finance_approvers = FinanceApproverRole.users
   end
 
   private

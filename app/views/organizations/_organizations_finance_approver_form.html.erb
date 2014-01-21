@@ -1,6 +1,0 @@
-<%= form_for @organization, url: organization_finance_approver_path(@organization), method: 'put' do |f| %>
-
-   <%= f.collection_select :finance_approver, @finance_approvers, :id, "info", prompt: "Select a Finance Approver" %>
-  <%= f.submit "Add Finance Approver", class: "button radius tiny" %>
-  
-<% end %>

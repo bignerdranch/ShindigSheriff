@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
           foreign_key: 'finance_approver_id'
 
   def info
-    "#{first_name.capitalize!} #{last_name.capitalize!} : #{email}"
+    "#{first_name.capitalize} #{last_name.capitalize} : #{email}"
   end
 
   def finance_approver?
