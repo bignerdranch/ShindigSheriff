@@ -54,15 +54,15 @@ class OrganizationsController < ApplicationController
     user = User.find_by_id(params[:organization][:finance_approver])
     @organization = Organization.find(params[:organization_id])
 
-    if @organization.update_attributes(finance_approver: user)
+    if user
+      @organization.update_attributes(finance_approver: user)
       flash[:notice] = 
       "#{@organization.finance_approver.first_name.capitalize!} 
                                               is a Finance Approver!"
-      redirect_to user_organizations_path(current_user)
+      redirect_to organization_path(@organization)
     else
-      flash[:notice] = "Error(s) while creating income:
-      #{@organization.errors.full_messages.to_sentence}"
-      redirect_to new_organization_finance_approver_path(@organization)
+      flash[:notice] = "Error(s) while selecting Finance Approver: Please select a user"
+      redirect_to organization_finance_approver_path(@organization)
     end
   end
 
