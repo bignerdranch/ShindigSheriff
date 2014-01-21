@@ -22,7 +22,6 @@ ShindigSheriff::Application.routes.draw do
   end
 
   resources :finance_approvers, only: [:new, :create]
-  # put '/finance_approvers', to: 'finance_approvers#update'
 
   resources :events, only: [] do
     resources :incomes, only: [:new, :create]
