@@ -20,7 +20,9 @@ class UsersController < ApplicationController
   def create
 
       @user = User.new(user_params)
-      @user.role = params[:user][:id] if params[:user][:id]
+
+      user_role = params[:user][:id]
+      @user.role = user_role unless user_role.nil?
 
       if @user.save
         sign_in @user
