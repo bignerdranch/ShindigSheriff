@@ -29,7 +29,7 @@ Feature: Registering as a new user
 
       And I do not select a role
     When I click "Create Account"
-    Then I should see "Role cannot be empty"
+    Then I should see "Roles can't be blank"
 
   Scenario: Succesfully creating a new organizer
     Given I am at the homepage

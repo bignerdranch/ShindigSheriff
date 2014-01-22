@@ -22,7 +22,9 @@ end
 step "the organizer user:" do |table|
   user_info = {}
   table.hashes.each { |t| user_info[t["ID"]] = t["Input"] }
-  @user = User.create(user_info)
+  @user = User.new(user_info)
+  @user.roles << Role.find_or_create_by(name: "organizer")
+  @user.save!
 end
 
 step "a user with an event" do
@@ -65,7 +67,7 @@ step "I should see :text" do |text|
 end
 
 step "load roles" do
-  FactoryGirl.create(:role)
-  FactoryGirl.create(:role, :as_finance_approver )
+  Role.where(FactoryGirl.attributes_for(:role)).first_or_create!
+  Role.where(FactoryGirl.attributes_for(:role, :as_finance_approver )).first_or_create!
 end
 

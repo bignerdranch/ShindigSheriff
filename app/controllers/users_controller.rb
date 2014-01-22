@@ -20,19 +20,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     
-    binding.pry
     user_role = params[:user][:role][:id]
+    @user.role = user_role
 
     organization_name = params[:user][:organization][:name] 
     if organization_name && user_role == "organizer"
       @user.organizations << Organization.find_or_initialize_by(name: organization_name)
     end
 
-    if user_role == ""
-      flash[:notice] = "Role cannot be empty, please select user role"
-      redirect_to sign_in_path
-    elsif @user.save
-      @user.role = user_role
+    if @user.save
       sign_in @user
       flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
       redirect_to dashboard_path(@user)

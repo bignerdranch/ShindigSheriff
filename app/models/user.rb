@@ -5,10 +5,10 @@ class RolesValidator < ActiveModel::Validator
       #record.errors[:organization] << "can't be blank" if record.organizations.empty?
     when "finance approver"
       unless record.organizations.empty?
-        record.errors[:finance_approver] << "does not need to register an organization"
+        record.errors[:finance_approver] = "does not need to register an organization"
       end
     else
-      record.errors[:role] << "cannot be empty, please select a role"
+      record.errors[:role] = "cannot be empty, please select a role"
     end
   end
 end
@@ -16,12 +16,12 @@ end
 class User < ActiveRecord::Base
   include ActiveModel::Validations
 
-  before_save { validates_with RolesValidator }
+  #validates_with RolesValidator
   
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :first_name, :last_name, :email
+  validates_presence_of :first_name, :last_name, :email, :roles
   validates_uniqueness_of :email
 
   has_many :events, through: :organizations
