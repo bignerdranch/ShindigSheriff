@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
           foreign_key: 'finance_approver_id'
 
   has_and_belongs_to_many :roles
+  accepts_nested_attributes_for :roles
 
   def info
     "#{first_name.capitalize} #{last_name.capitalize} : #{email}"

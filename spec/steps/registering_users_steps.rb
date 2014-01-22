@@ -1,5 +1,5 @@
 step "I select the role :role" do |role|
-  page.select role, :from => "user_id"
+  page.select role, :from => "user_role_id"
 end
 
 step "I do not select a role" do 

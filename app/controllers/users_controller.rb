@@ -20,7 +20,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     
-    user_role = params[:user][:id]
+    binding.pry
+    user_role = params[:user][:role][:id]
 
     organization_name = params[:user][:organization][:name] 
     if organization_name && user_role == "organizer"
