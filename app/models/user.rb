@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   accepts_nested_attributes_for :roles
 
+  validate :organizers_should_have_organization
+
   def info
     "#{first_name.capitalize} #{last_name.capitalize} : #{email}"
   end
@@ -36,6 +38,14 @@ class User < ActiveRecord::Base
 
   def role_name
     roles.map(&:name).first
+  end
+
+  private 
+
+  def organizers_should_have_organization
+    if has_role? "organizer" && organizations.blank?
+      errors[:organization] = "can't be blank"
+    end
   end
 
 end
