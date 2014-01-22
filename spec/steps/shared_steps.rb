@@ -1,4 +1,5 @@
 step "I am at the homepage" do
+  send "load roles"
   visit '/'
 end
 
@@ -55,6 +56,11 @@ end
 
 step "I should see :text" do |text|
   expect(page).to have_content text
+end
+
+step "load roles" do
+  FactoryGirl.create(:role)
+  FactoryGirl.create(:role, :as_finance_approver )
 end
 
 

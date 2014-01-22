@@ -11,10 +11,15 @@
   
     <%= f.password_field :password, placeholder: "password" %>
 
-    <h4 class="organization-user-form">Register Your Organization</h4>
+    <h4>Select a Role</h4>
+
+    <%= f.fields_for :role do |role| %>
+      <%= f.collection_select :id, @roles, :name, :name, prompt: "Select a Role" %>
+    <% end %>
 
     <%= f.fields_for @user.organizations.build do |org| %>
-      <%= org.text_field :name, placeholder: "Organization Name" %>
+      <%= org.label "Organizers Only:" %>
+      <%= org.text_field :name, placeholder: "Please enter your organization name" %>
     <% end %>
 
     <%= f.submit "Create Account", class: "button radius tiny" %>

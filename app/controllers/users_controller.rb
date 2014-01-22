@@ -5,13 +5,16 @@ class UsersController < ApplicationController
   def show
     if current_user.has_role?("finance approver")
       render "finance_show"
-    else
+    elsif current_user.has_role?("organizer")
       @user = current_user
+    else
+      flash[:errors] = "Error(s) while creating user role"
     end
   end
 
   def new
     @user = User.new
+    @roles = Role.all
   end
 
   def create
