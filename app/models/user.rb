@@ -33,10 +33,6 @@ class User < ActiveRecord::Base
     self.roles << role if role
   end
 
-  def role_name
-    roles.map(&:name).first
-  end
-
 
   private 
 

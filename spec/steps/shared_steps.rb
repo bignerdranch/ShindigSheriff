@@ -13,13 +13,6 @@ step "I click :text" do |text|
   click_link_or_button text
 end
 
-step "the user:" do |table|
-  user_info = {}
-  table.hashes.each { |t| user_info[t["ID"]] = t["Input"] }
-  @user = User.new(user_info)
-  send "assign organizer role"
-end
-
 step "the organizer user:" do |table|
   user_info = {}
   table.hashes.each { |t| user_info[t["ID"]] = t["Input"] }
