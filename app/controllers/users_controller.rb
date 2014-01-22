@@ -23,9 +23,9 @@ class UsersController < ApplicationController
     user_role = params[:user][:role][:id]
     @user.role = user_role
 
-    organization_name = params[:user][:organization][:name] 
-    if organization_name && user_role == "organizer"
-      @user.organizations << Organization.find_or_initialize_by(name: organization_name)
+    if user_role == "organizer"
+      @user.organizations << Organization.find_or_initialize_by(
+                                  params[:user][:organization].permit(:name))
     end
 
     if @user.save
@@ -40,9 +40,9 @@ class UsersController < ApplicationController
 
   private
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :phone_number, :organization, :event)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :phone_number, :organization, :event)
+  end
 end
 
