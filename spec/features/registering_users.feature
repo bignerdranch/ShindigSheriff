@@ -88,3 +88,18 @@ Feature: Registering as a new user
       And I select the role "organizer"
     When I click "Create Account"
     Then I should see "Email has already been taken"
+
+ Scenario: Succesfully creating a new Finance Approver
+    Given I am at the homepage
+    When I complete the form with the following:
+      
+      | ID                        | Input                     |
+      | user_first_name           | Little                    |
+      | user_last_name            | Mermaid                   |
+      | user_email                | ariel@mermaids.com        |
+      | user_phone_number         | 555-555-5555              |
+      | user_password             | password                  |       
+
+      And I select the role "finance approver"
+    When I click "Create Account"
+    Then I should see "ariel@mermaids.com"

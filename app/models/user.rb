@@ -2,7 +2,7 @@ class RolesValidator < ActiveModel::Validator
   def validate(record)
     case record.role_name
     when "organizer"
-      record.errors[:organization] << "can't be blank" if record.organizations.empty?
+      #record.errors[:organization] << "can't be blank" if record.organizations.empty?
     when "finance approver"
       unless record.organizations.empty?
         record.errors[:finance_approver] << "does not need to register an organization"

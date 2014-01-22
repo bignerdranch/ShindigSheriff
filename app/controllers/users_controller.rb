@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     user_role = params[:user][:id]
 
     organization_name = params[:user][:organization][:name] 
-    if organization_name
+    if organization_name && user_role == "organizer"
       @user.organizations << Organization.find_or_initialize_by(name: organization_name)
     end
 
