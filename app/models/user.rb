@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
     roles.map(&:name).first
   end
 
+
   private 
 
   def organizers_should_have_organization
@@ -49,3 +50,4 @@ class User < ActiveRecord::Base
   end
 
 end
+

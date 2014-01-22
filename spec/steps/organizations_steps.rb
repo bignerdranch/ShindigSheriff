@@ -5,3 +5,4 @@ end
 step "I am at the edit organization page" do
   visit edit_organization_path(@organization)
 end
+

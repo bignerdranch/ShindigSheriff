@@ -120,3 +120,5 @@ Feature: Registering as a new user
 
       And I select the role "finance approver"
     Then organizations count should not change when I click Create Account
+
+    
