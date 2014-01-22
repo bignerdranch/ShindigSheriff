@@ -8,10 +8,6 @@ FactoryGirl.define do
     phone_number  '111-111-1111'
   end
 
-  factory :finance_approver_user, parent: :user do
-    roles { [FactoryGirl.create(:finance_approver_role)] }
-  end
-
   factory :organization do
     name          'Rails Girls'
     website       'www.railsgirlsforevermeetup.com'
@@ -27,10 +23,10 @@ FactoryGirl.define do
 
   factory :role do 
     name "organizer"
-  end
 
-  factory :finance_approver_role, parent: :role do
-    name "finance approver"
+    trait :as_finance_approver do 
+      name "finance approver"
+    end
   end
 
 end

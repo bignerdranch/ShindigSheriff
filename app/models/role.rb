@@ -6,5 +6,9 @@ class Role < ActiveRecord::Base
   
   validates_presence_of :name
   validates_uniqueness_of :name
+
+  def self.finance_approver
+    self.find_by_name("finance approver").users
+  end
 end
 

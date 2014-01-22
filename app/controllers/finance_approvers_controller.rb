@@ -1,6 +1,6 @@
 class FinanceApproversController < ApplicationController
   def new
-    @finance_approvers = FinanceApproverRole.users
+    @finance_approvers = Role.finance_approver
   end 
 
   def create
