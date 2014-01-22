@@ -1,7 +1,4 @@
 class User < ActiveRecord::Base
-  include ActiveModel::Validations
-
-  #validates_with RolesValidator
   
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
