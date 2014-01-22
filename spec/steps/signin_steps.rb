@@ -8,6 +8,7 @@ step "I am the user:" do |table|
   table.hashes.each do |user|
     user_info[user["ID"]] = user["Input"]
   end
-  @user = User.create(user_info)
+  @user = User.new(user_info)
+  send "assign organizer role"
 end
 

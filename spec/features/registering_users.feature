@@ -89,6 +89,7 @@ Feature: Registering as a new user
     When I click "Create Account"
     Then I should see "Email has already been taken"
 
+
  Scenario: Succesfully creating a new Finance Approver
     Given I am at the homepage
     When I complete the form with the following:
