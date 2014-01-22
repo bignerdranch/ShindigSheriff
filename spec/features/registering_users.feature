@@ -60,7 +60,7 @@ Feature: Registering as a new user
 
       And I select the role "organizer"
     When I click "Create Account"
-    Then I should see "Error(s) while creating user/organization"
+    Then I should see "Organizations name can't be blank"
 
 
   Scenario: Registering an existing user

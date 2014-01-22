@@ -4,11 +4,9 @@ class RolesValidator < ActiveModel::Validator
     when []
       record.errors[:role] << "cannot be empty, please select a role"
     when ["organizer"]
-      binding.pry
       organization = record.organizations.first
       record.errors[:organization] << "can't be blank" if organization.nil?
     when ["finance approver"]
-      binding.pry
       unless record.organizations.empty?
         record.errors[:finance_approver] << "does not need to register an organization"
       end

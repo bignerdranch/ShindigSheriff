@@ -24,6 +24,9 @@ class UsersController < ApplicationController
       user_role = params[:user][:id]
       @user.role = user_role unless user_role.nil?
 
+      organization_name = params[:user][:organization][:name] 
+      @user.organizations.build(attributes={name: organization_name}) if organization_name
+
       if @user.save
         sign_in @user
         flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
