@@ -64,7 +64,7 @@ Feature: Registering as a new user
 
 
   Scenario: Registering an existing user
-    Given the user:
+    Given the organizer user:
 
       | ID                   | Input                       |
       | first_name           | Bill                        |

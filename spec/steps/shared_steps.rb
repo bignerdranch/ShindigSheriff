@@ -19,6 +19,12 @@ step "the user:" do |table|
   @user = User.create!(user_info)
 end
 
+step "the organizer user:" do |table|
+  user_info = {}
+  table.hashes.each { |t| user_info[t["ID"]] = t["Input"] }
+  @user = User.create(user_info)
+end
+
 step "a user with an event" do
   @user = FactoryGirl.create(:user)
   organization = FactoryGirl.create(:organization)
@@ -62,5 +68,4 @@ step "load roles" do
   FactoryGirl.create(:role)
   FactoryGirl.create(:role, :as_finance_approver )
 end
-
 
