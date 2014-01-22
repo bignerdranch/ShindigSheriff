@@ -1,17 +1,15 @@
 class RolesValidator < ActiveModel::Validator
   def validate(record)
-    case record.role
-    when []
-      record.errors[:role] << "cannot be empty, please select a role"
-    when ["organizer"]
-      organization = record.organizations.first
-      record.errors[:organization] << "can't be blank" if organization.nil?
-    when ["finance approver"]
+    case record.role_name
+    when "organizer"
+      record.errors[:organization] << "can't be blank" if record.organizations.empty?
+    when "finance approver"
       unless record.organizations.empty?
         record.errors[:finance_approver] << "does not need to register an organization"
       end
+    else
+      record.errors[:role] << "cannot be empty, please select a role"
     end
-
   end
 end
   
@@ -50,8 +48,8 @@ class User < ActiveRecord::Base
     self.roles << role if role
   end
 
-  def role 
-    self.roles.pluck(:name)
+  def role_name
+    roles.map(&:name).first
   end
 
 end

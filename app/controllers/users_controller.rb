@@ -18,45 +18,27 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.new(user_params)
+    
+    user_role = params[:user][:id]
 
-      @user = User.new(user_params)
+    organization_name = params[:user][:organization][:name] 
+    if organization_name
+      @user.organizations << Organization.find_or_initialize_by(name: organization_name)
+    end
 
-      user_role = params[:user][:id]
-      @user.role = user_role unless user_role.nil?
-
-      organization_name = params[:user][:organization][:name] 
-      @user.organizations.build(attributes={name: organization_name}) if organization_name
-
-      if @user.save
-        sign_in @user
-        flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
-        redirect_to dashboard_path(@user)
-      else
-        flash[:errors] = "#{@user.errors.full_messages.to_sentence}"
-        redirect_to sign_in_path
-      end
-
-    #   binding.pry
-    #   if @user.save && @organization.save
-    #     @user.organizations.build << @organization
-        # sign_in @user
-        # flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
-        # redirect_to dashboard_path(@user)
-    #   else
-    #     flash[:errors] = "Error(s) while creating user/organization 
-    #         #{@user.errors.full_messages.to_sentence} 
-    #         #{@organization.errors.full_messages.to_sentence}"
-    #     redirect_to sign_in_path
-    #   end
-    # elsif role == "finance approver"
-    #   binding.pry
-    #   puts "Finance Approver!"
-    #   redirect_to sign_in_path
-    # elsif role.nil?
-    #   binding.pry
-      # flash[:errors] = "Please select a role"
-      # redirect_to sign_in_path
-    # end
+    if user_role == ""
+      flash[:notice] = "Role cannot be empty, please select user role"
+      redirect_to sign_in_path
+    elsif @user.save
+      @user.role = user_role
+      sign_in @user
+      flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
+      redirect_to dashboard_path(@user)
+    else
+      flash[:errors] = "#{@user.errors.full_messages.to_sentence}"
+      redirect_to sign_in_path
+    end
   end
 
   private

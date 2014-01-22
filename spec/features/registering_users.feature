@@ -10,8 +10,9 @@ Feature: Registering as a new user
       | user_phone_number         | 555-555-5555              |
       | user_password             | password                  |  
       | user_organization_name    | Galactica Meetup          |      
-
-      And I click "Create Account"
+      
+      And I select the role "organizer"
+    When I click "Create Account"
     Then I should see "First name can't be blank"
 
   Scenario: No role declared
@@ -28,7 +29,7 @@ Feature: Registering as a new user
 
       And I do not select a role
     When I click "Create Account"
-    Then I should see "Error(s) while creating user/organization"
+    Then I should see "Role cannot be empty"
 
   Scenario: Succesfully creating a new organizer
     Given I am at the homepage
