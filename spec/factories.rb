@@ -6,12 +6,10 @@ FactoryGirl.define do
     sequence(:email)  { |num|"test@testuser#{num}.com" }
     password      'password123'
     phone_number  '111-111-1111'
+  end
 
-    trait :as_finance_approver do 
-      after :create do |user|
-      FactoryGirl.create_list :finance_approver_role, 1, :user => user
-      end
-    end
+  factory :finance_approver_user, parent: :user do
+    roles { [FactoryGirl.create(:finance_approver_role)] }
   end
 
   factory :organization do
@@ -27,8 +25,12 @@ FactoryGirl.define do
     purpose       'Rails Girls tutorial walk-through'
   end
 
-  factory :finance_approver_role do 
-    user
+  factory :role do 
+    name "organizer"
+  end
+
+  factory :finance_approver_role, parent: :role do
+    name "finance approver"
   end
 
 end

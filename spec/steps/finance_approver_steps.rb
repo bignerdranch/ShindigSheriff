@@ -4,7 +4,7 @@ step "I am at the Select A Finance Approver page" do
                         last_name: "approver", 
                         email: "fa@org.com", 
                         password: "password")
-  @fa = FinanceApproverRole.create(user: fa_user)
+  @fa = FactoryGirl.create(:finance_approver_user)
 
   organization = Organization.create(name: "cats anon", website: "www.catwhoareyou?.com")
 
@@ -24,7 +24,7 @@ end
 
 # Dashboard features - accepting and rejecting incomes
 step "I am a logged in finance approver" do 
-  @user = FactoryGirl.create(:user, :as_finance_approver)
+  @user = FactoryGirl.create(:finance_approver_user)
   send "sign in"
 end
 

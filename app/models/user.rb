@@ -12,16 +12,17 @@ class User < ActiveRecord::Base
   has_many :organizations
   accepts_nested_attributes_for :organizations
 
-  has_one :organizations_as_finance_approver_role, class_name: 'FinanceApprover',
+  has_one :organizations_as_role, class_name: 'FinanceApprover',
           foreign_key: 'finance_approver_id'
+
+  has_and_belongs_to_many :roles
 
   def info
     "#{first_name.capitalize} #{last_name.capitalize} : #{email}"
   end
 
-  def finance_approver?
-    FinanceApproverRole.find_by_user_id(id)
+  def has_role?(name)
+    roles.pluck(:name).include?(name)
   end
   
 end
-
