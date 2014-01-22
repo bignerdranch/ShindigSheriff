@@ -103,3 +103,19 @@ Feature: Registering as a new user
       And I select the role "finance approver"
     When I click "Create Account"
     Then I should see "ariel@mermaids.com"
+
+
+  Scenario: Creating Finance Approver without changing Organization count
+    Given I am at the homepage
+    When I complete the form with the following:
+      
+      | ID                        | Input                     |
+      | user_first_name           | Little                    |
+      | user_last_name            | Mermaid                   |
+      | user_email                | ariel@mermaids.com        |
+      | user_phone_number         | 555-555-5555              |
+      | user_password             | password                  |   
+      | user_organization_name    | Galactica Meetup          |          
+
+      And I select the role "finance approver"
+    Then organizations count should not change when I click Create Account
