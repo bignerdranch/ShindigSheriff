@@ -17,7 +17,7 @@ step "I select an finance approver" do
   click_link_or_button "Add Finance Approver"
 end
 
-step "I do not select a finance approve" do 
+step "I do not select a finance approver" do 
   click_link_or_button "Add Finance Approver"
 end
 
