@@ -12,7 +12,7 @@ Feature: Registering as a new user
       | user_organization_name    | Galactica Meetup          |      
 
       And I click "Create Account"
-    Then I should see "Error(s) while creating user/organization"
+    Then I should see "First name can't be blank"
 
   Scenario: No role declared
     Given I am at the homepage
@@ -86,4 +86,4 @@ Feature: Registering as a new user
 
       And I select the role "organizer"
     When I click "Create Account"
-    Then I should see "Error(s) while creating user/organization"
+    Then I should see "Email has already been taken"

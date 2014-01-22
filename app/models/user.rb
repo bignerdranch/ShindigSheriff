@@ -1,4 +1,26 @@
+class RolesValidator < ActiveModel::Validator
+  def validate(record)
+    case record.role
+    when []
+      record.errors[:role] << "cannot be empty, please select a role"
+    when ["organizer"]
+      binding.pry
+      organization = record.organizations.first
+      record.errors[:organization] << "can't be blank" if organization.nil?
+    when ["finance approver"]
+      binding.pry
+      unless record.organizations.empty?
+        record.errors[:finance_approver] << "does not need to register an organization"
+      end
+    end
+
+  end
+end
+  
 class User < ActiveRecord::Base
+  include ActiveModel::Validations
+
+  before_save { validates_with RolesValidator }
   
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -21,8 +43,17 @@ class User < ActiveRecord::Base
     "#{first_name.capitalize} #{last_name.capitalize} : #{email}"
   end
 
-  def has_role?(name)
+  def has_role? name
     roles.pluck(:name).include?(name)
   end
   
+  def role= name
+    role = Role.find_by_name(name)
+    self.roles << role if role
+  end
+
+  def role 
+    self.roles.pluck(:name)
+  end
+
 end

@@ -18,20 +18,40 @@ class UsersController < ApplicationController
   end
 
   def create
-    @organization = Organization.new(params[:user].delete(:organization))
-    @user = User.new(user_params)
 
-    if @user.save && @organization.save
-      @user.organizations << @organization
-      sign_in @user
-      flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
-      redirect_to dashboard_path(@user)
-    else
-      flash[:errors] = "Error(s) while creating user/organization 
-          #{@user.errors.full_messages.to_sentence} 
-          #{@organization.errors.full_messages.to_sentence}"
-      redirect_to sign_in_path
-    end
+      @user = User.new(user_params)
+      @user.role = params[:user][:id] if params[:user][:id]
+
+      if @user.save
+        sign_in @user
+        flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
+        redirect_to dashboard_path(@user)
+      else
+        flash[:errors] = "#{@user.errors.full_messages.to_sentence}"
+        redirect_to sign_in_path
+      end
+
+    #   binding.pry
+    #   if @user.save && @organization.save
+    #     @user.organizations.build << @organization
+        # sign_in @user
+        # flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
+        # redirect_to dashboard_path(@user)
+    #   else
+    #     flash[:errors] = "Error(s) while creating user/organization 
+    #         #{@user.errors.full_messages.to_sentence} 
+    #         #{@organization.errors.full_messages.to_sentence}"
+    #     redirect_to sign_in_path
+    #   end
+    # elsif role == "finance approver"
+    #   binding.pry
+    #   puts "Finance Approver!"
+    #   redirect_to sign_in_path
+    # elsif role.nil?
+    #   binding.pry
+      # flash[:errors] = "Please select a role"
+      # redirect_to sign_in_path
+    # end
   end
 
   private
