@@ -20,10 +20,17 @@ class User < ActiveRecord::Base
 
   validate :organizers_should_have_organization
 
+  # User Verification
+  def verify
+    self.update_attributes(verified: true)
+  end
+
+  # Finance Approver Select
   def info
     "#{first_name.capitalize} #{last_name.capitalize} : #{email}"
   end
 
+  # User currently has one role, but may have many in the future
   def has_role? name
     roles.pluck(:name).include?(name)
   end
@@ -32,7 +39,6 @@ class User < ActiveRecord::Base
     role = Role.find_by_name(name)
     self.roles << role if role
   end
-
 
   private 
 

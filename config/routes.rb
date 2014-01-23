@@ -21,11 +21,12 @@ ShindigSheriff::Application.routes.draw do
     end
   end
 
-  resources :finance_approvers, only: [:new, :create, :show]
-
   resources :events, only: [] do
     resources :incomes, only: [:new, :create]
   end
+    
+  resources :finance_approvers, only: [:new, :create, :show]
+  resources :verify_users, only: [:new, :create]
 
 end
 
