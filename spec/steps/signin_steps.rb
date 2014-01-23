@@ -13,3 +13,8 @@ step "I am the user:" do |table|
   send "assign organizer role"
 end
 
+step "I am an unverified user" do
+  @user = FactoryGirl.build(:user, :not_verified)
+  @user.roles << Role.find_or_create_by(name: "finance approver")
+  @user.save!
+end
