@@ -6,7 +6,12 @@
 
 <% if alert %>
   <div class="alert-box">
-    <div class="alert alert-error"><%= alert %></div>
+    <div class="alert alert-notice"><%= alert %></div>
   </div>
 <% end %>
 
+<% if flash[:errors] %>
+  <div class="alert-box">
+    <div class="alert alert-notice"><%= flash[:errors] %>
+  </div>
+<% end %>
