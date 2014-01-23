@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   include UsersHelper
 
   def show
-    if current_user.has_role?("finance approver")
+    if current_user.verified == false
+      redirect_to invite_finance_approvers_path
+    elsif current_user.has_role?("finance approver")
       redirect_to finance_approver_path(current_user)
     elsif current_user.has_role?("organizer")
     else
@@ -28,6 +30,7 @@ class UsersController < ApplicationController
     end
 
     if @user.save
+      @user.verify
       sign_in @user
       flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
       redirect_to dashboard_path(@user)

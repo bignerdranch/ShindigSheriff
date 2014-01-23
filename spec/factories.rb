@@ -6,6 +6,11 @@ FactoryGirl.define do
     sequence(:email)  { |num|"test@testuser#{num}.com" }
     password      'password123'
     phone_number  '111-111-1111'
+    verified true
+
+    trait :not_verified do
+      verified false
+    end
   end
 
   factory :organization do
