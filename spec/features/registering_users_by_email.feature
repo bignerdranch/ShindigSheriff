@@ -12,5 +12,5 @@ Feature: Registering a new user by Email
       | user_email                | helo@caprica.com          |
       | user_phone_number         | 555-555-5555              |
 
-    When I click "Send user verification email"
+    When I click "Register User"
     Then I should see "helo@caprica.com has been sent an email verification"
