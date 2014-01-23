@@ -1,0 +1,17 @@
+<h4>Invite a User by Email</h4>
+
+<div class="user-form">  
+  <%= form_for(@user) do |f| %>
+    <%= f.text_field :first_name, placeholder: "First Name" %>
+
+    <%= f.text_field :last_name, placeholder: "Last Name" %>
+    
+    <%= f.text_field :phone_number, placeholder: "###-###-####" %>
+
+    <%= f.text_field :email, placeholder: "Email@youremail.com" %>
+  
+    <%= f.password_field :password, placeholder: "password" %>
+  <% end %>
+</div>
+
+<%= link_to "back", new_finance_approver_path %>
