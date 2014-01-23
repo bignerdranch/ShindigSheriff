@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     if current_user.has_role?("finance approver")
-      render "finance_show"
+      redirect_to finance_approver_path(current_user)
     else
       @user = current_user
     end

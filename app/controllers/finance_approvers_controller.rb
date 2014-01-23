@@ -19,4 +19,7 @@ class FinanceApproversController < ApplicationController
       redirect_to new_finance_approver_path
     end
   end
+
+  def show
+  end
 end
