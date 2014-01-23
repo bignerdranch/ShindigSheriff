@@ -1,10 +1,9 @@
 # Assigning a Finance Approver
 step "I am at the Select A Finance Approver page" do 
-  fa_user = User.create(first_name: "finance", 
-                        last_name: "approver", 
-                        email: "fa@org.com", 
-                        password: "password")
-  @fa = FinanceApproverRole.create(user: fa_user)
+  @fa = FactoryGirl.build(:user)
+  role = FactoryGirl.create(:role, :as_finance_approver)
+  @fa.roles << role 
+  @fa.save!
 
   organization = Organization.create(name: "cats anon", website: "www.catwhoareyou?.com")
 
@@ -13,18 +12,20 @@ step "I am at the Select A Finance Approver page" do
 end
 
 step "I select an finance approver" do
-  page.select "Finance Approver : fa@org.com", :from => "finance_approver_id"
+  page.select "#{@fa.info}", :from => "finance_approver_id"
   click_link_or_button "Add Finance Approver"
 end
 
-step "I do not select a finance approve" do 
+step "I do not select a finance approver" do 
   click_link_or_button "Add Finance Approver"
 end
 
 
 # Dashboard features - accepting and rejecting incomes
 step "I am a logged in finance approver" do 
-  @user = FactoryGirl.create(:user, :as_finance_approver)
+  @user = FactoryGirl.build(:user)
+  @user.roles << Role.find_or_create_by(name: "finance approver")
+  @user.save!
   send "sign in"
 end
 

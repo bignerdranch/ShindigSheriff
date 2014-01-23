@@ -9,7 +9,7 @@ Scenario: Assigned to an organization
 Scenario: Unsuccesfully assigned to an organization
   Given I am a logged in user
     And I am at the Select A Finance Approver page
-  When I do not select a finance approve
+  When I do not select a finance approver
   Then I should see "Error(s)"
 
 

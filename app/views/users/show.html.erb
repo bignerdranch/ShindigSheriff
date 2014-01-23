@@ -1,7 +1,4 @@
- <p id="notice"><%= notice %></p>
-
-<h1><%= @user.email %></h1>
-
+<h1><%= current_user.email %></h1>
 
 <h3>Listing organizations</h3>
 
@@ -15,8 +12,8 @@
   </thead>
 
   <tbody>
-    <% if @user.organizations %>
-      <% @user.organizations.each do |organization| %>
+    <% if current_user.organizations %>
+      <% current_user.organizations.each do |organization| %>
         <tr>
           <td><%= organization.name %></td>
           <td><%= organization.website %></td>
@@ -49,8 +46,8 @@
     </tr>
   </thead>
   <tbody>
-    <% if @user.events %>
-      <% @user.events.each do |event| %>
+    <% if current_user.events %>
+      <% current_user.events.each do |event| %>
         <tr>
           <td><%= event.name %></td>
           <td><%= event.date %></td>

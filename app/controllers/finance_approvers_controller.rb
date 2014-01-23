@@ -1,6 +1,6 @@
 class FinanceApproversController < ApplicationController
   def new
-    @finance_approvers = FinanceApproverRole.users
+    @finance_approvers = Role.finance_approver
   end 
 
   def create
@@ -18,5 +18,8 @@ class FinanceApproversController < ApplicationController
       flash[:notice] = "Error(s) while selecting Finance Approver: Please select a user"
       redirect_to new_finance_approver_path
     end
+  end
+
+  def show
   end
 end
