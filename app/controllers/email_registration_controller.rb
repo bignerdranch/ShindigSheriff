@@ -8,7 +8,7 @@ class EmailRegistrationController < ApplicationController
     
     @user.role = params[:user][:role]
     @user.organizations << Organization.find(session[:organization_id])
-    @user.password = "temporary random generated password"
+    @user.password = Devise.friendly_token.first(8)
 
     if @user.save
       flash[:notice] = "#{@user.email} has been sent an email verification!"
