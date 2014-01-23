@@ -2,12 +2,6 @@
   <div class="small-5 small-centered columns">
     <h4>Sign Up</h4>
 
-    <% if flash[:errors] %>
-      <div class="alert-box">
-        <%= flash[:errors] %>
-      </div>
-    <% end %>
-
     <%= render 'users_form' %>
   </div>
 </div>
