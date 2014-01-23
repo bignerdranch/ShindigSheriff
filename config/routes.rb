@@ -27,6 +27,7 @@ ShindigSheriff::Application.routes.draw do
     
   resources :finance_approvers, only: [:new, :create, :show]
   resources :verify_users, only: [:new, :create]
+  resources :email_registration, only: [:new, :create]
 
 end
 

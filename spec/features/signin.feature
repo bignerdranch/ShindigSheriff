@@ -31,4 +31,9 @@ Feature: Signing In
       And I click "Sign In"
     Then I should see "Invalid email or password"
 
-    
+
+  Scenario: Unverified user signing in
+    Given I am an unverified user
+      And I am at the homepage
+    When I sign in
+    Then I should see "Please reset your password"

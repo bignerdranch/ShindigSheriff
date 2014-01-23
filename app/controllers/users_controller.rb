@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     if current_user.verified == false
-      redirect_to verify_users_path
+      redirect_to new_verify_user_path
     elsif current_user.has_role?("finance approver")
       redirect_to finance_approver_path(current_user)
     elsif current_user.has_role?("organizer")

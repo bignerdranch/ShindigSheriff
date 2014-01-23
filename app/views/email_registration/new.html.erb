@@ -1,0 +1,21 @@
+<h4>Invite a new Finance Approver by Email</h4>
+
+<div class="user-form">  
+  <%= form_for(@user, url: email_registration_index_path) do |f| %>
+    <%= f.text_field :email, placeholder: "Finance Approver's e-mail address: finance@approver.com" %>
+
+    <%= f.text_field :first_name, placeholder: "Finance Approver's first name" %>
+
+    <%= f.text_field :last_name, placeholder: "Finance Approver's last name" %>
+    
+    <%= f.text_field :phone_number, placeholder: "Finance Approver's phone nubmer: ###-###-####" %>
+
+    <%= f.hidden_field :role, value: "finance approver" %>
+
+    <%= f.submit "Register User", class: "button tiny radius" %>
+
+  <% end %>
+</div>
+
+<%= link_to "back", new_finance_approver_path %>
+

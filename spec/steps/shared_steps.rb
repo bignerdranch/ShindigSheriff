@@ -46,7 +46,7 @@ step "I am a new user" do
   @user.organizations << @organization
 end
 
-step "sign in" do 
+step "I sign in" do 
   visit '/'
   fill_in "signin-email", :with => @user.email
   fill_in "signin-password", :with => @user.password
@@ -55,7 +55,7 @@ end
 
 step "I am a logged in user" do 
   send "I am a new user"
-  send "sign in"
+  send "I sign in"
 end
 
 step "I should see :text" do |text|
@@ -72,3 +72,7 @@ step "assign organizer role" do
   @user.save!
 end
 
+step "assign finance approver role" do
+  @user.roles << Role.find_or_create_by(name: "finance approver")
+  @user.save!
+end
