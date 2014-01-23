@@ -1,4 +1,8 @@
-<h3>Select a Finance Approver</h3>
+<h4><%= link_to "Invite a new Finance Approver by Email", new_email_registration_path %></h4>
+
+or
+
+<h4>Select a Finance Approver</h4>
 
 <%= form_for :finance_approver, url: finance_approvers_path, method: 'post' do |f| %>
 

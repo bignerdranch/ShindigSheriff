@@ -26,7 +26,7 @@ step "I am a logged in finance approver" do
   @user = FactoryGirl.build(:user)
   @user.roles << Role.find_or_create_by(name: "finance approver")
   @user.save!
-  send "sign in"
+  send "I sign in"
 end
 
 step "there is an income pending approval" do 
