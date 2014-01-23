@@ -6,9 +6,22 @@ For use by organizers and financial approvers. Organizers can add,  remove, and 
 
 The organizer home dashboard lists organizations. The organization dashboard lists events. 
 
-##For Developers
-###Getting Started
-To run this application, creating a project gemset with .rvmrc is recommended.  
+##Development
+
+### Requirements  
+
+* Ruby 2.1.0
+* [Postgresql](http://www.postgresql.org)
+
+
+### Setup  
+
+Clone the repository locally
+
+    $ git clone https://github.com/bignerdranch/ShindigSheriff.git
+    $ cd ShindigSheriff
+
+Creating a gemset with .rvmrc is recommended.  
 
     $ echo 'rvm --create use 2.1.0@shindigsheriff' > .rvmrc
 
@@ -24,3 +37,17 @@ Start the rails server
 
     $ rails s
 
+Open the application in your favorite browser
+
+    localhost:3000
+
+
+###Testing
+
+Prepare test database
+
+    $ rake db:test:prepare
+
+Run the full test suite:
+
+    $ rspec spec
