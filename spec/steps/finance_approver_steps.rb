@@ -1,8 +1,9 @@
 # Assigning a Finance Approver
 step "I am at the Select A Finance Approver page" do 
-  @fa = FactoryGirl.create(:user)
+  @fa = FactoryGirl.build(:user)
   role = FactoryGirl.create(:role, :as_finance_approver)
   @fa.roles << role 
+  @fa.save!
 
   organization = Organization.create(name: "cats anon", website: "www.catwhoareyou?.com")
 
@@ -22,9 +23,9 @@ end
 
 # Dashboard features - accepting and rejecting incomes
 step "I am a logged in finance approver" do 
-  @user = FactoryGirl.create(:user)
-  role = FactoryGirl.create(:role, :as_finance_approver)
-  @user.roles << role 
+  @user = FactoryGirl.build(:user)
+  @user.roles << Role.find_or_create_by(name: "finance approver")
+  @user.save!
   send "sign in"
 end
 

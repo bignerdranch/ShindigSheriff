@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :first_name, :last_name, :email
+  validates_presence_of :first_name, :last_name, :email, :roles
   validates_uniqueness_of :email
 
   has_many :events, through: :organizations
@@ -16,13 +16,31 @@ class User < ActiveRecord::Base
           foreign_key: 'finance_approver_id'
 
   has_and_belongs_to_many :roles
+  accepts_nested_attributes_for :roles
+
+  validate :organizers_should_have_organization
 
   def info
     "#{first_name.capitalize} #{last_name.capitalize} : #{email}"
   end
 
-  def has_role?(name)
+  def has_role? name
     roles.pluck(:name).include?(name)
   end
   
+  def role= name
+    role = Role.find_by_name(name)
+    self.roles << role if role
+  end
+
+
+  private 
+
+  def organizers_should_have_organization
+    if has_role? "organizer" && organizations.blank?
+      errors[:organization] = "can't be blank"
+    end
+  end
+
 end
+

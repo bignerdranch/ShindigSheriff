@@ -12,5 +12,5 @@ class ApplicationController < ActionController::Base
       new_user_path
     end
   end
-
 end
+
