@@ -1,4 +1,5 @@
 class IncomesController < ApplicationController
+  include IncomesHelper
 
   def new
     @event = Event.find(params[:event_id])
@@ -8,6 +9,8 @@ class IncomesController < ApplicationController
   def create
     @event = Event.find(params[:event_id])
     @income = Income.new(income_params)
+    #@event = Event.find(params["event_id"])
+    
     
     if @income.valid? 
       @event.incomes.build(income_params).save!

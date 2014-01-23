@@ -30,4 +30,16 @@ step "I am a logged in finance approver" do
 end
 
 step "there is an income pending approval" do 
+
+  organization = FactoryGirl.create(:organization, user_id: @user.id)
+
+  
+  event = FactoryGirl.create(:event)
+  event.organizations << organization
+ 
+  income = FactoryGirl.create(:income, event_id: event.id)
+
 end
+
+
+

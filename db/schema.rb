@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140122113139) do
     t.text     "category_details"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "status",           default: false, null: false
   end
 
   create_table "organizations", force: true do |t|

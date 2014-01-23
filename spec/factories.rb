@@ -21,6 +21,14 @@ FactoryGirl.define do
     purpose       'Rails Girls tutorial walk-through'
   end
 
+  factory :income do
+    estimated_amount '10.00'
+    actual_amount    '10.00'
+    status           'Pending'
+    category_details 'things' 
+    event
+  end
+
   factory :role do 
     name "organizer"
 

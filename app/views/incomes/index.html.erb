@@ -7,6 +7,8 @@
         <th>Organization</th>
         <th>Amount</th>
         <th>Category Details</th>
+        <th>Status</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -15,8 +17,9 @@
           <td><%= income.event.organizations.first.name.titleize %></td>
           <td><%= number_to_currency(income.estimated_amount, precision: 2) %></td>
           <td><%= income.category_details %></td>
-          <td><%= link_to "Approve", "#" %></td>
-          <td><%= link_to "Reject", "#"%></td>
+          <td><%= to_verified(income.status) %></td>
+          <td><%= link_to "Verify", "#" %></td>
+          <td><%#= link_to "Reject", "#"%></td>
         </tr>
       <% end %>
     </tbody>

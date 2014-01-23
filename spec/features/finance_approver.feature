@@ -16,3 +16,10 @@ Scenario: Unsuccesfully assigned to an organization
 Scenario: Accessing Dashboard
   Given I am a logged in finance approver
   Then I should see "Income Awaiting Verification"
+
+Scenario: Pending income
+  Given I am a logged in finance approver
+    And there is an income pending approval
+    And I am at the homepage
+  Then I should see "pending"
+
