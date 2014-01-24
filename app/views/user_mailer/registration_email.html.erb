@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h4>Welcome to Shindig Sheriff, <%= @user.display_name %></h4>
+    <p>
+      You have been registerd as a <b>Finance Approver</b> for the <b><%= @organization_name %></b> organization by 
+        <%= @organizer_name %>.
+    </p>
+
+    <p>  
+      Your temporary password is: <%= @user.password %>
+    </p>
+
+    <p>
+      To complete your registration, please change your password here: <%= @url %>
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
+
