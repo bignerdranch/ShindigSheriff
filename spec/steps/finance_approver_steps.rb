@@ -31,7 +31,7 @@ end
 
 step "there is an income pending approval" do 
 
-  organization = FactoryGirl.create(:organization, user_id: @user.id)
+  organization = FactoryGirl.create(:organization, finance_approver_id: @user.id)
 
   
   event = FactoryGirl.create(:event)

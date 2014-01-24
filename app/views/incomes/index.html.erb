@@ -1,4 +1,4 @@
-<% if current_user.incomes.empty? %>
+<% if current_user.all_incomes.empty? %>
   No Incomes!
 <% else %>
   <table>
@@ -12,17 +12,16 @@
       </tr>
     </thead>
     <tbody>
-      <% current_user.incomes.each do |income| %>
+      <% current_user.all_incomes.each do |income| %>
         <tr>
           <td><%= income.event.organizations.first.name.titleize %></td>
           <td><%= number_to_currency(income.estimated_amount, precision: 2) %></td>
           <td><%= income.category_details %></td>
           <td><%= to_verified(income.status) %></td>
-          <td><%= link_to "Verify", "#" %></td>
+          <td><%#= link_to "Verify", :action =>"verify", :id => @income.id %></td>
           <td><%#= link_to "Reject", "#"%></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 <% end %>
-

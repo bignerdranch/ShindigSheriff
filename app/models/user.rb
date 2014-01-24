@@ -12,13 +12,18 @@ class User < ActiveRecord::Base
   has_many :organizations
   accepts_nested_attributes_for :organizations
 
-  has_one :organizations_as_role, class_name: 'FinanceApprover',
-          foreign_key: 'finance_approver_id'
-
   has_and_belongs_to_many :roles
   accepts_nested_attributes_for :roles
 
   validate :organizers_should_have_organization
+
+  has_many :approver_organizations, class_name: "Organization", foreign_key: :finance_approver_id
+
+
+  # Finance Approver Incomes
+   def all_incomes
+     approver_organizations.map(&:incomes).flatten
+   end
 
   # User Verification
   def verify
@@ -26,6 +31,7 @@ class User < ActiveRecord::Base
   end
 
   # Finance Approver Select
+
   def info
     "#{first_name.capitalize} #{last_name.capitalize} : #{email}"
   end
