@@ -23,3 +23,10 @@ Scenario: Pending income
     And I am at the homepage
   Then I should see "pending"
 
+
+Scenario: Finance Approver assigned to an organization
+  Given I am a logged in finance approver
+    And I am assigned to an organization
+    And I am at the homepage
+  Then I should see "Organizer"
+
