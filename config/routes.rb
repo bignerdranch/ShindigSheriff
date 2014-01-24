@@ -21,13 +21,24 @@ ShindigSheriff::Application.routes.draw do
     end
   end
 
-  resources :events, only: [] do
-    resources :incomes, only: [:new, :create]
+  scope shallow_prefix: "sekret" do
+    resources :events, only: [] do
+      resources :incomes, only: [:new, :create, :update], shallow: true do
+        member do
+          post 'update_status' 
+        end
+        member do
+          get 'update_status' 
+        end
+     end
+    end
   end
     
   resources :finance_approvers, only: [:new, :create, :show]
   resources :verify_users, only: [:new, :create]
   resources :email_registration, only: [:new, :create]
+
+
 
 end
 

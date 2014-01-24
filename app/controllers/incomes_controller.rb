@@ -6,11 +6,20 @@ class IncomesController < ApplicationController
     @income = @event.incomes.new
   end
 
+  def show
+  end
+
+  def update_status
+      @income = Income.find(params[:id])
+      @income.update_attribute(:status, true)
+      binding.pry
+      redirect_to :back
+      #notice:  "Income has been verified"
+  end
+
   def create
     @event = Event.find(params[:event_id])
     @income = Income.new(income_params)
-    #@event = Event.find(params["event_id"])
-    
     
     if @income.valid? 
       @event.incomes.build(income_params).save!
@@ -27,7 +36,7 @@ class IncomesController < ApplicationController
 
   def income_params
     params.require(:income).permit(:estimated_amount, :actual_amount, 
-                                   :date_received, :category_details, :event_id)
+                                   :date_received, :category_details, :status, :event_id)
   end
 
 end

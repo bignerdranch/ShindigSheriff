@@ -1,12 +1,11 @@
 module IncomesHelper
 
-  def to_verified(boolean)
+  def status_clarify(boolean)
     if boolean == 'true'
       return 'verified'
     elsif boolean == 'false'
       return 'pending'
-    else
-      boolean == 'nil'
+    else boolean == 'nil'
       return 'pending'
     end
   end

@@ -13,6 +13,7 @@ Scenario: Unsuccesfully assigned to an organization
   Then I should see "Error(s)"
 
 
+
 Scenario: Accessing Dashboard
   Given I am a logged in finance approver
   Then I should see "Income Awaiting Verification"
@@ -29,4 +30,12 @@ Scenario: Finance Approver assigned to an organization
     And I am assigned to an organization
     And I am at the homepage
   Then I should see "Organizer"
+
+
+  Scenario: Verifying Income
+    Given I am a logged in finance approver
+      And there is an income pending approval
+      And I am at the homepage
+    When I click "Verify"
+    Then I should see "Verified" 
 
