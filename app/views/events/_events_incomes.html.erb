@@ -12,7 +12,7 @@
         <tr>
           <td><%= number_to_currency(income.estimated_amount, precision: 2) %></td>
           <td><%= income.category_details %></td>
-          <td><%= to_verified(income.status) %></td>
+          <td><%= status_clarify(income.status) %></td>
       <% end %>
     <% else %>
       <div> No Income </div>

@@ -5,7 +5,7 @@ ShindigSheriff::Application.routes.draw do
   devise_scope :user do
     authenticated :user do
       root :to => 'users#show', as: :dashboard
-    end
+    end 
     unauthenticated :user do
       root :to => 'users#new', as: :sign_in
     end
@@ -25,10 +25,10 @@ ShindigSheriff::Application.routes.draw do
     resources :events, only: [] do
       resources :incomes, only: [:new, :create, :update], shallow: true do
         member do
-          post 'update_status' 
+          put 'reject', 'verify' 
         end
         member do
-          get 'update_status' 
+          get 'reject', 'verify'
         end
      end
     end

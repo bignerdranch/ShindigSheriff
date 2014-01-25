@@ -9,12 +9,19 @@ class IncomesController < ApplicationController
   def show
   end
 
-  def update_status
+  def verify
       @income = Income.find(params[:id])
+
       @income.update_attribute(:status, true)
-      binding.pry
-      redirect_to :back
-      #notice:  "Income has been verified"
+      redirect_to dashboard_path(@user)
+      flash[:notice] =  "Income has been verified"
+  end
+
+   def reject
+      @income = Income.find(params[:id])
+      @income.update_attribute(:status, false)
+      redirect_to dashboard_path(@user)
+      flash[:notice] =  "Income has been rejected"
   end
 
   def create
