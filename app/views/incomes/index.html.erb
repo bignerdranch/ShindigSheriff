@@ -18,8 +18,8 @@
           <td><%= number_to_currency(income.estimated_amount, precision: 2) %></td>
           <td><%= income.category_details %></td>
           <td><%= status_clarify(income.status) %></td>
-          <td><%= link_to "Verify",  update_status_sekret_income_path(income.id) %></td>
-          <td><%#= link_to "Reject", "#"%></td>
+          <td><%= link_to "Verify",  verify_sekret_income_path(income.id) %></td>
+          <td><%= link_to "Reject",  reject_sekret_income_path(income.id) %></td>
         </tr>
       <% end %>
     </tbody>
