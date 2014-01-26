@@ -29,7 +29,7 @@ FactoryGirl.define do
   factory :income do
     estimated_amount '10.00'
     actual_amount    '10.00'
-    status           'Pending'
+    status           nil
     category_details 'things' 
     event
   end

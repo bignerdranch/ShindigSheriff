@@ -22,7 +22,7 @@ Scenario: Pending income
   Given I am a logged in finance approver
     And there is an income pending approval
     And I am at the homepage
-  Then I should see "pending"
+  Then I should see "Pending"
 
 
 Scenario: Finance Approver assigned to an organization
@@ -37,5 +37,12 @@ Scenario: Finance Approver assigned to an organization
       And there is an income pending approval
       And I am at the homepage
     When I click "Verify"
-    Then I should see "Verified" 
+    Then I should see "Verified"
+
+  Scenario: Verifying Income
+    Given I am a logged in finance approver
+      And there is an income pending approval
+      And I am at the homepage
+    When I click "Reject"
+    Then I should see "Rejected" 
 
