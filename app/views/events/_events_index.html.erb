@@ -1,20 +1,16 @@
-
-
 <table>
   <thead>
     <tr>
-      <th>Event</th>
+      <th>Event Name</th>
       <th>Date</th>
     </tr>
   </thead>
   <tbody>
-    <% if @organization_events %>
-      <% @organization_events.each do |event| %>
+    <% if @organization.events %>
+      <% @organization.events.each do |event| %>
         <tr>
-          <td><%= event.name %></td>
+          <td><%= link_to "#{event.name}", sekret_event_path(event) %></td>
           <td><%= event.date %></td>
-
-          <td><%= link_to 'Show Event', organization_event_path(@organization_events, event) %></td>
         </tr>
       <% end %>
     <% else %>
@@ -23,4 +19,5 @@
   </tbody>
 </table>
 
-  
+<%= link_to 'New Event', new_organization_event_path(@organization) %></br>
+

@@ -6,31 +6,7 @@
 <%= link_to 'Back to Organizations', user_organizations_path(current_user) %></br>
 
 <br>
-<h3>Events</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Event Name</th>
-      <th>Date</th>
-     
-    </tr>
-  </thead>
-  <tbody>
-    <% if @organization.events %>
-      <% @organization.events.each do |event| %>
-        <tr>
-          <td><%= link_to "#{event.name}", sekret_event_path(event) %></td>
-          <td><%= event.date %></td>
-        </tr>
-      <% end %>
-    <% else %>
-      <div> No events </div>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'New Event', new_organization_event_path(@organization) %></br>
-
-
+<h2>Events</h2>
+<%= render template: "events/_events_index" %> 
 

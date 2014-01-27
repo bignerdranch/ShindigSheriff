@@ -1,57 +1,12 @@
 <h1>Home Dashboard</h1>
 <br>
+
 <h3>Your Organizations</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Site</th>
-      <th>Contact Email</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% if current_user.organizations %>
-      <% current_user.organizations.each do |organization| %>
-        <tr>
-          <td><%= link_to "#{organization.name}", user_organization_path(current_user, organization) %></td>
-          <td><%= organization.website %></td>
-          <td><%= organization.user.email %></td>
-          </tr>
-      <% end %>
-    <% else %>
-      <div> No Organizations </div>
-    <% end %>
-  </tbody>
-  <%= link_to 'New Organization', new_user_organization_path(current_user) %>
-</table>
-
+<%= render template: "organizations/index" %> 
 
 <h3>Your Events</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Event</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if current_user.events %>
-      <% current_user.events.each do |event| %>
-        <tr>
-          <td><%= link_to "#{event.name}", sekret_event_path(event) %></td>
-          <td><%= event.date %></td>
-        </tr>
-      <% end %>
-    <% else %>
-      <div> No events </div>
-    <% end %>
-  </tbody>
-</table>
+<%= render template: "events/index" %> 
 
 <h3>Your Incomes</h3>
 <%= render template: "incomes/index" %> 
-
 
