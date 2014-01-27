@@ -1,4 +1,4 @@
-module IncomesHelper
+module StatusHelper
 
   def status_clarify(boolean)
     if boolean == nil
