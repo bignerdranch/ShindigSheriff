@@ -1,0 +1,26 @@
+<table>
+  Expense(s)
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Category Details</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @event.expenses %>
+      <% @event.expenses.each do |expense| %>
+        <tr>
+          <td><%= number_to_currency(expense.estimated_amount, precision: 2) %></td>
+          <td><%= expense.category_details %></td>
+          <td><%= status_clarify(expense.status) %></td>
+          <td><%= link_to 'Delete', sekret_expense_path(expense), method: :delete, data: { confirm: 'Are you sure you want to delete this expense?' } %></td>
+      <% end %>
+    <% else %>
+      <div> No expense </div>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Add expense", new_event_expense_path(@event) %>
+

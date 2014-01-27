@@ -31,14 +31,21 @@ ShindigSheriff::Application.routes.draw do
           get 'reject', 'verify', 'delete'
         end
      end
+
+     resources :expenses, only: [:new, :create, :update, :destroy], shallow: true do
+        member do
+          put 'reject', 'verify', 'delete'
+        end
+        member do
+          get 'reject', 'verify', 'delete'
+        end
+     end
     end
   end
     
   resources :finance_approvers, only: [:new, :create, :show]
   resources :verify_users, only: [:new, :create]
   resources :email_registration, only: [:new, :create]
-
-
 
 end
 
