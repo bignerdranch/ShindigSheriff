@@ -6,36 +6,16 @@ class ApplicationPolicy
     @record = record
   end
 
-  def index?
-    false
+  def organizer?
+    user.has_role?("organizer")
   end
 
-  def show?
-    scope.where(:id => record.id).exists?
+  def finance_approver?
+    user.has_role?("finance approver")
   end
 
-  def create?
-    false
-  end
-
-  def new?
-    create?
-  end
-
-  def update?
-    false
-  end
-
-  def edit?
-    update?
-  end
-
-  def destroy?
-    false
-  end
-
-  def scope
-    Pundit.policy_scope!(user, record.class)
+  def verified? 
+    user.verified?
   end
 end
 

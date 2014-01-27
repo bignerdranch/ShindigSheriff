@@ -4,36 +4,13 @@ class ExpensesController < ApplicationController
   def new
     @event = Event.find(params[:event_id])
     @expense = @event.expenses.new
-  end
-
-  def destroy
-    @expense = Expense.find(params[:id])
-    @expense.delete
-    redirect_to dashboard_path(@user)
-    flash[:notice] =  "expense #{@expense.category_details} for $#{@expense.estimated_amount} has been deleted"
-  end
-
-  def show
-  end
-
-  def verify
-      @expense = Expense.find(params[:id])
-
-      @expense.update_attribute(:status, true)
-      redirect_to dashboard_path(@user)
-      flash[:notice] =  "expense has been verified"
-  end
-
-   def reject
-      @expense = Expense.find(params[:id])
-      @expense.update_attribute(:status, false)
-      redirect_to dashboard_path(@user)
-      flash[:notice] =  "expense has been rejected"
+    authorize @expense
   end
 
   def create
     @event = Event.find(params[:event_id])
     @expense = Expense.new(expense_params)
+    authorize @expense
     
     if @expense.valid? 
       @event.expenses.build(expense_params).save!
@@ -44,6 +21,33 @@ class ExpensesController < ApplicationController
       #{@expense.errors.full_messages.to_sentence}"
       redirect_to new_event_expense_path(@event)
     end
+  end
+
+  def destroy
+    @expense = Expense.find(params[:id])
+    authorize @expense
+    @expense.delete
+    redirect_to dashboard_path(@user)
+    flash[:notice] =  "expense #{@expense.category_details} for $#{@expense.estimated_amount} has been deleted"
+  end
+
+  def show
+  end
+
+  def verify
+      @expense = Expense.find(params[:id])
+      authorize @expense
+      @expense.update_attribute(:status, true)
+      redirect_to dashboard_path(@user)
+      flash[:notice] =  "expense has been verified"
+  end
+
+   def reject
+      @expense = Expense.find(params[:id])
+      authorize @expense
+      @expense.update_attribute(:status, false)
+      redirect_to dashboard_path(@user)
+      flash[:notice] =  "expense has been rejected"
   end
 
   private
