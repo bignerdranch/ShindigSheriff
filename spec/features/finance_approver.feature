@@ -39,7 +39,7 @@ Scenario: Finance Approver assigned to an organization
     When I click "Verify"
     Then I should see "Verified"
 
-  Scenario: Verifying Income
+  Scenario: Rejecting Income
     Given I am a logged in finance approver
       And there is an income pending approval
       And I am at the homepage

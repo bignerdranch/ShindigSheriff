@@ -23,12 +23,12 @@ ShindigSheriff::Application.routes.draw do
 
   scope shallow_prefix: "sekret" do
     resources :events, only: [] do
-      resources :incomes, only: [:new, :create, :update], shallow: true do
+      resources :incomes, only: [:new, :create, :update, :destroy], shallow: true do
         member do
-          put 'reject', 'verify' 
+          put 'reject', 'verify', 'delete'
         end
         member do
-          get 'reject', 'verify'
+          get 'reject', 'verify', 'delete'
         end
      end
     end
