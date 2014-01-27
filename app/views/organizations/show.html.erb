@@ -1,8 +1,11 @@
 <h2><%= @organization.name %></h2>
 <p><%= @organization.website %></p>
 <%= render partial: "organizations_finance_approver" %>
-</br>
+<%= link_to 'Edit Organization', edit_user_organization_path(current_user, @organization) %></br> 
+<%= link_to 'Destroy Organization', user_organization_path(current_user, @organization), method: :delete, data: { confirm: 'Are you sure?' } %></br> 
+<%= link_to 'Back to Organizations', user_organizations_path(current_user) %></br>
 
+<br>
 <h3>Listing Events</h3>
 
 <table>
@@ -10,16 +13,16 @@
     <tr>
       <th>Event</th>
       <th>Date</th>
+      <th>Website</th>
     </tr>
   </thead>
   <tbody>
     <% if @organization.events %>
       <% @organization.events.each do |event| %>
         <tr>
-          <td><%= event.name %></td>
+          <td><%= link_to "#{event.name}", sekret_event_path(event) %></td>
           <td><%= event.date %></td>
           <td><%= @organization.name %></td>
-          <td><%= link_to 'Show Event', sekret_event_path(event) %></td>
         </tr>
       <% end %>
     <% else %>
@@ -29,7 +32,6 @@
 </table>
 
 <%= link_to 'New Event', new_organization_event_path(@organization) %></br>
-<%= link_to 'Edit', edit_user_organization_path(current_user, @organization) %></br> 
-<%= link_to 'Back to Organizations', user_organizations_path(current_user) %></br>
+
 
 
