@@ -1,6 +1,6 @@
-<h1><%= current_user.email %></h1>
-
-<h3>Listing organizations</h3>
+<h1>Home Dashboard</h1>
+<br>
+<h3>Your Organizations</h3>
 
 <table>
   <thead>
@@ -15,28 +15,20 @@
     <% if current_user.organizations %>
       <% current_user.organizations.each do |organization| %>
         <tr>
-          <td><%= organization.name %></td>
+          <td><%= link_to "#{organization.name}", user_organization_path(current_user, organization) %></td>
           <td><%= organization.website %></td>
           <td><%= organization.user.email %></td>
-          <td><%= link_to 'New Event', new_organization_event_path(organization) %></td>
-
-          <td><%= link_to 'Show', user_organization_path(current_user, organization) %></td>
-          <td><%= link_to 'Edit', edit_user_organization_path(current_user, organization) %></td>
-          <td><%= link_to 'Destroy', user_organization_path(current_user, organization), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+          </tr>
       <% end %>
     <% else %>
       <div> No Organizations </div>
     <% end %>
   </tbody>
+  <%= link_to 'New Organization', new_user_organization_path(current_user) %>
 </table>
 
-<br>
 
-<%= link_to 'New Organization', new_user_organization_path(current_user) %>
-
-
-<h3>Listing Events</h3>
+<h3>Your Events</h3>
 
 <table>
   <thead>
@@ -49,10 +41,8 @@
     <% if current_user.events %>
       <% current_user.events.each do |event| %>
         <tr>
-          <td><%= event.name %></td>
+          <td><%= link_to "#{event.name}", sekret_event_path(event) %></td>
           <td><%= event.date %></td>
-          <td><%= link_to 'Show Event', sekret_event_path(event) %>
-</td>
         </tr>
       <% end %>
     <% else %>
@@ -61,6 +51,7 @@
   </tbody>
 </table>
 
+<h3>Your Incomes</h3>
 <%= render template: "incomes/index" %> 
 
 
