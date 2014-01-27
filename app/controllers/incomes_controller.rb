@@ -4,36 +4,13 @@ class IncomesController < ApplicationController
   def new
     @event = Event.find(params[:event_id])
     @income = @event.incomes.new
-  end
-
-  def destroy
-    @income = Income.find(params[:id])
-    @income.delete
-    redirect_to params[:return_to] || dashboard_path(@user)
-    flash[:notice] =  "Income #{@income.category_details} for $#{@income.estimated_amount} has been deleted"
-  end
-
-  def show
-  end
-
-  def verify
-      @income = Income.find(params[:id])
-
-      @income.update_attribute(:status, true)
-      redirect_to dashboard_path(@user)
-      flash[:notice] =  "Income has been verified"
-  end
-
-   def reject
-      @income = Income.find(params[:id])
-      @income.update_attribute(:status, false)
-      redirect_to dashboard_path(@user)
-      flash[:notice] =  "Income has been rejected"
+    authorize @income
   end
 
   def create
     @event = Event.find(params[:event_id])
     @income = Income.new(income_params)
+    authorize @income
     
     if @income.valid? 
       @event.incomes.build(income_params).save!
@@ -45,6 +22,34 @@ class IncomesController < ApplicationController
       redirect_to new_event_income_path(@event)
     end
   end
+
+  def destroy
+    @income = Income.find(params[:id])
+    authorize @income
+    @income.delete
+    redirect_to params[:return_to] || dashboard_path(@user)
+    flash[:notice] =  "Income #{@income.category_details} for $#{@income.estimated_amount} has been deleted"
+  end
+
+  def show
+  end
+
+  def verify
+      @income = Income.find(params[:id])
+      authorize @income
+      @income.update_attribute(:status, true)
+      redirect_to dashboard_path(@user)
+      flash[:notice] =  "Income has been verified"
+  end
+
+   def reject
+      @income = Income.find(params[:id])
+      authorize @income
+      @income.update_attribute(:status, false)
+      redirect_to dashboard_path(@user)
+      flash[:notice] =  "Income has been rejected"
+  end
+
 
   private
 

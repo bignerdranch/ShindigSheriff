@@ -12,10 +12,10 @@ class IncomePolicy < ApplicationPolicy
   end
 
   def verify?
-    finance_approver? && verified?
+    finance_approver? 
   end
 
   def reject?
-    finance_approver? && verified?
+    finance_approver?  
   end
 end
