@@ -31,9 +31,12 @@ class User < ActiveRecord::Base
   end
 
   # Finance Approver Select
-
   def info
-    "#{first_name.capitalize} #{last_name.capitalize} : #{email}"
+    "#{display_name} : #{email}"
+  end
+
+  def display_name
+    "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
   # User currently has one role, but may have many in the future

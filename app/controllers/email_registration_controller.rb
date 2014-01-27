@@ -7,14 +7,18 @@ class EmailRegistrationController < ApplicationController
     @user = User.new(user_params)
     
     @user.role = params[:user][:role]
-    @user.organizations << Organization.find(session[:organization_id])
+    organization = Organization.find(session[:organization_id])
+    @user.organizations << organization
     @user.password = Devise.friendly_token.first(8)
 
     if @user.save
+      UserMailer.registration_email({user: @user, 
+                                    organization_name: organization.name, 
+                                    organizer_name: current_user.display_name}).deliver
       flash[:notice] = "#{@user.email} has been sent an email verification!"
       redirect_to dashboard_path(current_user)
     else
-      flash[:errors] = "#{@user.errors.full_messages.to_sentence}"
+      flash[:notice] = "#{@user.errors.full_messages.to_sentence}"
       redirect_to new_finance_approver_path
     end
   end
