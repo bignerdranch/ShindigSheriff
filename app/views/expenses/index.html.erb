@@ -1,0 +1,26 @@
+<% if current_user.expenses.empty? %>
+  No expenses!
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Organization</th>
+        <th>Amount</th>
+        <th>Category Details</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_user.expenses.each do |expense| %>
+        <tr>
+          <td><%= expense.event.organizations.first.name.titleize %></td>
+          <td><%= number_to_currency(expense.estimated_amount, precision: 2) %></td>
+          <td><%= expense.category_details %></td>
+          <td><%= status_clarify(expense.status) %></td>
+          <td><%= link_to 'Delete', sekret_expense_path(expense), method: :delete, data: { confirm: 'Are you sure you want to delete this expense?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

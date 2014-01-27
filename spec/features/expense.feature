@@ -22,4 +22,4 @@ Feature: Expenses
       | expense_category_details   | meeting setup             |   
 
       And I click "Add Expense"
-    Then I should see "Estimated Amount can't be blank"
+    Then I should see "Category details can't be blank"
