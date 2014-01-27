@@ -24,11 +24,11 @@ Scenario: Selecting a Finance Approver for an organization
   Then I should see "is a Finance Approver!"
 
 
-Scenario: Pending income
-  Given I am a logged in finance approver
-    And there is an income pending approval
-    And I am at the homepage
-  Then I should see "Pending"
+  Scenario: Pending income
+    Given I am a logged in finance approver
+      And there is an income pending approval
+      And I am at the homepage
+    Then I should see "Pending"
 
   Scenario: Verifying Income
     Given I am a logged in finance approver
@@ -40,6 +40,27 @@ Scenario: Pending income
   Scenario: Rejecting Income
     Given I am a logged in finance approver
       And there is an income pending approval
+      And I am at the homepage
+    When I click "Reject"
+    Then I should see "Rejected" 
+
+
+  Scenario: Pending expense
+    Given I am a logged in finance approver
+      And there is an expense pending approval
+      And I am at the homepage
+    Then I should see "Pending"
+
+  Scenario: Verifying expense
+    Given I am a logged in finance approver
+      And there is an expense pending approval
+      And I am at the homepage
+    When I click "Verify"
+    Then I should see "Verified"
+
+  Scenario: Rejecting expense
+    Given I am a logged in finance approver
+      And there is an expense pending approval
       And I am at the homepage
     When I click "Reject"
     Then I should see "Rejected" 

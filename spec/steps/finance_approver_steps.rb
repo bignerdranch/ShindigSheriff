@@ -11,6 +11,11 @@ step "I am at the Select A Finance Approver page" do
   click_link_or_button "Add Finance Approver"
 end
 
+step "I am assigned to an organization" do 
+  organization = FactoryGirl.create(:organization, finance_approver_id: @user.id, user_id: '999')
+  @user.organizations << organization
+end
+
 step "I select an finance approver" do
   page.select "#{@fa.info}", :from => "finance_approver_id"
   click_link_or_button "Add Finance Approver"
@@ -30,25 +35,17 @@ step "I am a logged in finance approver" do
 end
 
 step "there is an income pending approval" do 
-
   organization = FactoryGirl.create(:organization, finance_approver_id: @user.id, user_id: '1')
-
   event = FactoryGirl.create(:event)
   event.organizations << organization
- 
   income = FactoryGirl.create(:income, event_id: event.id)
-
 end
 
-
-step "I am assigned to an organization" do 
-
-  organization = FactoryGirl.create(:organization, finance_approver_id: @user.id, user_id: '999')
-  
-
-  @user.organizations << organization
- 
+step "there is an expense pending approval" do 
+  organization = FactoryGirl.create(:organization, finance_approver_id: @user.id, user_id: '1')
+  event = FactoryGirl.create(:event)
+  event.organizations << organization
+  expense = FactoryGirl.create(:expense, event_id: event.id)
 end
-
 
 
