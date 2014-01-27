@@ -1,4 +1,4 @@
-<% if current_user.incomes.empty? %>
+<% if current_user.all_incomes.empty? %>
   No Incomes!
 <% else %>
   <table>
@@ -12,13 +12,14 @@
       </tr>
     </thead>
     <tbody>
-      <% current_user.incomes.each do |income| %>
+      <% current_user.all_incomes.each do |income| %>
         <tr>
           <td><%= income.event.organizations.first.name.titleize %></td>
           <td><%= number_to_currency(income.estimated_amount, precision: 2) %></td>
           <td><%= income.category_details %></td>
           <td><%= status_clarify(income.status) %></td>
-          <td><%= link_to 'Delete', sekret_income_path(income), method: :delete, data: { confirm: 'Are you sure you want to delete this income?' } %></td>
+          <td><%= link_to "Verify",  verify_sekret_income_path(income.id) %></td>
+          <td><%= link_to "Reject",  reject_sekret_income_path(income.id) %></td>
         </tr>
       <% end %>
     </tbody>

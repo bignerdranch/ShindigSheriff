@@ -23,3 +23,9 @@ Feature: Adding a new income
       And I click "Add Income"
     Then I should see "Category details can't be blank"
 
+
+  Scenario: Succesfully deleting an existing income
+    Given I am a logged in user with an income
+      And I am at the homepage
+    When I click "Delete"
+    Then I should see "has been deleted"
