@@ -6,11 +6,34 @@ class IncomesController < ApplicationController
     @income = @event.incomes.new
   end
 
+  def destroy
+    @income = Income.find(params[:id])
+    @income.delete
+    redirect_to dashboard_path(@user)
+    flash[:notice] =  "Income #{@income.category_details} for $#{@income.estimated_amount} has been deleted"
+  end
+
+  def show
+  end
+
+  def verify
+      @income = Income.find(params[:id])
+
+      @income.update_attribute(:status, true)
+      redirect_to dashboard_path(@user)
+      flash[:notice] =  "Income has been verified"
+  end
+
+   def reject
+      @income = Income.find(params[:id])
+      @income.update_attribute(:status, false)
+      redirect_to dashboard_path(@user)
+      flash[:notice] =  "Income has been rejected"
+  end
+
   def create
     @event = Event.find(params[:event_id])
     @income = Income.new(income_params)
-    #@event = Event.find(params["event_id"])
-    
     
     if @income.valid? 
       @event.incomes.build(income_params).save!
@@ -27,7 +50,7 @@ class IncomesController < ApplicationController
 
   def income_params
     params.require(:income).permit(:estimated_amount, :actual_amount, 
-                                   :date_received, :category_details, :event_id)
+                                   :date_received, :category_details, :status, :event_id)
   end
 
 end

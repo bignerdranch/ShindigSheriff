@@ -2,7 +2,6 @@ step "I see a welcome message" do
   expect(page).to have_content "Logged in as #{@user.email}"
 end
 
-
 step "I am the user:" do |table|
   user_info = {}
   table.hashes.each do |user|

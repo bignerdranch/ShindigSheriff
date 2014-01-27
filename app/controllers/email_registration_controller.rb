@@ -8,10 +8,10 @@ class EmailRegistrationController < ApplicationController
     
     @user.role = params[:user][:role]
     organization = Organization.find(session[:organization_id])
-    @user.organizations << organization
     @user.password = Devise.friendly_token.first(8)
 
     if @user.save
+      organization.update_attributes(finance_approver: @user)
       UserMailer.registration_email({user: @user, 
                                     organization_name: organization.name, 
                                     organizer_name: current_user.display_name}).deliver

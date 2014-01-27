@@ -2,32 +2,31 @@
 
 <%= form_for([@organization, @event], :url => organization_events_path) do |f| %>
 
-<%= f.label :Name %>
-<%= f.text_field :name, placeholder: @event.name %><br/>
-<%= f.label :date %>
-<%= f.date_field :date, placeholder: @event.date %><br/>
-<%= f.label :time %>
-<%= f.time_field :time, placeholder: @event.time %><br/>
-<%= f.label :location %>
-<%= f.text_field :location, placeholder: @event.location %><br/>
-<%= f.label :purpose %>
-<%= f.text_field :purpose, placeholder: @event.purpose %><br/>
+  <%= f.label :Name %>
+  <%= f.text_field :name, placeholder: @event.name %><br/>
+  <%= f.label :date %>
+  <%= f.date_field :date, placeholder: @event.date %><br/>
+  <%= f.label :time %>
+  <%= f.time_field :time, placeholder: @event.time %><br/>
+  <%= f.label :location %>
+  <%= f.text_field :location, placeholder: @event.location %><br/>
+  <%= f.label :purpose %>
+  <%= f.text_field :purpose, placeholder: @event.purpose %><br/>
 
 
-<% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+  <% if @event.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+  <%= f.submit "Create Event", class: "button tiny radius" %>
 <% end %>
 
