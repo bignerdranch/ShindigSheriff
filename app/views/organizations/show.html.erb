@@ -6,14 +6,14 @@
 <%= link_to 'Back to Organizations', user_organizations_path(current_user) %></br>
 
 <br>
-<h3>Listing Events</h3>
+<h3>Events</h3>
 
 <table>
   <thead>
     <tr>
-      <th>Event</th>
+      <th>Event Name</th>
       <th>Date</th>
-      <th>Website</th>
+     
     </tr>
   </thead>
   <tbody>
@@ -22,7 +22,6 @@
         <tr>
           <td><%= link_to "#{event.name}", sekret_event_path(event) %></td>
           <td><%= event.date %></td>
-          <td><%= @organization.name %></td>
         </tr>
       <% end %>
     <% else %>
