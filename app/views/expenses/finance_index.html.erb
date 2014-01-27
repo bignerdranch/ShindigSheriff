@@ -1,0 +1,27 @@
+<% if current_user.all_expenses.empty? %>
+  No Expenses!
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Organization</th>
+        <th>Amount</th>
+        <th>Category Details</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_user.all_expenses.each do |expense| %>
+        <tr>
+          <td><%= expense.event.organizations.first.name.titleize %></td>
+          <td><%= number_to_currency(expense.estimated_amount, precision: 2) %></td>
+          <td><%= expense.category_details %></td>
+          <td><%= status_clarify(expense.status) %></td>
+          <td><%= link_to "Verify",  verify_sekret_expense_path(expense.id) %></td>
+          <td><%= link_to "Reject",  reject_sekret_expense_path(expense.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

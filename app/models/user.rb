@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :events, through: :organizations
   has_many :incomes, through: :events
+  has_many :expenses, through: :events
 
   has_many :organizations
   accepts_nested_attributes_for :organizations
@@ -23,6 +24,10 @@ class User < ActiveRecord::Base
   # Finance Approver Incomes
    def all_incomes
      approver_organizations.map(&:incomes).flatten
+   end
+
+   def all_expenses
+    approver_organizations.map(&:expenses).flatten
    end
 
   # User Verification

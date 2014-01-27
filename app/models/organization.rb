@@ -8,6 +8,7 @@ class Organization < ActiveRecord::Base
   belongs_to :finance_approver, class_name: 'User'
 
   has_many :incomes, through: :events
+  has_many :expenses, through: :events
 
   def user
     User.find(user_id)
