@@ -3,6 +3,10 @@ step "I am at the homepage" do
   visit '/'
 end
 
+step "I am at the event page" do 
+  visit "/events/#{@event.id}"
+end
+
 step "I complete the form with the following:" do |table|
   table.hashes.each do |table|
     fill_in table["ID"], :with => table["Input"]
@@ -46,6 +50,14 @@ step "a user with an income" do
   @income = FactoryGirl.create(:income)
   @income.save
   @event.incomes << @income
+end
+
+step "a user with an expense" do
+  send "a user with an event"
+
+  @expense = FactoryGirl.create(:expense)
+  @expense.save!
+  @event.expenses << @expense
 end
 
 step "I am a new user" do

@@ -26,6 +26,6 @@ Feature: Adding a new income
 
   Scenario: Succesfully deleting an existing income
     Given I am a logged in user with an income
-      And I am at the homepage
+      And I am at the event page
     When I click "Delete"
     Then I should see "has been deleted"

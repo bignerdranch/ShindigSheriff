@@ -34,6 +34,14 @@ FactoryGirl.define do
     event
   end
 
+  factory :expense do
+    estimated_amount '10.01'
+    actual_amount    '10.02'
+    status           nil
+    category_details 'things' 
+    event
+  end
+
   factory :role do 
     name "organizer"
 
