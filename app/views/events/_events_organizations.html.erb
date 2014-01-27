@@ -1,15 +1,14 @@
 <table>
   <thead>
     <tr>
-      <th>Organization(s)</th>
+      <th>Org Name</th>
     </tr>
   </thead>
   <tbody>
     <% if @event.organizations %>
       <% @event.organizations.each do |organization| %>
         <tr>
-          <td><%= organization.name %></td>
-          <td><%= link_to 'Show', user_organization_path(current_user, organization) %></td>
+          <td><%= link_to "#{organization.name}", user_organization_path(current_user, organization) %></td>
         </tr>
       <% end %>
     <% else %>
