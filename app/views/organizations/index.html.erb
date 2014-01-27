@@ -1,34 +1,26 @@
-<h1>Listing organizations</h1>
 
-<%= link_to 'New Organization', new_organization_path %>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Site</th>
-      <th>User ID</th>
-      <th>Organization ID</th>
+      <th>Contact Email</th>
     </tr>
   </thead>
 
   <tbody>
-    <% if @user_organizations %>
-      <% @user_organizations.each do |organization| %>
+    <% if current_user.organizations %>
+      <% current_user.organizations.each do |organization| %>
         <tr>
-          <td><%= organization.name %></td>
+          <td><%= link_to "#{organization.name}", user_organization_path(current_user, organization) %></td>
           <td><%= organization.website %></td>
-          <td><%= organization.user_id %></td>
-          <td><%= organization.id %></td>  
-          <td><%= link_to 'Show', user_organization_path(current_user, organization) %></td>
-          <td><%= link_to 'Edit', edit_user_organization_path(current_user, organization) %></td>
-          <td><%= link_to 'Destroy', user_organization_path(current_user, organization), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+          <td><%= organization.user.email %></td>
+          </tr>
       <% end %>
     <% else %>
       <div> No Organizations </div>
     <% end %>
   </tbody>
+  <%= link_to 'New Organization', new_user_organization_path(current_user) %>
 </table>
-
-<br>
