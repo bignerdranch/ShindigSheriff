@@ -10,13 +10,5 @@ module IncomesHelper
     end
   end
 
-  def status_update(boolean)
-    if boolean == true
-      boolean = false
-    elsif boolean == false
-      boolean = true
-    end
-  end
-
 end
 
