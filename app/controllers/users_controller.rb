@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       flash[:notice] = "#{@user.first_name.upcase} has successfully been created!"
       redirect_to dashboard_path(@user)
     else
-      flash[:errors] = "#{@user.errors.full_messages.to_sentence}"
+      flash[:notice] = "#{@user.errors.full_messages.to_sentence}"
       redirect_to sign_in_path
     end
   end

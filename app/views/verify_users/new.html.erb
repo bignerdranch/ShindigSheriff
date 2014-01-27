@@ -1,1 +1,13 @@
-Please reset your password
+<h3> Please reset your password </h3>
+
+<div class="user-form">  
+  <%= form_for(current_user, url: verify_users_path, method: "post") do |f| %>
+    <%= f.label :password, "Please enter your temporary password" %>
+    <%= f.password_field :password, placeholder: "temporary password" %>
+
+    <%= f.label :new_password, "Please enter your new password" %>
+    <%= f.password_field :new_password, placeholder: "new password" %>
+
+    <%= f.submit "Submit", class: "button tiny radius" %>
+  <% end %>
+</div>
