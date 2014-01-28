@@ -9,10 +9,11 @@ class ExpensesController < ApplicationController
 
   def destroy
     @expense = Expense.find(params[:id])
+    event = @expense.event
     authorize @expense
-    @expense.delete
+    @expense.destroy
     flash[:notice] =  "expense #{@expense.category_details} for $#{@expense.estimated_amount} has been deleted"
-    redirect_to dashboard_path(@user)
+    redirect_to sekret_event_path(event)
   end
 
   def show
