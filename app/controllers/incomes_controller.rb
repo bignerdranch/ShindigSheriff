@@ -9,7 +9,7 @@ class IncomesController < ApplicationController
   def destroy
     @income = Income.find(params[:id])
     @income.delete
-    redirect_to dashboard_path(@user)
+    redirect_to params[:return_to] || dashboard_path(@user)
     flash[:notice] =  "Income #{@income.category_details} for $#{@income.estimated_amount} has been deleted"
   end
 

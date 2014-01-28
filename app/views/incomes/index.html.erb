@@ -18,7 +18,7 @@
           <td><%= number_to_currency(income.estimated_amount, precision: 2) %></td>
           <td><%= income.category_details %></td>
           <td><%= status_clarify(income.status) %></td>
-          <td><%= link_to 'Delete', sekret_income_path(income), method: :delete, data: { confirm: 'Are you sure you want to delete this income?' } %></td>
+          <td><%= link_to 'Delete', sekret_income_path(income, return_to: request.fullpath), method: :delete, data: { confirm: 'Are you sure you want to delete this income?' } %></td>
         </tr>
       <% end %>
     </tbody>
