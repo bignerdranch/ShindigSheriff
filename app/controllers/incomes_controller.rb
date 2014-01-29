@@ -4,10 +4,27 @@ class IncomesController < ApplicationController
   def new
     @event = Event.find(params[:event_id])
     @income = @event.incomes.new
+    authorize @income
+  end
+
+  def create
+    @event = Event.find(params[:event_id])
+    @income = @event.incomes.new(income_params)
+    authorize @income
+    
+    if @income.save
+      flash[:notice] = "#{@income.estimated_amount} has successfully been added to organization #{@event.name}!"
+      redirect_to sekret_event_path(@event)
+    else
+      flash[:notice] = "Error(s) while creating income:
+      #{@income.errors.full_messages.to_sentence}"
+      redirect_to new_event_income_path(@event)
+    end
   end
 
   def destroy
     @income = Income.find(params[:id])
+    authorize @income
     @income.delete
     redirect_to params[:return_to] || dashboard_path(@user)
     flash[:notice] =  "Income #{@income.category_details} for $#{@income.estimated_amount} has been deleted"
@@ -18,7 +35,7 @@ class IncomesController < ApplicationController
 
   def verify
       @income = Income.find(params[:id])
-
+      authorize @income
       @income.update_attribute(:status, true)
       redirect_to dashboard_path(@user)
       flash[:notice] =  "Income has been verified"
@@ -26,25 +43,12 @@ class IncomesController < ApplicationController
 
    def reject
       @income = Income.find(params[:id])
+      authorize @income
       @income.update_attribute(:status, false)
       redirect_to dashboard_path(@user)
       flash[:notice] =  "Income has been rejected"
   end
 
-  def create
-    @event = Event.find(params[:event_id])
-    @income = Income.new(income_params)
-    
-    if @income.valid? 
-      @event.incomes.build(income_params).save!
-      flash[:notice] = "#{@income.estimated_amount} has successfully been added to organization #{@event.name}!"
-      redirect_to sekret_event_path(@event)
-    else
-      flash[:notice] = "Error(s) while creating income:
-      #{@income.errors.full_messages.to_sentence}"
-      redirect_to new_event_income_path(@event)
-    end
-  end
 
   private
 

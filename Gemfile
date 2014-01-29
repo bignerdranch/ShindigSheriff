@@ -8,6 +8,7 @@ gem 'pg'
 
 #Authentication
 gem 'devise'
+gem 'pundit'
 
 #Assets
 gem 'sass-rails', '~> 4.0.0'
