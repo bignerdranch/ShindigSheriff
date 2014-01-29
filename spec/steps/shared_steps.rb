@@ -36,28 +36,23 @@ step "a user with an event" do
   @user.organizations << organization
 end
 
-step "a user with an income" do
-  @user = FactoryGirl.build(:user)
-  send "assign organizer role"
-  
-  organization = FactoryGirl.create(:organization)
-  @event = FactoryGirl.create(:event)
-  @event.save!
-
-  organization.events << @event
-  @user.organizations << organization
-
-  @income = FactoryGirl.create(:income)
-  @income.save
-  @event.incomes << @income
-end
-
 step "a user with an expense" do
   send "a user with an event"
-
   @expense = FactoryGirl.create(:expense)
   @expense.save!
   @event.expenses << @expense
+end
+
+step "a user with an income" do
+  send "a user with an event"
+  @income = FactoryGirl.create(:income)
+  @income.save!
+  @event.incomes << @income
+end
+
+step "I am a logged in user with an event" do
+  send "a user with an event"
+  send "I sign in"
 end
 
 step "I am a new user" do
