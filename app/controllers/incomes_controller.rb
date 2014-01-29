@@ -1,5 +1,5 @@
 class IncomesController < ApplicationController
-  include StatusHelper
+  include StatusHelper, CalculateTotalHelper
 
   def new
     @event = Event.find(params[:event_id])

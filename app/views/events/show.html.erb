@@ -5,6 +5,11 @@
 </br>
 
 <h2>Event Incomes</h2>
+
+Total Estimated Income = 
+  <%= number_to_currency(estimated_total(@event.incomes), precision: 2)  %>
+</br>
+
 <%= render 'events_incomes' %>
 </br>
 
