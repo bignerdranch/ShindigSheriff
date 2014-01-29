@@ -7,3 +7,10 @@ Feature: Calculate Total
     When I am at the event page
     Then I should see "Total Estimated Income = $30.00" 
 
+  Scenario: Adding Actual Incomes
+    Given I am a logged in user with an event
+      And I have an pending Income of "10.00"
+      And I have a verified Income of "20.00"
+      And I have a verified Income of "30.00"
+    When I am at the event page
+    Then I should see "Total Actual Income = $50.00" 

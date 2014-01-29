@@ -9,6 +9,8 @@
 Total Estimated Income = 
   <%= number_to_currency(estimated_total(@event.incomes), precision: 2)  %>
 </br>
+Total Actual Income = 
+  <%= number_to_currency(verified_total(@event.incomes), precision: 2)  %>
 
 <%= render 'events_incomes' %>
 </br>
