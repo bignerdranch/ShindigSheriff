@@ -4,5 +4,9 @@ module CalculateTotalHelper
     items.sum(:estimated_amount)
   end
 
+  def verified_total(items)
+    items.where(status: true).sum(:estimated_amount)
+  end
+
 end
 
