@@ -5,12 +5,16 @@
 </br>
 
 <h2>Event Incomes</h2>
-
-Total Estimated Income = 
-  <%= number_to_currency(estimated_total(@event.incomes), precision: 2)  %>
-</br>
-Total Actual Income = 
-  <%= number_to_currency(verified_total(@event.incomes), precision: 2)  %>
+<div>
+  <p class="total"> 
+    Total Estimated Income = 
+    <%= number_to_currency(estimated_total(@event.incomes), precision: 2)  %>
+  </p>
+  <p class="total"> 
+    Total Actual Income = 
+    <%= number_to_currency(verified_total(@event.incomes), precision: 2)  %>
+  </p>
+</div>
 
 <%= render 'events_incomes' %>
 </br>
