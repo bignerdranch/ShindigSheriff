@@ -9,7 +9,8 @@ Feature: Adding a new income
       | income_estimated_amount   | 20.00                     |
       | income_category_details   | top hats                  |   
 
-      And I click "Add Income"
+      And I select "Swag" from the category menu
+    When I click "Add Income"
     Then I should see "$20.00"
 
   Scenario: Incomplete form
@@ -19,9 +20,10 @@ Feature: Adding a new income
 
       | ID                        | Input                     |
       | income_estimated_amount   | 20.00                     |
+      | income_category_details   | top hats                  | 
 
-      And I click "Add Income"
-    Then I should see "Category details can't be blank"
+    When I click "Add Income"
+    Then I should see "Category can't be blank"
 
 
   Scenario: Succesfully deleting an existing income
