@@ -37,8 +37,11 @@ class IncomesController < ApplicationController
 
   def create
     @event = Event.find(params[:event_id])
-    @income = @event.incomes.new(income_params)
+    @income = @event.incomes.build(income_params)
     authorize @income
+    
+    category = Category.find_by_name(params[:income][:category][:name])
+    @income.category = category
     
     if @income.save
       flash[:notice] = "#{@income.estimated_amount} has successfully been added to organization #{@event.name}!"
