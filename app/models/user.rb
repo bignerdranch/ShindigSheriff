@@ -3,9 +3,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :first_name, :last_name, :email, :roles
-  validates_uniqueness_of :email
-
   has_many :events, through: :organizations
   has_many :incomes, through: :events
   has_many :expenses, through: :events
@@ -16,9 +13,14 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   accepts_nested_attributes_for :roles
 
-  validate :organizers_should_have_organization
-
   has_many :approver_organizations, class_name: "Organization", foreign_key: :finance_approver_id
+
+  validates :email,       presence: true, uniqueness: true
+  validates :first_name,  presence: true
+  validates :last_name,   presence: true
+  validates :roles,       presence: true
+
+  validate :organizers_should_have_organization
 
 
   # Finance Approver Incomes
