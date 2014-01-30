@@ -32,6 +32,7 @@ FactoryGirl.define do
     status           nil
     category_details 'things' 
     event
+    association :category
   end
 
   factory :expense do
@@ -50,5 +51,8 @@ FactoryGirl.define do
     end
   end
 
+  factory :category do
+    name "Swag"
+  end
 end
 
