@@ -7,6 +7,21 @@ class IncomesController < ApplicationController
     authorize @income
   end
 
+  def create
+    @event = Event.find(params[:event_id])
+    @income = Income.new(income_params)
+    
+    if @income.valid? 
+      @event.incomes.build(income_params).save!
+      flash[:notice] = "#{@income.estimated_amount} has successfully been added to organization #{@event.name}!"
+      redirect_to sekret_event_path(@event)
+    else
+      flash[:notice] = "Error(s) while creating income:
+      #{@income.errors.full_messages.to_sentence}"
+      redirect_to new_event_income_path(@event)
+    end
+  end
+
   def destroy
     @income = Income.find(params[:id])
     authorize @income
@@ -34,18 +49,6 @@ class IncomesController < ApplicationController
     redirect_to dashboard_path(@user)
   end
 
-   def create
-    @income = event.incomes.build(income_params)
-    authorize @income
-    
-    if @income.save
-      flash[:notice] = "#{@income.estimated_amount} has successfully been added to organization #{event.name}!"
-      redirect_to sekret_event_path(event)
-    else
-      flash[:notice] = "Error(s) while creating income: #{@income.errors.full_messages.to_sentence}"
-      redirect_to new_event_income_path(event)
-    end
-  end
 
   private
 
