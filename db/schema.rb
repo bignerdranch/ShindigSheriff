@@ -11,13 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140130164031) do
+ActiveRecord::Schema.define(version: 20140130214103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: true do |t|
+<<<<<<< HEAD
     t.string   "name", null: false
+=======
+    t.string   "name",       null: false
+>>>>>>> ea2931f... Incomes association to Categories migration [#63891710]
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,6 +64,7 @@ ActiveRecord::Schema.define(version: 20140130164031) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "status"
+    t.integer  "category_id", null: false
   end
 
   create_table "organizations", force: true do |t|
