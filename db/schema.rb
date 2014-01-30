@@ -17,11 +17,7 @@ ActiveRecord::Schema.define(version: 20140130214103) do
   enable_extension "plpgsql"
 
   create_table "categories", force: true do |t|
-<<<<<<< HEAD
-    t.string   "name", null: false
-=======
     t.string   "name",       null: false
->>>>>>> ea2931f... Incomes association to Categories migration [#63891710]
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,8 +60,10 @@ ActiveRecord::Schema.define(version: 20140130214103) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "status"
-    t.integer  "category_id", null: false
+    t.integer  "category_id",       null: false
   end
+
+  add_index "incomes", ["category_id"], name: "index_incomes_on_category_id", using: :btree
 
   create_table "organizations", force: true do |t|
     t.integer  "user_id"
