@@ -14,3 +14,18 @@ Feature: Calculate Total
       And I have a verified Income of "30.00"
     When I am at the event page
     Then I should see "Total Actual Income = $50.00" 
+
+  Scenario: Adding Estimated Expenses
+    Given I am a logged in user with an event
+      And I have an pending Expense of "40.00"
+      And I have a verified Expense of "20.00"
+    When I am at the event page
+    Then I should see "Total Estimated Expense = $60.00" 
+
+  Scenario: Adding Actual Expenses
+    Given I am a logged in user with an event
+      And I have an pending Expense of "50.00"
+      And I have a verified Expense of "50.00"
+      And I have a verified Expense of "50.00"
+    When I am at the event page
+    Then I should see "Total Actual Expense = $100.00" 
