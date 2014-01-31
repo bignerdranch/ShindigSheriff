@@ -1,2 +1,10 @@
 Role.create(name: "finance approver")
 Role.create(name: "organizer")
+
+Category.create(name: "Money")
+Category.create(name: "Swag")
+Category.create(name: "Prizes")
+Category.create(name: "Food")
+Category.create(name: "Resources")
+Category.create(name: "Space")
+Category.create(name: "Other")
