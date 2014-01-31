@@ -10,6 +10,10 @@
 
       <%= f.text_field :category_details, placeholder: "optional category details, e.g. stickers" %>
 
+      <%= f.fields_for @income.build_category do |org| %>
+        <%= org.collection_select :name, @categories, :name, :name, prompt: "Select a Category" %>
+      <% end %>
+
       <%= f.hidden_field :event_id, value: "#{@event.id}" %>
 
       <%= f.submit "Add Income", class: "button radius tiny" %>
