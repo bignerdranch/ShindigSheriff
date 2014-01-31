@@ -3,6 +3,7 @@ class IncomesController < ApplicationController
 
   def new
     @event = Event.find(params[:event_id])
+    @categories = Category.all
     @income = @event.incomes.new
     authorize @income
   end
