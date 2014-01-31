@@ -7,4 +7,7 @@ step "I am a logged in user with an income" do
   send "I sign in"
 end
 
+step "I select :category from the category menu" do |category|
+  page.select category, :from => "income_category_name"
+end
 
