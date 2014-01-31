@@ -8,6 +8,6 @@ step "I am a logged in user with an income" do
 end
 
 step "I select :category from the category menu" do |category|
-  page.select category, :from => "income_category_name"
+  page.select category, :from => "income_category_id"
 end
 
