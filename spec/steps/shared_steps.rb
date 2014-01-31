@@ -34,6 +34,8 @@ step "a user with an event" do
 
   organization.events << @event
   @user.organizations << organization
+
+  @category = Category.where(FactoryGirl.attributes_for(:category)).first_or_create!
 end
 
 step "a user with an expense" do
@@ -45,7 +47,7 @@ end
 
 step "a user with an income" do
   send "a user with an event"
-  @income = FactoryGirl.create(:income)
+  @income = FactoryGirl.create(:income, category: @category)
   @income.save!
   @event.incomes << @income
 end
@@ -99,3 +101,4 @@ step "assign finance approver role" do
   @user.roles << Role.find_or_create_by(name: "finance approver")
   @user.save!
 end
+
