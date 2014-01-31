@@ -2,9 +2,8 @@ class IncomesController < ApplicationController
   include StatusHelper, CalculateTotalHelper
 
   def new
-    @event = Event.find(params[:event_id])
     @categories = Category.all
-    @income = @event.incomes.new
+    @income = event.incomes.new
     authorize @income
   end
 
@@ -36,17 +35,15 @@ class IncomesController < ApplicationController
   end
 
    def create
-    @event = Event.find(params[:event_id])
-    @income = @event.incomes.build(income_params)
+    @income = event.incomes.build(income_params)
     authorize @income
     
     if @income.save
-      flash[:notice] = "#{@income.estimated_amount} has successfully been added to organization #{@event.name}!"
-      redirect_to sekret_event_path(@event)
+      flash[:notice] = "#{@income.estimated_amount} has successfully been added to organization #{event.name}!"
+      redirect_to sekret_event_path(event)
     else
-      flash[:notice] = "Error(s) while creating income:
-      #{@income.errors.full_messages.to_sentence}"
-      redirect_to new_event_income_path(@event)
+      flash[:notice] = "Error(s) while creating income: #{@income.errors.full_messages.to_sentence}"
+      redirect_to new_event_income_path(event)
     end
   end
 
@@ -57,6 +54,11 @@ class IncomesController < ApplicationController
                                    :date_received, :category_details,
                                    :status, :event_id, :category_id)
   end
+
+  def event
+    @hello ||= Event.find(params[:event_id])
+  end
+  helper_method(:event)
 
 end
 
