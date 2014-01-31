@@ -40,9 +40,6 @@ class IncomesController < ApplicationController
     @income = @event.incomes.build(income_params)
     authorize @income
     
-    category = Category.find_by_name(params[:income][:category][:name])
-    @income.category = category if category
-    
     if @income.save
       flash[:notice] = "#{@income.estimated_amount} has successfully been added to organization #{@event.name}!"
       redirect_to sekret_event_path(@event)
@@ -56,8 +53,9 @@ class IncomesController < ApplicationController
   private
 
   def income_params
-    params.require(:income).permit(:estimated_amount, :actual_amount, 
-                                   :date_received, :category_details, :status, :event_id)
+    params.require(:income).permit(:estimated_amount, :actual_amount,
+                                   :date_received, :category_details,
+                                   :status, :event_id, :category_id)
   end
 
 end
