@@ -32,6 +32,7 @@ FactoryGirl.define do
     status           nil
     category_details 'things' 
     event
+    association :category
   end
 
   factory :expense do
@@ -48,6 +49,10 @@ FactoryGirl.define do
     trait :as_finance_approver do 
       name "finance approver"
     end
+  end
+
+  factory :category do
+    name "Swag" 
   end
 
 end
