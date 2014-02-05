@@ -23,8 +23,12 @@ gem 'turbolinks'
 #JSON
 gem 'jbuilder', '~> 1.2'
 
-#Error Handling
-gem 'better_errors'
+group :development do 
+  #Error Handling
+  gem 'better_errors'
+  #Error Handling REPL
+  gem 'binding_of_caller'
+end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.13.1'
