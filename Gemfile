@@ -30,7 +30,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.13.1'
   gem 'turnip'
   gem 'capybara'
-  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-byebug'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'simplecov', :require => false, :group => :test
