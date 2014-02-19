@@ -18,3 +18,4 @@ Feature: Adding a new event
 
       And I click "Create Event"
     Then I should see "Date can't be blank"
+

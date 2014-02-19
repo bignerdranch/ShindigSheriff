@@ -42,7 +42,7 @@ class OrganizationsController < ApplicationController
       redirect_to edit_organization_path(@organization)
     end
   end
-  
+
   def destroy
     if @organization.destroy
       flash[:notice] =  "expense #{@organization.name} has been deleted"
@@ -52,7 +52,6 @@ class OrganizationsController < ApplicationController
       redirect_to organization_path(@organization)
     end
   end
-  
 
   private
     # Use callbacks to share common setup or constraints between actions.

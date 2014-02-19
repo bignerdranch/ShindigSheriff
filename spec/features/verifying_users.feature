@@ -21,4 +21,3 @@ Feature: Verifying a user registered through email
       And I click "Submit"
     Then I should see "There was a problem changing your temporary password"
 
-    

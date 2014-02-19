@@ -37,3 +37,4 @@ Feature: Signing In
       And I am at the homepage
     When I sign in
     Then I should see "Please reset your password"
+

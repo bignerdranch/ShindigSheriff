@@ -4,5 +4,5 @@ step "this user exists:" do |table|
   @existing_user = User.new(user_info)
   @existing_user.roles << Role.find_or_create_by(name: "finance approver")
   @existing_user.save!
-end 
+end
 

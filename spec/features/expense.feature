@@ -7,7 +7,7 @@ Feature: Expenses
 
       | ID                         | Input                     |
       | expense_estimated_amount   | 10.00                     |
-      | expense_category_details   | meeting setup             |   
+      | expense_category_details   | meeting setup             |
 
       And I click "Add Expense"
     Then I should see "$10.00"

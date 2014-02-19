@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    
+
     user_role = params[:user][:role][:id]
     @user.role = user_role
 

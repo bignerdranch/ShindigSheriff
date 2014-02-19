@@ -6,7 +6,7 @@ class ExpensesController < ApplicationController
     @expense = @event.expenses.new
     authorize @expense
   end
-  
+
   def create
     @expense = event.expenses.build(expense_params)
     authorize @expense
@@ -48,12 +48,11 @@ class ExpensesController < ApplicationController
     redirect_to dashboard_path(@user)
   end
 
-
   private
 
   def expense_params
-    params.require(:expense).permit(:estimated_amount, :actual_amount, 
-                                   :date_received, :category_details, 
+    params.require(:expense).permit(:estimated_amount, :actual_amount,
+                                   :date_received, :category_details,
                                    :status, :event_id)
   end
 

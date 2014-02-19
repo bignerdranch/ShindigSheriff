@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   has_many :incomes
   has_many :expenses
   has_many :users, through: :organizations
-  
+
   accepts_nested_attributes_for :organizations
 
   validates :date,      presence: true
@@ -12,6 +12,6 @@ class Event < ActiveRecord::Base
   validates :name,      presence: true
   validates :purpose,   presence: true
   validates :time,      presence: true
-  
+
 end
 

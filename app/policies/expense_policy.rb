@@ -19,3 +19,4 @@ class ExpensePolicy < ApplicationPolicy
     finance_approver? && verified?
   end
 end
+

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UserMailer do
 
-  context "#registration_email" do 
+  context "#registration_email" do
     before(:each) do
       @current_user = FactoryGirl.build(:user)
       @current_user.roles << Role.find_or_create_by(name: "organizer")
@@ -14,8 +14,8 @@ describe UserMailer do
 
 
       @mail = UserMailer.registration_email(
-                                      user: @invited_user, 
-                                      organization_name: @organization.name, 
+                                      user: @invited_user,
+                                      organization_name: @organization.name,
                                       organizer_name: @current_user.display_name)
     end
 
@@ -38,5 +38,6 @@ describe UserMailer do
     it 'renders the sender email' do
       @mail.from.should == ['ShindigSheriff@gmail.com']
     end
-  end 
+  end
 end
+

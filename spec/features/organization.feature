@@ -4,10 +4,10 @@ Feature: Organizations
     Given I am a logged in user
       And I am at the new organizations page
     When I complete the form with the following:
-      
+
       | ID                        | Input                     |
       | organization_name         | Cylon Meetup              |
-      | organization_website      | cylons.notaruse.com       |     
+      | organization_website      | cylons.notaruse.com       |
 
       And I click "Create Organization"
     Then I should see "Cylon Meetup"
@@ -17,10 +17,10 @@ Feature: Organizations
     Given I am a logged in user
       And I am at the new organizations page
     When I complete the form with the following:
-      
+
       | ID                        | Input                     |
       | organization_name         |                           |
-      | organization_website      | cylons.notaruse.com       |     
+      | organization_website      | cylons.notaruse.com       |
 
       And I click "Create Organization"
     Then I should see "Error(s) while creating organization: Name can't be blank"
@@ -31,10 +31,10 @@ Feature: Organizations
     Given I am a logged in user
       And I am at the edit organization page
     When I complete the form with the following:
-      
+
       | ID                        | Input                     |
       | organization_name         | Cylon Meetup              |
-      | organization_website      | cylons.notaruse.com       |     
+      | organization_website      | cylons.notaruse.com       |
 
       And I click "Update Organization"
     Then I should see "Cylon Meetup"
@@ -44,10 +44,10 @@ Feature: Organizations
     Given I am a logged in user
       And I am at the edit organization page
     When I complete the form with the following:
-      
+
       | ID                        | Input                     |
       | organization_name         |                           |
-      | organization_website      | cylons.notaruse.com       |     
+      | organization_website      | cylons.notaruse.com       |
 
       And I click "Update Organization"
     Then I should see "Error(s) while editing organization: Name can't be blank"

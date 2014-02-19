@@ -1,13 +1,13 @@
 <h2><%= @organization.name %></h2>
 <p><%= @organization.website %></p>
 <%= render partial: "organizations_finance_approver" %>
-<%= link_to 'Edit Organization', edit_user_organization_path(current_user, @organization) %></br> 
-<%= link_to 'Destroy Organization', user_organization_path(current_user, @organization), method: :delete, data: { confirm: 'Are you sure?' } %></br> 
+<%= link_to 'Edit Organization', edit_user_organization_path(current_user, @organization) %></br>
+<%= link_to 'Destroy Organization', user_organization_path(current_user, @organization), method: :delete, data: { confirm: 'Are you sure?' } %></br>
 
 <br>
 
 <h2>Events</h2>
-<%= render template: "events/_events_index" %> 
+<%= render template: "events/_events_index" %>
 
 <%= link_to "Back to Dashboard", dashboard_path %>
 
