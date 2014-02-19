@@ -47,7 +47,7 @@ end
 
 step "a user with an income" do
   send "a user with an event"
-  @income = FactoryGirl.create(:income, category_id: @category.id)
+  @income = FactoryGirl.create(:income, category: @category)
   @income.save!
   @event.incomes << @income
 end

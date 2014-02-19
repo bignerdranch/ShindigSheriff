@@ -1,5 +1,6 @@
 class Income < ActiveRecord::Base
   belongs_to :event
+  belongs_to :category
 
   validates :category_details, presence: true
   validates :category_id, presence: true

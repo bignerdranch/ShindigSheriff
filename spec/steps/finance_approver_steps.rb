@@ -39,7 +39,7 @@ step "there is an income pending approval" do
   event = FactoryGirl.create(:event)
   event.organizations << organization
   category = FactoryGirl.create(:category)
-  income = FactoryGirl.create(:income, event_id: event.id, category_id: category.id)
+  income = FactoryGirl.create(:income, event_id: event.id, category: category)
 end
 
 step "there is an expense pending approval" do

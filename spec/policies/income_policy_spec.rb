@@ -4,7 +4,7 @@ require 'authorization_helper'
 describe IncomePolicy do
   subject { IncomePolicy.new(user, action) }
   let(:category)  { FactoryGirl.create(:category) }
-  let(:action)    { FactoryGirl.create(:income, category_id: category.id) }
+  let(:action)    { FactoryGirl.create(:income, category: category) }
 
   context "organizer" do
     let(:user) { FactoryGirl.build(:user) }
