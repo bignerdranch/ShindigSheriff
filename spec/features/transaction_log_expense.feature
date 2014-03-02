@@ -5,9 +5,9 @@ Feature: Transaction Log Expenses
       And I am at the log expenses page
     When I complete the form with the following:
 
-      | ID                         | Input                     |
-      | expense_estimated_amount   | 10.00                     |
-      | expense_category_details   | meeting setup             |
+      | ID                                          | Input          |
+      | transactions_log_expense_estimated_amount   | 10.00          |
+      | transactions_log_expense_category_details   | meeting setup  |
 
       And I click "Add Expense"
     Then I should see "$10.00"
@@ -17,8 +17,8 @@ Feature: Transaction Log Expenses
       And I am at the log expenses page
     When I complete the form with the following:
 
-      | ID                         | Input                     |
-      | expense_estimated_amount   | 10.00                     |
+      | ID                                          | Input  |
+      | transactions_log_expense_estimated_amount   | 10.00  |
 
       And I click "Add Expense"
-    Then I should see "Category details can't be blank"
+    Then I should see "Error(s) while creating expense"
