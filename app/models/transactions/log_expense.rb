@@ -4,10 +4,12 @@ module Transactions
   class LogExpense
     include ActiveModel::Model
 
-    attr_reader :event
+    def initialize(params)
+      @event_id = params.fetch(:event_id)
+    end
 
-    def initialize(event)
-      @event = event
+    def event
+      @event ||= Event.find(@event_id)
     end
   end
 end
