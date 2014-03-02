@@ -47,5 +47,9 @@ ShindigSheriff::Application.routes.draw do
   resources :verify_users, only: [:new, :create]
   resources :email_registration, only: [:new, :create]
 
+  namespace :transactions do
+    resource :log_expenses, only: [:new, :create]
+  end
+
 end
 
