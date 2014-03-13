@@ -26,11 +26,11 @@ module Transactions
     end
 
     def create_expense
-      Expense.create(expense_params)
+      event.expenses.create(expense_params)
     end
 
     def expense_params
-      @expense_attributes.permit(:category_details, :estimated_amount, :event_id)
+      @expense_attributes.permit(:category_details, :estimated_amount)
     end
   end
 end
