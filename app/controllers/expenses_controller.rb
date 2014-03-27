@@ -7,6 +7,19 @@ class ExpensesController < ApplicationController
     authorize @expense
   end
 
+  def create
+    @expense = event.expenses.build(expense_params)
+    authorize @expense
+
+    if @expense.save
+      flash[:notice] = "#{@expense.estimated_amount} has successfully been added to organization #{@event.name}!"
+      redirect_to sekret_event_path(@event)
+    else
+      flash[:notice] = "Error(s) while creating expense: #{@expense.errors.full_messages.to_sentence}"
+      redirect_to new_event_expense_path(@event)
+    end
+  end
+
   def destroy
     @expense = Expense.find(params[:id])
     event = @expense.event
@@ -35,27 +48,18 @@ class ExpensesController < ApplicationController
     redirect_to dashboard_path(@user)
   end
 
-  def create
-    @event = Event.find(params[:event_id])
-    @expense = @event.expenses.new(expense_params)
-    authorize @expense
-    
-    if @expense.save 
-      flash[:notice] = "#{@expense.estimated_amount} has successfully been added to organization #{@event.name}!"
-      redirect_to sekret_event_path(@event)
-    else
-      flash[:notice] = "Error(s) while creating expense:
-      #{@expense.errors.full_messages.to_sentence}"
-      redirect_to new_event_expense_path(@event)
-    end
-  end
-
   private
 
   def expense_params
-    params.require(:expense).permit(:estimated_amount, :actual_amount, 
-                                   :date_received, :category_details, :status, :event_id)
+    params.require(:expense).permit(:estimated_amount, :actual_amount,
+                                   :date_received, :category_details,
+                                   :status, :event_id)
   end
+
+  def event
+    @event ||= Event.find(params[:event_id])
+  end
+  helper_method(:event)
 
 end
 

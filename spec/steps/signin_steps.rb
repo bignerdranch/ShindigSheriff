@@ -17,3 +17,4 @@ step "I am an unverified user" do
   @user.roles << Role.find_or_create_by(name: "finance approver")
   @user.save!
 end
+

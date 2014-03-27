@@ -1,10 +1,7 @@
 class User < ActiveRecord::Base
-  
+
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  validates_presence_of :first_name, :last_name, :email, :roles
-  validates_uniqueness_of :email
 
   has_many :events, through: :organizations
   has_many :incomes, through: :events
@@ -16,9 +13,14 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   accepts_nested_attributes_for :roles
 
-  validate :organizers_should_have_organization
-
   has_many :approver_organizations, class_name: "Organization", foreign_key: :finance_approver_id
+
+  validates :email,       presence: true, uniqueness: true
+  validates :first_name,  presence: true
+  validates :last_name,   presence: true
+  validates :roles,       presence: true
+
+  validates :organizations, presence: true, if: :organizer?
 
 
   # Finance Approver Incomes
@@ -48,19 +50,15 @@ class User < ActiveRecord::Base
   def has_role? name
     roles.pluck(:name).include?(name)
   end
-  
+
   def role= name
     role = Role.find_by_name(name)
     self.roles << role if role
   end
 
-  private 
+  private
 
-  def organizers_should_have_organization
-    if has_role? "organizer" && organizations.blank?
-      errors[:organization] = "can't be blank"
-    end
+  def organizer?
+    has_role? "organizer"
   end
-
 end
-

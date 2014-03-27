@@ -1,7 +1,7 @@
 class Organization < ActiveRecord::Base
-  validates_presence_of :name
-  validates_uniqueness_of :name
-  has_and_belongs_to_many :events
+  has_many :events_organizations
+  has_many :events, through: :events_organizations
+
   accepts_nested_attributes_for :events
 
   belongs_to :user
@@ -9,6 +9,8 @@ class Organization < ActiveRecord::Base
 
   has_many :incomes, through: :events
   has_many :expenses, through: :events
+
+  validates :name, presence: true, uniqueness: true
 
   def user
     User.find(user_id)

@@ -11,3 +11,4 @@ RSpec::Matchers.define :permit do |action|
     "#{policy.class} does not forbit #{action} on #{policy.record} for #{policy.user.inspect}."
   end
 end
+

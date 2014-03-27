@@ -19,3 +19,4 @@ class IncomePolicy < ApplicationPolicy
     finance_approver? && verified?
   end
 end
+

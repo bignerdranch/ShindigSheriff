@@ -1,14 +1,15 @@
 require 'spec_helper'
 require 'authorization_helper'
 
-describe IncomePolicy do 
+describe IncomePolicy do
   subject { IncomePolicy.new(user, action) }
-  let(:action) { FactoryGirl.create(:income) }
+  let(:category)  { FactoryGirl.create(:category) }
+  let(:action)    { FactoryGirl.create(:income, category: category) }
 
   context "organizer" do
     let(:user) { FactoryGirl.build(:user) }
 
-    before(:each) do 
+    before(:each) do
       user.roles << Role.find_or_create_by(name: "organizer")
       user.save!
     end
@@ -23,7 +24,7 @@ describe IncomePolicy do
   context "finance approver" do
     let(:user) { FactoryGirl.build(:user) }
 
-    before(:each) do 
+    before(:each) do
       user.roles << Role.find_or_create_by(name: "finance approver")
       user.save!
     end
@@ -35,3 +36,4 @@ describe IncomePolicy do
     it { should permit(:reject)      }
   end
 end
+

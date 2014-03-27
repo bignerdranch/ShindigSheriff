@@ -1,14 +1,14 @@
 require 'spec_helper'
 require 'authorization_helper'
 
-describe ExpensePolicy do 
+describe ExpensePolicy do
   subject { ExpensePolicy.new(user, action) }
   let(:action) { FactoryGirl.create(:expense) }
 
   context "organizer" do
     let(:user) { FactoryGirl.build(:user) }
 
-    before(:each) do 
+    before(:each) do
       user.roles << Role.find_or_create_by(name: "organizer")
       user.save!
     end
@@ -23,7 +23,7 @@ describe ExpensePolicy do
   context "finance approver" do
     let(:user) { FactoryGirl.build(:user) }
 
-    before(:each) do 
+    before(:each) do
       user.roles << Role.find_or_create_by(name: "finance approver")
       user.save!
     end
@@ -35,3 +35,4 @@ describe ExpensePolicy do
     it { should permit(:reject)      }
   end
 end
+

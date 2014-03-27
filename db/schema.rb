@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131001426) do
+ActiveRecord::Schema.define(version: 20140219155518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,14 +30,13 @@ ActiveRecord::Schema.define(version: 20140131001426) do
     t.text     "purpose"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "organization_id"
   end
 
-  add_index "events", ["organization_id"], name: "index_events_on_organization_id", using: :btree
-
   create_table "events_organizations", force: true do |t|
-    t.integer "event_id"
-    t.integer "organization_id"
+    t.integer  "event_id"
+    t.integer  "organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "expenses", force: true do |t|
@@ -67,16 +66,15 @@ ActiveRecord::Schema.define(version: 20140131001426) do
 
   create_table "organizations", force: true do |t|
     t.integer  "user_id"
-    t.string   "name"
+    t.string   "name",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "website"
-    t.integer  "event_id"
     t.integer  "finance_approver_id"
   end
 
-  add_index "organizations", ["event_id"], name: "index_organizations_on_event_id", using: :btree
   add_index "organizations", ["finance_approver_id"], name: "index_organizations_on_finance_approver_id", using: :btree
+  add_index "organizations", ["name"], name: "index_organizations_on_name", unique: true, using: :btree
 
   create_table "roles", force: true do |t|
     t.datetime "created_at"

@@ -5,16 +5,16 @@ ShindigSheriff::Application.routes.draw do
   devise_scope :user do
     authenticated :user do
       root :to => 'users#show', as: :dashboard
-    end 
+    end
     unauthenticated :user do
       root :to => 'users#new', as: :sign_in
     end
   end
 
-  resources :users, only: [:show, :new, :create] do  
+  resources :users, only: [:show, :new, :create] do
     resources :organizations
   end
-  
+
   scope shallow_prefix: "sekret" do
     resources :organizations do
       resources :events, shallow: true
@@ -42,10 +42,14 @@ ShindigSheriff::Application.routes.draw do
      end
     end
   end
-    
+
   resources :finance_approvers, only: [:new, :create, :show]
   resources :verify_users, only: [:new, :create]
   resources :email_registration, only: [:new, :create]
+
+  namespace :transactions do
+    resource :log_expenses, only: [:new, :create]
+  end
 
 end
 

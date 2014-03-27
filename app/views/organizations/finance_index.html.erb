@@ -14,8 +14,8 @@
           <% current_user.approver_organizations.each do |organization| %>
             <tr>
               <td><%= organization.name %></td>
-              <td><%= organization.website %></td> 
-              <td><%#= organization.user.email %></td>  
+              <td><%= organization.website %></td>
+              <td><%#= organization.user.email %></td>
             </tr>
           <% end %>
         <% else %>
@@ -24,3 +24,4 @@
       </tbody>
     </table>
   <% end %>
+

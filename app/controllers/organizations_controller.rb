@@ -42,12 +42,14 @@ class OrganizationsController < ApplicationController
       redirect_to edit_organization_path(@organization)
     end
   end
-  
+
   def destroy
-    @organization.destroy
-    respond_to do |format|
-      format.html { redirect_to organizations_url }
-      format.json { head :no_content }
+    if @organization.destroy
+      flash[:notice] =  "expense #{@organization.name} has been deleted"
+      redirect_to dashboard_path
+    else
+      flash[:notice] =  "Error(s) while destroying organization: #{@organization.name}"
+      redirect_to organization_path(@organization)
     end
   end
 

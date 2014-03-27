@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-#Rails 
+#Rails
 gem 'rails', '4.0.2'
 
 #Database
@@ -23,7 +23,7 @@ gem 'turbolinks'
 #JSON
 gem 'jbuilder', '~> 1.2'
 
-group :development do 
+group :development do
   #Error Handling
   gem 'better_errors'
   #Error Handling REPL

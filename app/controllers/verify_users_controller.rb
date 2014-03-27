@@ -2,11 +2,11 @@ class VerifyUsersController < ApplicationController
 
   def new
   end
-  
+
   def create
     if current_user.valid_password?(params[:user][:password])
       current_user.update_attributes(password: params[:user][:new_password])
-      
+
       if current_user.save!
         current_user.verify
         flash[:notice] = "password has successfully been updated!"
@@ -22,3 +22,4 @@ class VerifyUsersController < ApplicationController
     end
   end
 end
+
