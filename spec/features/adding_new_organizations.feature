@@ -4,10 +4,10 @@ Scenario: Succesfully creating a new organization
     Given I am a logged in user
       And I am at the new organizations page
     When I complete the form with the following:
-      
+
       | ID                        | Input                     |
       | organization_name         | Cylon Meetup              |
-      | organization_website      | cylons.notaruse.com       |     
+      | organization_website      | cylons.notaruse.com       |
 
       And I click "Create Organization"
     Then I should see "Cylon Meetup"
@@ -17,10 +17,10 @@ Scenario: Submitting an incomplete form
     Given I am a logged in user
       And I am at the new organizations page
     When I complete the form with the following:
-      
+
       | ID                        | Input                     |
       | organization_name         |                           |
-      | organization_website      | cylons.notaruse.com       |     
+      | organization_website      | cylons.notaruse.com       |
 
       And I click "Create Organization"
     Then I should see "Error(s) while creating organization: Name can't be blank"

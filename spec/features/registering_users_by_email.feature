@@ -19,8 +19,8 @@ Feature: Registering a new user by Email
   Scenario: Inviting a user whose is already registered
     Given I am a logged in user
       And I am at the Select A Finance Approver page
-      And this user exists: 
-      
+      And this user exists:
+
       | ID                   | Input                     |
       | first_name           | Helo                      |
       | last_name            | Agathon                   |
@@ -40,4 +40,3 @@ Feature: Registering a new user by Email
     When I click "Register User"
     Then I should see "Email has already been taken"
 
-    

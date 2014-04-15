@@ -1,6 +1,6 @@
 <h3> Please reset your password </h3>
 
-<div class="user-form">  
+<div class="user-form">
   <%= form_for(current_user, url: verify_users_path, method: "post") do |f| %>
     <%= f.label :password, "Please enter your temporary password" %>
     <%= f.password_field :password, placeholder: "temporary password" %>

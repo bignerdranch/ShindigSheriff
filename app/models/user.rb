@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  
+
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -48,13 +48,13 @@ class User < ActiveRecord::Base
   def has_role? name
     roles.pluck(:name).include?(name)
   end
-  
+
   def role= name
     role = Role.find_by_name(name)
     self.roles << role if role
   end
 
-  private 
+  private
 
   def organizers_should_have_organization
     if has_role? "organizer" && organizations.blank?

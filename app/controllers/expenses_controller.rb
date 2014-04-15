@@ -39,8 +39,8 @@ class ExpensesController < ApplicationController
     @event = Event.find(params[:event_id])
     @expense = @event.expenses.new(expense_params)
     authorize @expense
-    
-    if @expense.save 
+
+    if @expense.save
       flash[:notice] = "#{@expense.estimated_amount} has successfully been added to organization #{@event.name}!"
       redirect_to sekret_event_path(@event)
     else
@@ -53,7 +53,7 @@ class ExpensesController < ApplicationController
   private
 
   def expense_params
-    params.require(:expense).permit(:estimated_amount, :actual_amount, 
+    params.require(:expense).permit(:estimated_amount, :actual_amount,
                                    :date_received, :category_details, :status, :event_id)
   end
 
