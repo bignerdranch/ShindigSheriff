@@ -5,6 +5,9 @@ class Organization < ActiveRecord::Base
   belongs_to :finance_approver, class_name: 'User'
   belongs_to :user
 
+  has_many :events_organizations
+  has_many :events, through: :events_organizations
+
   has_many :expenses, through: :events
   has_many :incomes, through: :events
 
