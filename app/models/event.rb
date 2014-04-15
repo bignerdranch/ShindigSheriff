@@ -6,7 +6,10 @@ class Event < ActiveRecord::Base
 
   accepts_nested_attributes_for :organizations
 
-  validates_presence_of :name, :date, :time, :location, :purpose
-
+  validates :date,      presence: true
+  validates :location,  presence: true
+  validates :name,      presence: true
+  validates :purpose,   presence: true
+  validates :time,      presence: true
 end
 
