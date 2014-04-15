@@ -37,7 +37,7 @@ class IncomesController < ApplicationController
    def create
     @income = event.incomes.build(income_params)
     authorize @income
-    
+
     if @income.save
       flash[:notice] = "#{@income.estimated_amount} has successfully been added to organization #{event.name}!"
       redirect_to sekret_event_path(event)

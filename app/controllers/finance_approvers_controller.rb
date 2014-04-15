@@ -1,7 +1,7 @@
 class FinanceApproversController < ApplicationController
   def new
     @finance_approvers = Role.finance_approver
-  end 
+  end
 
   def create
     user = User.find_by_id(params["finance_approver"]["id"])
@@ -10,8 +10,8 @@ class FinanceApproversController < ApplicationController
     if user
       @organization.update_attributes(finance_approver: user)
       session[:organization_id].clear
-      flash[:notice] = 
-      "#{@organization.finance_approver.first_name.capitalize} 
+      flash[:notice] =
+      "#{@organization.finance_approver.first_name.capitalize}
                                               is a Finance Approver!"
       redirect_to organization_path(@organization)
     else

@@ -7,7 +7,7 @@ Feature: Adding a new income
 
       | ID                        | Input                     |
       | income_estimated_amount   | 20.00                     |
-      | income_category_details   | top hats                  |   
+      | income_category_details   | top hats                  |
 
       And I select "Swag" from the category menu
     When I click "Add Income"
@@ -20,7 +20,7 @@ Feature: Adding a new income
 
       | ID                        | Input                     |
       | income_estimated_amount   | 20.00                     |
-      | income_category_details   | top hats                  | 
+      | income_category_details   | top hats                  |
 
     When I click "Add Income"
     Then I should see "Category can't be blank"
@@ -32,4 +32,3 @@ Feature: Adding a new income
     When I click "Delete"
     Then I should see "has been deleted"
 
-    

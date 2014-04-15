@@ -15,8 +15,8 @@ class ApplicationPolicy
     user.has_role?("finance approver")
   end
 
-  def verified? 
+  def verified?
     user.verified?
   end
-end 
+end
 

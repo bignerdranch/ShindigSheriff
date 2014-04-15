@@ -42,7 +42,7 @@ class OrganizationsController < ApplicationController
       redirect_to edit_organization_path(@organization)
     end
   end
-  
+
   def destroy
     @organization.destroy
     respond_to do |format|

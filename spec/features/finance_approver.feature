@@ -42,7 +42,7 @@ Scenario: Selecting a Finance Approver for an organization
       And there is an income pending approval
       And I am at the homepage
     When I click "Reject"
-    Then I should see "Rejected" 
+    Then I should see "Rejected"
 
 
   Scenario: Pending expense
@@ -63,5 +63,5 @@ Scenario: Selecting a Finance Approver for an organization
       And there is an expense pending approval
       And I am at the homepage
     When I click "Reject"
-    Then I should see "Rejected" 
+    Then I should see "Rejected"
 

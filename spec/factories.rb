@@ -30,7 +30,7 @@ FactoryGirl.define do
     estimated_amount '10.00'
     actual_amount    '10.00'
     status           nil
-    category_details 'things' 
+    category_details 'things'
     event
     association :category
   end
@@ -39,20 +39,20 @@ FactoryGirl.define do
     estimated_amount '10.01'
     actual_amount    '10.02'
     status           nil
-    category_details 'things' 
+    category_details 'things'
     event
   end
 
-  factory :role do 
+  factory :role do
     name "organizer"
 
-    trait :as_finance_approver do 
+    trait :as_finance_approver do
       name "finance approver"
     end
   end
 
   factory :category do
-    name "Swag" 
+    name "Swag"
   end
 
 end
