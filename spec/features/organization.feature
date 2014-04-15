@@ -51,3 +51,9 @@ Feature: Organizations
 
       And I click "Update Organization"
     Then I should see "Error(s) while editing organization: Name can't be blank"
+
+  Scenario: Succesfully deleting an organization
+    Given I am a logged in user
+      And I am at the organization page
+    When I click "Destroy Organization"
+    Then I should see "has been deleted"
