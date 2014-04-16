@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140415152813) do
   end
 
   add_index "organizations", ["finance_approver_id"], name: "index_organizations_on_finance_approver_id", using: :btree
+  add_index "organizations", ["name"], name: "index_organizations_on_name", unique: true, using: :btree
 
   create_table "roles", force: true do |t|
     t.datetime "created_at"
