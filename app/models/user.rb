@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   validates :last_name,   presence: true
   validates :roles,       presence: true
 
-  validate :organizers_should_have_organization
+  validates :organizations, presence: true, if: :organizer?
 
 
   # Finance Approver Incomes
@@ -58,10 +58,7 @@ class User < ActiveRecord::Base
 
   private
 
-  def organizers_should_have_organization
-    if has_role? "organizer" && organizations.blank?
-      errors[:organization] = "can't be blank"
-    end
+  def organizer?
+    has_role? "organizer"
   end
-
 end
