@@ -32,7 +32,7 @@ ShindigSheriff::Application.routes.draw do
         end
      end
 
-     resources :expenses, only: [:new, :create, :update, :destroy], shallow: true do
+     resources :expenses, only: :destroy, shallow: true do
         member do
           put 'reject', 'verify', 'delete'
         end
