@@ -1,1 +1,13 @@
-show new expense form here
+<div>
+  Add an expense to <h4><%= @log_expense.event_name %></h4>
+</div>
+
+<%= form_for @log_expense do |f| %>
+  <%= f.text_field :estimated_amount, placeholder: "estimated monetary amount, i.e. 10.00" %>
+
+  <%= f.text_field :category_details, placeholder: "optional category details, e.g. stickers" %>
+
+  <%= f.hidden_field :event_id, value: "#{@log_expense.event_id}" %>
+
+  <%= f.submit "Add Expense", class: "button radius tiny" %>
+<% end %>
