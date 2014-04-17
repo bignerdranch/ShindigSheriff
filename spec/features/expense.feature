@@ -28,4 +28,3 @@ Feature: Expenses
       And I am at the event page
     When I click "Delete"
     Then I should see "has been deleted"
-
