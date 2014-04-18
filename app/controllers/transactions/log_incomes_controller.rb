@@ -3,6 +3,7 @@ module Transactions
 
     def new
       @log_income = LogIncome.new(params)
+      @categories = Category.all
     end
   end
 end

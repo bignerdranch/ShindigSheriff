@@ -1,10 +1,10 @@
 require 'active_model'
 
 module Transactions
-  class LogIncome < ActiveRecord::Base
+  class LogIncome
     include ActiveModel::Model
 
-    attr_reader :event_id
+    attr_reader :category_details, :category_id, :estimated_amount, :event_id, :estimated_amount
 
     def initialize(attributes)
       @event_id = attributes.fetch(:event_id)

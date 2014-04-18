@@ -1,2 +1,21 @@
-Add an income to
-<%= @log_income.event_name %>
+<div>
+  Add an income to <h4><%= @log_income.event_name %></h4>
+</div>
+
+</br>
+
+<div>
+  <%= form_for @log_income do |f| %>
+      <%= f.text_field :estimated_amount, placeholder: "estimated monetary amount, i.e. 10.00" %>
+
+      <%= f.text_field :category_details, placeholder: "optional category details, e.g. stickers" %>
+
+      <%= f.collection_select :category_id, @categories, :id, :name, prompt: "Select a Category" %>
+
+      <%= f.hidden_field :event_id, value: "#{@log_income.event_id}" %>
+
+      <%= f.submit "Add Income", class: "button radius tiny" %>
+  <% end %>
+</div>
+
+<%= link_to "Back", sekret_event_path(@log_income.event_id) %>

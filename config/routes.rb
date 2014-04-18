@@ -48,7 +48,7 @@ ShindigSheriff::Application.routes.draw do
   resources :email_registration, only: [:new, :create]
 
   namespace :transactions do
-    resources :log_incomes, only: :new
+    resources :log_incomes, only: [:new, :create]
   end
 
 end
