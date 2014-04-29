@@ -12,7 +12,6 @@ Feature: Organizations
       And I click "Create Organization"
     Then I should see "Cylon Meetup"
 
-
   Scenario: Submitting an incomplete form
     Given I am a logged in user
       And I am at the new organizations page
@@ -24,8 +23,6 @@ Feature: Organizations
 
       And I click "Create Organization"
     Then I should see "Error(s) while creating organization: Name can't be blank"
-
-
 
   Scenario: Succesfully editing an existing organization
     Given I am a logged in user
