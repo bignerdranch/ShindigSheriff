@@ -22,7 +22,7 @@ module Transactions
     private
 
     def event
-      @event ||= Event.find(@event_id)
+      @event ||= Event.find(event_id)
     end
 
     def create_expense
