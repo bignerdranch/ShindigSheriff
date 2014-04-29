@@ -15,8 +15,8 @@ module Transactions
       event.name
     end
 
-    def success?
-      create_expense.valid?
+    def save
+      create_expense
     end
 
     private
@@ -26,11 +26,15 @@ module Transactions
     end
 
     def create_expense
-      event.expenses.create(expense_params)
+      expense.save
     end
 
     def expense_params
       @expense_attributes.permit(:category_details, :estimated_amount)
+    end
+
+    def expense
+      event.expenses.new(expense_params)
     end
   end
 end
