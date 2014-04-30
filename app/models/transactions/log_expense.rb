@@ -4,7 +4,7 @@ module Transactions
   class LogExpense
     include ActiveModel::Model
 
-    attr_reader :category_details, :estimated_amount, :event_id
+    attr_reader :category_details, :estimated_amount, :event_id, :expense_attributes
 
     def initialize(params)
       @event_id = params.fetch(:event_id) { params["transactions_log_expense"]["event_id"] }
@@ -30,7 +30,7 @@ module Transactions
     end
 
     def expense_params
-      @expense_attributes.permit(:category_details, :estimated_amount)
+      expense_attributes.permit(:category_details, :estimated_amount)
     end
 
     def expense
