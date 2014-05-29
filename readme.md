@@ -8,6 +8,9 @@ The organizer home dashboard lists organizations. The organization dashboard lis
 
 ##Development
 
+### Wiki
+[Project Wiki](https://github.com/bignerdranch/ShindigSheriff/wiki)
+
 ### Requirements
 
 * Ruby 2.1.0
