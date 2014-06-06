@@ -42,5 +42,7 @@ group :development, :test do
   gem 'railroady'
 end
 
+gem 'rake', group: :test
+
 gem 'rails_12factor', group: :production
 
