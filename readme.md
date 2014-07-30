@@ -19,10 +19,20 @@ The organizer home dashboard lists organizations. The organization dashboard lis
 
 ### Setup
 
-Clone the repository locally
+Fork the repo:
 
-    $ git clone https://github.com/bignerdranch/ShindigSheriff.git
-    $ cd ShindigSheriff
+*  Visit the [ShindigSherrif](https://github.com/bignerdranch/ShindigSheriff) github page.
+*  Fork the repo. In the upper right corner of the page, click the `Fork` button.
+
+Clone your forked repo locally:
+
+*  Go to `https://github.com/YOUR_GITHUB_USERNAME_HERE/ShindigSheriff`
+*  Clone the repo:
+
+```
+$ git clone https://github.com/YOUR_GITHUB_USERNAME_HERE/ShindigSheriff.git
+$ cd ShindigSheriff
+```
 
 Creating a gemset with .rvmrc is recommended.
 
