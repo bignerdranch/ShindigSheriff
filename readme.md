@@ -55,6 +55,19 @@ Open the application in your favorite browser
     localhost:3000
 
 
+###Select or create an Issue
+
+Go to the parent [ShindigSheriff](https://github.com/bignerdranch/ShindigSheriff) repo.
+On the right column menu, select `Issues`.
+When making a git `commit`, we recommend referencing the issue number at the bottom of the message. Example:
+
+```
+Add field for inputting donations.
+
+[#111]
+```
+
+
 ###Testing
 
 Prepare test database
