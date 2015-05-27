@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.0'
 
 #Rails
 gem 'rails', '4.0.2'
@@ -41,6 +42,8 @@ group :development, :test do
   gem 'simplecov', :require => false, :group => :test
   gem 'railroady'
 end
+
+gem 'rake', group: :test
 
 gem 'rails_12factor', group: :production
 

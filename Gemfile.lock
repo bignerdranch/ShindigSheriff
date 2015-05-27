@@ -207,6 +207,7 @@ DEPENDENCIES
   railroady
   rails (= 4.0.2)
   rails_12factor
+  rake
   rspec-rails (~> 2.13.1)
   sass-rails (~> 4.0.0)
   simplecov
