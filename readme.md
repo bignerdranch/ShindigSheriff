@@ -1,6 +1,8 @@
 #Shindig Sheriff
 Application for managing events.
 
+[![Build Status](https://travis-ci.org/bignerdranch/ShindigSheriff.svg?branch=master)](https://travis-ci.org/bignerdranch/ShindigSheriff)
+
 ##Minimum Viable Product
 For use by organizers and financial approvers. Organizers can add,  remove, and edit organizations and events. Organizers can add and remove expenses to events. Finance approver can confirm that incomes have been received, and can approve or reject organizer expenses.
 
