@@ -1,14 +1,14 @@
 class IncomesController < ApplicationController
   include StatusHelper, CalculateTotalHelper
+before_action :set_income, only:[:destroy,:verify,:reject]
 
-  def new
+def new
     @categories = Category.all
     @income = event.incomes.new
     authorize @income
   end
 
   def destroy
-    @income = Income.find(params[:id])
     authorize @income
     @income.destroy
     flash[:notice] =  "Income #{@income.category_details} for $#{@income.estimated_amount} has been deleted"
@@ -19,7 +19,6 @@ class IncomesController < ApplicationController
   end
 
   def verify
-    @income = Income.find(params[:id])
     authorize @income
     @income.update_attribute(:status, true)
     flash[:notice] =  "Income has been verified"
@@ -27,7 +26,6 @@ class IncomesController < ApplicationController
   end
 
    def reject
-    @income = Income.find(params[:id])
     authorize @income
     @income.update_attribute(:status, false)
     flash[:notice] =  "Income has been rejected"
@@ -48,6 +46,10 @@ class IncomesController < ApplicationController
   end
 
   private
+  
+  def set_income
+      @income = Income.find(params[:id])
+  end
 
   def income_params
     params.require(:income).permit(:estimated_amount, :actual_amount,
