@@ -1,6 +1,6 @@
 class IncomesController < ApplicationController
   include StatusHelper, CalculateTotalHelper
-before_action :set_article, only:[:destroy,:verify,:reject]
+before_action :set_income, only:[:destroy,:verify,:reject]
 
 def new
     @categories = Category.all
