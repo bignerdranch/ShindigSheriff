@@ -17,8 +17,8 @@ module Transactions
     
     private
     
-    def set_log
-            @log_expense = LogExpense.new(params)
+    def set_log_expense
+      @log_expense = LogExpense.new(params)
     end
   end
 end
